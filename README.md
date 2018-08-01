@@ -67,8 +67,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ### 机器学习的组成
 
+数据输入（Input）：
 
+<img src="http://latex.codecogs.com/svg.latex?x\in\mathcal{X}"/>
 
+结果输出（Output）：
+
+<img src="http://latex.codecogs.com/svg.latex?y\in\mathcal{Y}"/>
+
+目标函数（Target function）:
 
 
 
