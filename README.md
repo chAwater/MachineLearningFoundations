@@ -133,11 +133,13 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1\right\)-\begin{matrix}\underbrace{-\textnormal{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)=\textnormal{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_1\right\)=\textnormal{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1\right\)-\begin{matrix}\underbrace{-\textnormal{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)"/>
+
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_1\right\)=\textnormal{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
 
 每一种`权重`向量（<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/>）就是一个假设函数（Hypothesis）_h_。
 
-
+XXX
 
 
 因此，感知机也叫**线性分类器（linear/binary classifiers）**
