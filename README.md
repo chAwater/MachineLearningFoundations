@@ -5,8 +5,8 @@ Notebooks for Machine Learning Foundations by @hsuantien
 
 ## Coursera Links
 
-- [机器学习基石上 (Machine Learning Foundations)---Mathematical Foundations](https://www.coursera.org/learn/ntumlone-mathematicalfoundations)
-- [机器学习基石下 (Machine Learning Foundations)---Algorithmic Foundations](https://www.coursera.org/learn/ntumlone-algorithmicfoundations)
+- [机器学习基石上 (Machine Learning Foundations)-Mathematical Foundations](https://www.coursera.org/learn/ntumlone-mathematicalfoundations)
+- [机器学习基石下 (Machine Learning Foundations)-Algorithmic Foundations](https://www.coursera.org/learn/ntumlone-algorithmicfoundations)
 
 by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
@@ -68,17 +68,23 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ### 机器学习的组成
 
-数据输入（Input）：<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}\in\mathcal{X}"/>
+数据输入（Input）：
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}\in\mathcal{X}"/>
 
-结果输出（Output）：<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}\in\mathcal{Y}"/>
+结果输出（Output）：
+<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}\in\mathcal{Y}"/>
 
-目标函数（Target function）： <img src="http://latex.codecogs.com/svg.latex?f:\mathcal{X}\to\mathcal{Y}"/>
+目标函数（Target function）：
+<img src="http://latex.codecogs.com/svg.latex?f:\mathcal{X}\to\mathcal{Y}"/>
 
-数据集（Data）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\left\{(\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\cdots,(\mathbf{x}_N,\mathrm{y}_N)\right\}"/>
+数据集（Data）：
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\left\{(\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\cdots,(\mathbf{x}_N,\mathrm{y}_N)\right\}"/>
 
-机器学习算法（Learning algorithm)： <img src="http://latex.codecogs.com/svg.latex?\mathcal{A}"/>
+机器学习算法（Learning algorithm)：
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{A}"/>
 
-函数集合（Hypothesis set）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{H=\left\{h_k\right\}};\,(g\in\mathcal{H})"/>
+函数集合（Hypothesis set）：
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{H=\left\{h_k\right\}};\,(g\in\mathcal{H})"/>
 
 假设函数（Hypothesis <=> Skill）：
 <img src="http://latex.codecogs.com/svg.latex?g:\mathcal{X}\to\mathcal{Y};\,(g\approx{f})"/>
@@ -106,7 +112,37 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ---
 
-## Lecture 2:
+## Lecture 2: Learning Answer Yes/No
+
+### 感知机（Perceptron）
+
+考虑一个简单的分类问题，是否给一个顾客办理信用卡。
+
+假设每个顾客有一系列的特征（Feature），比如年薪、花费、债务等：
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}=(\mathrm{x}_1,\mathrm{x}_2,\cdots,\mathrm{x}_d)"/>
+
+计算特征的加权求和作为分数：
+<img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d \mathrm{w}_i\mathrm{x}_1"/>
+
+如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。
+因此有：
+
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d \mathrm{w}_i\mathrm{x}_1\right\) - \textnormal{threshold}\right\)"/>
+
+这就是**感知机**。
+
+简化一下这个公式：
+
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1\right\) -\begin{matrix}\underbrace{-\textnormal{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)=\textnormal{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_1\right\)=\textnormal{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
+
+每一种`权重`向量（<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/>）就是一个假设函数（Hypothesis）_h_。
+
+
+
+
+因此，感知机也叫**线性分类器（linear/binary classifiers）**
+
+### Perceptron Learning Algorithm (PLA)
 
 
 
