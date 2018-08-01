@@ -122,12 +122,12 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{x}=(\mathrm{x}_1,\mathrm{x}_2,\cdots,\mathrm{x}_d)"/>
 
 计算特征的加权求和作为分数：
-<img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d \mathrm{w}_i\mathrm{x}_1"/>
+<img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1"/>
 
 如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d \mathrm{w}_i\mathrm{x}_1\right\)-\textnormal{threshold}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1\right\)-\textnormal{threshold}\right\)"/>
 
 这就是**感知机**。
 
