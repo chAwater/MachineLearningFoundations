@@ -30,6 +30,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 - Data -> Machine Learning -> Skill
 
 ### 下一个问题：什么是`技巧`？
+
 - 改进一些表现
 - Improve some performance measure
 
@@ -71,21 +72,41 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 结果输出（Output）：<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}\in\mathcal{Y}"/>
 
-目标函数（Target function）: <img src="http://latex.codecogs.com/svg.latex?f: \mathcal{X}\to\mathcal{Y}"/>
+目标函数（Target function）： <img src="http://latex.codecogs.com/svg.latex?f:\mathcal{X}\to\mathcal{Y}"/>
 
 数据集（Data）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\left\{(\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\cdots,(\mathbf{x}_N,\mathrm{y}_N)\right\}"/>
 
-机器学习函数（Hypothesis <=> Skill）：
-<img src="http://latex.codecogs.com/svg.latex?g:\mathcal{X}\to\mathcal{Y}"/>
+机器学习算法（Learning algorithm)： <img src="http://latex.codecogs.com/svg.latex?\mathcal{A}"/>
 
-机器学习的过程，就是从**符合**`目标函数`的**数据**中得到`机器学习函数`的过程
+函数集合（Hypothesis set）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{H};\,g\in\mathcal{H}=\left\{h_k\right\}"/>
 
-
-
-
+假设函数（Hypothesis <=> Skill）：
+<img src="http://latex.codecogs.com/svg.latex?g:\mathcal{X}\to\mathcal{Y};\,(g\approx{f})"/>
 
 
+机器学习的过程，就是：
+- 在**符合**`目标函数`的**数据**上；
+- 运用用`机器学习算法`；
+- 从`函数集合`中；
+- 得到`假设函数`的过程。
 
+机器学习模型是由`机器学习算法`和`函数集合`组成。
+
+### 机器学习（Machine Learning）与其他领域的区别
+
+1. 机器学习 v.s. 数据挖掘（Data Mining）
+  - 机器学习和数据挖掘可以互相帮助
+  - 机器学习有时包含在数据挖掘中，数据挖掘的范围更加广泛
+2. 机器学习 v.s. 人工智能（Artificial Intelligence）
+  - 机器学习是实现人工智能的一种方法
+  - 机器学习也是一种人工智能，人工智能的范围更加广泛
+3. 机器学习 v.s. 统计学（Statistics）
+  - 统计学是实现机器学习的一种方法
+  - 机器学习更重视计算结构，而统计学更加重视数学的严谨性（当然也损失了很多）
+
+---
+
+## Lecture 2:
 
 
 
