@@ -67,15 +67,21 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ### 机器学习的组成
 
-数据输入（Input）：
+数据输入（Input）：<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}\in\mathcal{X}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?x\in\mathcal{X}"/>
+结果输出（Output）：<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}\in\mathcal{Y}"/>
 
-结果输出（Output）：
+目标函数（Target function）: <img src="http://latex.codecogs.com/svg.latex?f: \mathcal{X} \to \mathcal{Y}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?y\in\mathcal{Y}"/>
+数据集（Data）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{D} = \left\{ (\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\cdots,(\mathbf{x}_N,\mathrm{y}_N) \right\}"/>
 
-目标函数（Target function）:
+得到的函数（Hypothesis <=> Skill）：
+<img src="http://latex.codecogs.com/svg.latex?g: \mathcal{X} \to \mathcal{Y}"/>
+
+机器学习的过程，就是从符合f的数据中得到g的过程
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)
 
 
 
