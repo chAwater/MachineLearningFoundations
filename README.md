@@ -52,10 +52,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 1. 存在潜在的模式（exists some underlying patten）
   - 这样才存在改进的空间（反例：预测下一个随机数）
 
-
 2. 无法用简单的编程实现
   - 否则没有必要使用机器学习（反例：识别图中是否存在环路）
-
 
 3. 必须有能够反映这个问题的数据
   - 否则无法学习（反例：预测核能是否会毁灭人类）
@@ -63,10 +61,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 如果有以上三点，那么用机器学习 **有可能** 可以解决这个问题；
 
-
 ### 机器学习的应用举例
 
+略
 
+### 机器学习的组成
 
 
 
