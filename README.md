@@ -19,7 +19,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ## Lecture 1: The Learning Problem
 
-### 哲学思考：什么是``机器学习``？
+### 哲学思考：什么是`机器学习`？
 
 人：
 - 观察 -> 学习 -> 技巧
@@ -29,11 +29,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 - 数据 -> 机器学习 -> 技巧
 - Data -> Machine Learning -> Skill
 
-### 下一个问题：什么是``技巧``？
+### 下一个问题：什么是`技巧`？
 - 改进一些表现
 - Improve some performance measure
 
-### 那么，``为什么``要使用机器学习？
+### 那么，`为什么`要使用机器学习？
 
 因为用传统的编程方式定义、解决某些问题非常难；但使用机器学习的方法可以让这个问题变得很简单。
 
@@ -71,17 +71,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 结果输出（Output）：<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}\in\mathcal{Y}"/>
 
-目标函数（Target function）: <img src="http://latex.codecogs.com/svg.latex?f: \mathcal{X} \to \mathcal{Y}"/>
+目标函数（Target function）: <img src="http://latex.codecogs.com/svg.latex?f: \mathcal{X}\to\mathcal{Y}"/>
 
-数据集（Data）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{D} = \left\{ (\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\cdots,(\mathbf{x}_N,\mathrm{y}_N) \right\}"/>
+数据集（Data）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\left\{(\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\cdots,(\mathbf{x}_N,\mathrm{y}_N)\right\}"/>
 
-得到的函数（Hypothesis <=> Skill）：
-<img src="http://latex.codecogs.com/svg.latex?g: \mathcal{X} \to \mathcal{Y}"/>
+机器学习函数（Hypothesis <=> Skill）：
+<img src="http://latex.codecogs.com/svg.latex?g:\mathcal{X}\to\mathcal{Y}"/>
 
-机器学习的过程，就是从符合f的数据中得到g的过程
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
-\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)
+机器学习的过程，就是从**符合**`目标函数`的**数据**中得到`机器学习函数`的过程
+
 
 
 
