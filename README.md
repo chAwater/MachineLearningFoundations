@@ -78,7 +78,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 机器学习算法（Learning algorithm)： <img src="http://latex.codecogs.com/svg.latex?\mathcal{A}"/>
 
-函数集合（Hypothesis set）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{H};\,g\in\mathcal{H}=\left\{h_k\right\}"/>
+函数集合（Hypothesis set）：<img src="http://latex.codecogs.com/svg.latex?\mathcal{H=\left\{h_k\right\}};\,(g\in\mathcal{H})"/>
 
 假设函数（Hypothesis <=> Skill）：
 <img src="http://latex.codecogs.com/svg.latex?g:\mathcal{X}\to\mathcal{Y};\,(g\approx{f})"/>
