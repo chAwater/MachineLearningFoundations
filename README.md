@@ -154,24 +154,32 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 我们并不知道`目标函数`，但我们有符合`目标函数`的`数据`，因此，至少在这些数据中，这两个函数应该是近似的：
 
-<img src="http://latex.codecogs.com/svg.latex?g\approx{f}\;\mathrm{on}\;\mathcal{D},\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx{}\mathrm{y}_n}"/>
+<img src="http://latex.codecogs.com/svg.latex?g\approx{f}\;\mathrm{on}\;\mathcal{D}\;\Rightarrow\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx{}\mathrm{y}_n}"/>
 
 不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\;(g\in\mathcal{H})"/> 可以是无限大的，从中找到我们想要的`目标函数`非常难。
 
 因此可以先从`函数集合`中随意拿出一个函数 <img src="http://latex.codecogs.com/svg.latex?g_0"/>（可以用权重的向量 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_0"/> 表示），然后在数据中优化这个函数的表现，这就是PLA算法的思路。
 
 在一个循环 *t* = 0,1,2,3,... 中：
-- 找到让当前函数犯错误的数据：
-<img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
-- 使用这个数据修正函数：
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
-- 直到每个数据都不出现错误时，循环停止得到 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
+>
+> - 找到让当前函数犯错误的数据
+>
+> <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
+>
+> - 使用这个数据修正函数
+>
+> <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
+>
+> - 直到每个数据都不出现错误时，循环停止，得到权重向量
+>
+> <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
+>
 
 但是，这个算法还有一些问题：
 - 算法中的循环不一定会**停止**
 - 算法能够保证在已有的数据中是正确的，但未必在**未知数据**中也是正确的
 
-### 
+###
 
 
 
