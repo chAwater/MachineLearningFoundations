@@ -162,17 +162,13 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
-> - 找到让当前函数犯错误的数据
+> - 找到让当前函数犯错误的数据 <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
 >
-> <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
 >
-> - 使用这个数据修正函数
+> - 使用这个数据修正函数 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
 >
-> <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
 >
-> - 直到每个数据都不出现错误时，循环停止，得到权重向量
->
-> <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
+> - 直到每个数据都不出现错误时，循环停止，得到权重向量 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
 >
 
 但是，这个算法还有一些问题：
