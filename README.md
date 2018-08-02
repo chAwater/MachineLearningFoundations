@@ -128,33 +128,50 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)-\textnormal{threshold}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)-\textrm{threshold}\right\)"/>
 
 这就是**感知机**。
 
+</br>
+
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)+\begin{matrix}\underbrace{-\textnormal{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)"/>
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textnormal{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textrm{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
 
-每一种`权重`向量（<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/>）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
+每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
-在二维空间中（<img src="http://latex.codecogs.com/svg.latex?\mathbb{R^2}"/>），每一种_h_可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫**线性分类器（linear/binary classifiers）**
+在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?\mathbb{R}^2"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?h"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫**线性分类器（linear/binary classifiers）**
 
 ### Perceptron Learning Algorithm (PLA)
+—— A fault confessed is half redressed.
 
 那么，如何选出最好的`目标函数`呢？
 
 我们希望得到的`假设函数`近似等于`目标函数`：
 <img src="http://latex.codecogs.com/svg.latex?g\approx{f}"/>
 
-我们并不知道`目标函数`，不过我们有符合`目标函数`的`数据`，因此，至少在这些数据中，这两个函数应该是近似的：
+我们并不知道`目标函数`，但我们有符合`目标函数`的`数据`，因此，至少在这些数据中，这两个函数应该是近似的：
 
-<img src="http://latex.codecogs.com/svg.latex?g\approx{f}\;\textnormal{on}\;\mathcal{D},\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx{}\mathrm{y}_n}"/>
+<img src="http://latex.codecogs.com/svg.latex?g\approx{f}\;\mathrm{on}\;\mathcal{D},\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx{}\mathrm{y}_n}"/>
 
-不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\;(g\in\mathcal{H})"/>
- 可以是无限大的，从中找到我们想要的`目标函数`非常难，因此可以先从`函数集合`中随意拿出一个函数<img src="http://latex.codecogs.com/svg.latex?g_0"/>（可以用权重的向量<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_0"/>表示），然后在数据中优化这个函数的表现。
+不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\;(g\in\mathcal{H})"/> 可以是无限大的，从中找到我们想要的`目标函数`非常难。
+
+因此可以先从`函数集合`中随意拿出一个函数 <img src="http://latex.codecogs.com/svg.latex?g_0"/>（可以用权重的向量 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_0"/> 表示），然后在数据中优化这个函数的表现，这就是PLA算法的思路。
+
+在一个循环 *t* = 0,1,2,3,... 中：
+- 找到让当前函数犯错误的数据：
+<img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
+- 使用这个数据修正函数：
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
+- 直到每个数据都不出现错误时，循环停止得到 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
+
+但是，这个算法还有一些问题：
+- 算法中的循环不一定会**停止**
+- 算法能够保证在已有的数据中是正确的，但未必在**未知数据**中也是正确的
+
+### 
 
 
 
