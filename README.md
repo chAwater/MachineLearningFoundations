@@ -84,10 +84,10 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{A}"/>
 
 函数集合（Hypothesis set）：
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{H=\left\{h_k\right\}};\,(g\in\mathcal{H})"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{H}=\left\{h_k\right\};\;(g\in\mathcal{H})"/>
 
 假设函数（Hypothesis <=> Skill）：
-<img src="http://latex.codecogs.com/svg.latex?g:\mathcal{X}\to\mathcal{Y};\,(g\approx{f})"/>
+<img src="http://latex.codecogs.com/svg.latex?g:\mathcal{X}\to\mathcal{Y};\;(g\approx{f})"/>
 
 
 机器学习的过程，就是：
@@ -122,29 +122,41 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{x}=(\mathrm{x}_1,\mathrm{x}_2,\cdots,\mathrm{x}_d)"/>
 
 计算特征的加权求和作为分数：
-<img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1"/>
+
+<img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i"/>
 
 如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1\right\)-\textnormal{threshold}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)-\textnormal{threshold}\right\)"/>
 
 这就是**感知机**。
 
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_1\right\)-\begin{matrix}\underbrace{-\textnormal{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)+\begin{matrix}\underbrace{-\textnormal{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)"/>
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_1\right\)=\textnormal{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textnormal{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textnormal{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
 
-每一种`权重`向量（<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/>）就是一个假设函数（Hypothesis）_h_。
+每一种`权重`向量（<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/>）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
-XXX
-
-
-因此，感知机也叫**线性分类器（linear/binary classifiers）**
+在二维空间中（<img src="http://latex.codecogs.com/svg.latex?\mathbb{R^2}"/>），每一种_h_可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫**线性分类器（linear/binary classifiers）**
 
 ### Perceptron Learning Algorithm (PLA)
+
+那么，如何选出最好的`目标函数`呢？
+
+我们希望得到的`假设函数`近似等于`目标函数`：
+<img src="http://latex.codecogs.com/svg.latex?g\approx{f}"/>
+
+我们并不知道`目标函数`，不过我们有符合`目标函数`的`数据`，因此，至少在这些数据中，这两个函数应该是近似的：
+
+<img src="http://latex.codecogs.com/svg.latex?g\approx{f}\;\textnormal{on}\;\mathcal{D},\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx{}\mathrm{y}_n}"/>
+
+不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\;(g\in\mathcal{H})"/>
+ 可以是无限大的，从中找到我们想要的`目标函数`非常难，因此可以先从`函数集合`中随意拿出一个函数<img src="http://latex.codecogs.com/svg.latex?g_0"/>（可以用权重的向量<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_0"/>表示），然后在数据中优化这个函数的表现。
+
+
 
 
 
