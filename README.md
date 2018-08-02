@@ -158,24 +158,45 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\;(g\in\mathcal{H})"/> 可以是无限大的，从中找到我们想要的`目标函数`非常难。
 
-因此可以先从`函数集合`中随意拿出一个函数 <img src="http://latex.codecogs.com/svg.latex?g_0"/>（可以用权重的向量 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_0"/> 表示），然后在数据中优化这个函数的表现，这就是PLA算法的思路。
+因此，可以先从`函数集合`中随意拿出一个函数 <img src="http://latex.codecogs.com/svg.latex?g_0"/>（可以用权重的向量 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_0"/> 表示），
+然后，在数据中优化这个函数的表现，这就是PLA (Cyclic PLA) 的思路：
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
-> - 找到让当前函数犯错误的数据 <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
+> - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
 >
 >
-> - 使用这个数据修正函数 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
+> - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
 >
 >
-> - 直到每个数据都不出现错误时，循环停止，得到权重向量 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
+> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
 >
 
 但是，这个算法还有一些问题：
 - 算法中的循环不一定会**停止**
 - 算法能够保证在已有的数据中是正确的，但未必在**未知数据**中也是正确的
 
-###
+### Guarantee of PLA
+
+- 那么，什么时候PLA的循环会停止？
+
+数据是线性可分的（Linear Separable）
+
+- 当数据是线性可分的时候，PLA的循环就一定会停止？
+
+当数据线性可分时，存在一条线（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_f}"/> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f}\mathbf{x}_{n(t)}\geq\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f}\mathbf{x}_n>0"/>
+
+（任意一个数据点的向量表示与分割线法向量的夹角小于90度，向量内积等于向量的大小与夹角cos值的乘积）
+
+我们使用向量内积的方式来查看这个完美的分割线和我们 _t+1_ 与 _t_ 时刻分割线的相似程度：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_{t+1}}=\mathbf{w}^T_f(\mathbf{w}_t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)})"/>
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_{t+1}}\geq\mathbf{w}^T_f\mathbf{w}_t}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f}\mathbf{x}_n"/>
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_{t+1}}>\mathbf{w}^T_f\mathbf{w}_t}"/>
 
 
 
