@@ -166,7 +166,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 > - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
 >
 >
-> - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
+> - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
 >
 >
 > - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
@@ -184,22 +184,71 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - 当数据是线性可分的时候，PLA的循环就一定会停止？
 
-当数据线性可分时，存在一条线（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_f}"/> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
+当数据线性可分时，存在一条线（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_f"/> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f}\mathbf{x}_{n(t)}\geq\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f}\mathbf{x}_n>0"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\geq\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0"/>
 
 （任意一个数据点的向量表示与分割线法向量的夹角小于90度，向量内积等于向量的大小与夹角cos值的乘积）
 
-我们使用向量内积的方式来查看这个完美的分割线和我们 _t+1_ 与 _t_ 时刻分割线的相似程度：
+我们使用向量内积的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_{t+1}}=\mathbf{w}^T_f(\mathbf{w}_t}+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)})"/>
+如果两个向量越相似，他们的向量内积越大。此外，还需要考虑两个向量的模/长度，如果向量变长，內积也会变大，因此需要使用单位向量进行内积。
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_{t+1}}\geq\mathbf{w}^T_f\mathbf{w}_t}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f}\mathbf{x}_n"/>
+因此，这个公式可以衡量这两个向量的相似程度：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_{t+1}}>\mathbf{w}^T_f\mathbf{w}_t}"/>
+<img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\;(\mathbf{w}_0=\mathbf{0})"/>
+
+对于**分子**部分，有：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_T}=\mathbf{w}^T_f(\mathbf{w}_{T-1}}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})"/>
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_T}\geq\mathbf{w}^T_f\mathbf{w}_{T-1}}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n"/>
+
+迭代后有：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_T\geq\mathbf{w}^T_f\mathbf{w}_0+T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n=T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n"/>
+
+对于**分母**部分，有：
+
+<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2=||\mathbf{w}_{T-1}}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2"/>
+
+<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2=||\mathbf{w}_{T-1}||^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2"/>
+
+因为只有在某个数据出现错误时，才会使用这个数据更新向量，所以有：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}\leq0"/>
+
+所以，上面的公式可以简化为：
+
+<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2\leq||\mathbf{w}_{T-1}||^2+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2"/>
+
+<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2\leq||\mathbf{w}_{T-1}||^2+\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2"/>
+
+迭代后有：
+
+<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2\leq||\mathbf{w}_0||^2+T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2=T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2"/>
+
+综上，
+
+<img src="http://latex.codecogs.com/svg.latex?
+\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\frac{T\mathop{\min}\limits_n\mathrm{y}\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)
+"/>
+
+<img src="http://latex.codecogs.com/svg.latex?
+\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\sqrt{T}\cdot{C}
+"/>
+
+其中，
+
+<img src="http://latex.codecogs.com/svg.latex?
+C=\frac{\mathop{\min}\limits_n\mathrm{y}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\mathop{\max}\limits_n||\mathbf{x}_n||^2}}>0
+"/>
 
 
+可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越接近的；
 
+同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加，因此PLA的循环最终会停下来。
 
+### 
 
 ---
