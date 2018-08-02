@@ -12,10 +12,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ## 前言介绍
 
-《机器学习基石》是国立台湾大学资讯工程系的 **林轩田** 老师开设的课程（**中文授课**），旨在从基础的角度介绍机器学习，包括机器学习的**哲学**、关键**理论**和核心**技术**。
+《机器学习基石》是国立台湾大学资讯工程系的 **林轩田** 老师开设的课程（**中文授课**）。
+
+该课程旨在从基础的角度介绍机器学习，包括机器学习的**哲学**、关键**理论**和核心**技术**。
+
+从基础角度出发，既能保证学生能够了解机器学习的基本概念，同时对学生基础的要求最少，也能够保证课程不会太枯燥。
+
 （如果从理论角度出发，需要深入掌握各种机器学习理论，花费大量时间，但却不实用；
 而如果从技术角度出发，快速介绍多种机器学习方法，但无法清晰理解，难以选择和应用。）
-从基础角度出发，既能保证学生能够了解机器学习的基本概念，同时对学生基础的要求最少，也能够保证课程不会太枯燥。
+
 
 ## Lecture 1: The Learning Problem
 
@@ -188,13 +193,13 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\geq\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0"/>
 
-（任意一个数据点的向量表示与分割线法向量的夹角小于90度，向量内积等于向量的大小与夹角cos值的乘积）
+（任意一个数据点的向量表示与分割线法向量的夹角小于90度，向量内积等于向量的长度与夹角cos值的乘积）
 
 我们使用向量内积的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
-如果两个向量越相似，他们的向量内积越大。此外，还需要考虑两个向量的模/长度，如果向量变长，內积也会变大，因此需要使用单位向量进行内积。
-
-因此，这个公式可以衡量这两个向量的相似程度：
+如果两个向量越相似，他们的向量内积越大。
+此外，还需要考虑两个向量的模/长度，如果向量变长，內积也会变大，因此使用单位向量进行内积。
+所以，以下公式可以衡量这两个向量的相似程度：
 
 <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\;(\mathbf{w}_0=\mathbf{0})"/>
 
@@ -230,25 +235,19 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 综上，
 
-<img src="http://latex.codecogs.com/svg.latex?
-\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\frac{T\mathop{\min}\limits_n\mathrm{y}\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)
-"/>
+<img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\frac{T\mathop{\min}\limits_n\mathrm{y}\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)"/>
 
-<img src="http://latex.codecogs.com/svg.latex?
-\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\sqrt{T}\cdot{C}
-"/>
+<img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\sqrt{T}\cdot{C}"/>
 
 其中，
 
-<img src="http://latex.codecogs.com/svg.latex?
-C=\frac{\mathop{\min}\limits_n\mathrm{y}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\mathop{\max}\limits_n||\mathbf{x}_n||^2}}>0
-"/>
+<img src="http://latex.codecogs.com/svg.latex?C=\frac{\mathop{\min}\limits_n\mathrm{y}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\mathop{\max}\limits_n||\mathbf{x}_n||^2}}>0"/>
 
 
 可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越接近的；
 
 同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加，因此PLA的循环最终会停下来。
 
-### 
+###
 
 ---
