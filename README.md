@@ -147,12 +147,12 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
-在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?\mathbb{R}^2"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?h"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫**线性分类器（linear/binary classifiers）**
+在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?\mathbb{R}^2"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?h"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫**线性分类器（Linear/binary classifiers）**
 
 ### Perceptron Learning Algorithm (PLA)
 —— A fault confessed is half redressed.
 
-那么，如何选出最好的`目标函数`呢？
+那么，如何选出最好的`假设函数`呢？
 
 我们希望得到的`假设函数`近似等于`目标函数`：
 <img src="http://latex.codecogs.com/svg.latex?g\approx{f}"/>
@@ -164,7 +164,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\;(g\in\mathcal{H})"/> 可以是无限大的，从中找到我们想要的`目标函数`非常难。
 
 因此，可以先从`函数集合`中随意拿出一个函数 <img src="http://latex.codecogs.com/svg.latex?g_0"/>（可以用权重的向量 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_0"/> 表示），
-然后，在数据中优化这个函数的表现，这就是PLA (Cyclic PLA) 的思路：
+然后，在数据中优化这个函数的表现，这就是PLA (Cyclic PLA) 的思路。
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
@@ -261,13 +261,17 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 为了解决这些问题，我们首先应该假设**噪声**应该很小，多数的数据都是线性可分的；
 
-因此我们可以找到一条线，在这个数据集中出现的错误最少：
+因此我们可以找到一条线，使它在这个数据集中出现的错误最少：
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_g\gets\mathop{\textrm{argmin}}_\mathbf{w}\sum_{n=1}^N[\![\mathrm{y}_n\ne\textrm{sign}(\mathbf{w}^T\mathbf{x}_n)]\!]"/>
 
 但是这是一个 **NP-hard 问题**。
 
-因此，我们修改了一下PLA的算法，这个新算法的思路是用PLA的循环每次找到一个新的分类器（线）时，检查这个分类器在数据中的表现，如果这个新的分类器比（口袋里）以前的分类器表现好，那么就留下这个新的分类器。这个算法叫做 **口袋算法（Pocket Algorithm）**。
+因此，我们修改了一下PLA的算法。
+
+这个新算法的思路是在PLA的循环中，当每次找到一个新的分类器（线）时，检查这个分类器在所有数据中的表现。如果这个新的分类器比以前（口袋里）分类器的表现好，那么就留下这个新的分类器，否则，还保留旧的分类器。
+
+这个算法叫就做 **口袋算法（Pocket Algorithm）**。
 
 ---
 
