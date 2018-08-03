@@ -24,6 +24,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ## Lecture 1: The Learning Problem
 
+—— 简介机器学习的概念和基本的数据符号表示
+
 ### 哲学思考：什么是`机器学习`？
 
 人：
@@ -118,6 +120,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 ---
 
 ## Lecture 2: Learning Answer Yes/No
+
+—— 介绍感知机（线性分类器）的概念和数学表示；介绍感知机的算法（PLA）和数学表示；数学推导、证明 PLA 的可实现性；
 
 ### 感知机（Perceptron）
 
