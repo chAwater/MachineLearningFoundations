@@ -154,6 +154,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?\mathbb{R}^2"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?h"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫**线性分类器（Linear/binary classifiers）**
 
 ### Perceptron Learning Algorithm (PLA)
+
 —— A fault confessed is half redressed.
 
 那么，如何选出最好的`假设函数`呢？
@@ -280,6 +281,55 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 ---
 
 ## Lecture 3: Types of Learning
+
+——
+
+### 不同的输出空间
+
+**分类** 问题：
+
+Binary Classification => Multiclass Classification
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\Rightarrow\mathcal{Y}=\left\{1,2,3,\cdots,K\right\};"/>
+
+- 健康/病人诊断
+- 正常/垃圾邮件
+- 衣服大小
+- 硬币识别
+
+**回归** 分析：
+
+Regression, bounded regression:  
+
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}\;\textrm{or}\;\mathcal{Y}=[\textrm{lower},\textrm{upper}]\subset\mathbb{R}"/>
+
+- 股价、房价预测
+- 天气、温度预测
+
+结构 学习：
+
+Structured learning:
+
+Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, without class definition
+
+- 自然语言处理，句子形式判断
+- 蛋白质折叠预测
+
+### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
