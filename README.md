@@ -292,9 +292,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ### 不同的输出空间
 
-**分类** 问题：
-
-Binary Classification => Multiclass Classification
+**分类** 问题：Binary Classification => Multiclass Classification
 
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\Rightarrow\mathcal{Y}=\left\{1,2,3,\cdots,K\right\};"/>
 
@@ -303,18 +301,14 @@ Binary Classification => Multiclass Classification
 - 衣服大小
 - 硬币识别
 
-**回归** 分析：
-
-Regression, bounded regression:  
+**回归** 分析：Regression, bounded regression
 
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}\;\textrm{or}\;\mathcal{Y}=[\textrm{lower},\textrm{upper}]\subset\mathbb{R}"/>
 
 - 股价、房价预测
 - 天气、温度预测
 
-结构 学习：
-
-Structured learning:
+结构 学习：Structured learning
 
 Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, without class definition
 
@@ -348,7 +342,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\textrm{goodness})"/>
 
 
-###
+### 
 
 
 
