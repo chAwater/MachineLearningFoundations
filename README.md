@@ -147,7 +147,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)"/>
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textrm{sign}\left\(\mathbf{w}^T\mathbf{x}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textrm{sign}(\mathbf{w}^T\mathbf{x})"/>
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
@@ -172,7 +172,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
-> - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}\left\(\mathbf{w}_t^T\mathbf{x}_{n(t)}\right\)\ne\mathrm{y}_{n(t)}"/>
+> - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}(\mathbf{w}_t^T\mathbf{x}_{n(t)})\ne\mathrm{y}_{n(t)}"/>
 >
 >
 > - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
@@ -279,6 +279,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ---
 
-##
+## Lecture 3: Types of Learning
+
+
 
 ---
