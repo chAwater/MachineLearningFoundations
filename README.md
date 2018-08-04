@@ -264,9 +264,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 不过，PLA仍然有一些问题：
 
 - 需要数据是线性可分的，但是我们并不知道数据是否线性可分
-
 - 数据是线性可分的假设过于强了，很多时候数据不是线性可分的（比如数据有噪声）
-
 - 尽管当线性是可分的时候，PLA会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_f"/> ）
 
 
@@ -325,11 +323,9 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 无数据标注，目标也比较分散
 
-数据分群（~ unsupervised multiclass classification）
-
-数据密度估计（~ unsupervised bounded regression）
-
-异常值检测（~ unsupervised binary classification）
+- 数据分群（~ unsupervised multiclass classification）
+- 数据密度估计（~ unsupervised bounded regression）
+- 异常值检测（~ unsupervised binary classification）
 
 **半监督学习**：
 
@@ -342,7 +338,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\textrm{goodness})"/>
 
 
-### 
+###
 
 
 
