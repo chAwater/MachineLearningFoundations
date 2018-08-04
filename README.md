@@ -314,15 +314,34 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 - 自然语言处理，句子形式判断
 - 蛋白质折叠预测
 
+### 不同的输出标注
+
+**监督学习**：Supervised Learning
+
+有数据标注，每个数据都有相应的标注 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x}_n,\mathrm{y}_n)"/>
+
+**无监督学习**：Unsupervised Learning
+
+无数据标注，目标也比较分散
+
+数据分群（~ unsupervised multiclass classification）
+
+数据密度估计（~ unsupervised bounded regression）
+
+异常值检测（~ unsupervised binary classification）
+
+半监督学习
+
+略
+
+**增强学习**：Reinforcement Learning
+
+最难的，但是是最自然的学习方法，比如训练宠物
+
+有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\textrm{goodness})"/>
+
+
 ### 
-
-
-
-
-
-
-
-
 
 
 
