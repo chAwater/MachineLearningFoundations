@@ -121,7 +121,9 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ## Lecture 2: Learning Answer Yes/No
 
-—— 介绍感知机（线性分类器）的概念和数学表示；介绍感知机的算法（PLA）和数学表示；数学推导、证明 PLA 的可实现性；
+—— 介绍感知机（线性分类器）的概念和数学表示
+—— 介绍感知机的算法（PLA）和数学表示
+—— 数学推导、证明 PLA 的可实现性
 
 ### 感知机（Perceptron）
 
@@ -200,7 +202,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 （任意一个数据点的向量表示与分割线法向量的夹角小于90度，向量内积等于向量的长度与夹角cos值的乘积）
 
-我们使用向量内积的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
+我们使用 **向量内积** 的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
 如果两个向量越相似，他们的向量内积越大。
 此外，还需要考虑两个向量的模/长度，如果向量变长，內积也会变大，因此使用单位向量进行内积。
@@ -249,9 +251,13 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 <img src="http://latex.codecogs.com/svg.latex?C=\frac{\mathop{\min}\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\mathop{\max}\limits_n||\mathbf{x}_n||^2}}>0"/>
 
 
-可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越接近的；
+可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越**接近**的；
 
-同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加，因此，在数据**线性可分**时，PLA的循环**最终会停下来**，找到一个很好的分割线。
+同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加；
+
+因此，在数据**线性可分**时，PLA的循环**最终会停下来**，找到一个很好的分割线。
+
+####### 怎么样！有没有感受到数学的NB之处 #######
 
 ### Non-Separable Data
 
@@ -289,6 +295,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 **分类** 问题：
 
 Binary Classification => Multiclass Classification
+
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\Rightarrow\mathcal{Y}=\left\{1,2,3,\cdots,K\right\};"/>
 
 - 健康/病人诊断
@@ -330,7 +337,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 异常值检测（~ unsupervised binary classification）
 
-半监督学习
+**半监督学习**：
 
 略
 
@@ -341,7 +348,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\textrm{goodness})"/>
 
 
-### 
+###
 
 
 
