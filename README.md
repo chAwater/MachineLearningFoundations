@@ -257,7 +257,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 因此，在数据**线性可分**时，PLA的循环**最终会停下来**，找到一个很好的分割线。
 
-####### 怎么样！有没有感受到数学的NB之处 #######
+####### 怎么样！有没有感受到数学的NB之处！！ #######
 
 ### Non-Separable Data
 
@@ -292,7 +292,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 **分类** 问题：Binary Classification => Multiclass Classification
 
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\Rightarrow\mathcal{Y}=\left\{1,2,3,\cdots,K\right\};"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\;\mathcal{Y}=\left\{1,2,3,\cdots,K\right\};"/>
 
 - 健康/病人诊断
 - 正常/垃圾邮件
@@ -338,8 +338,13 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\textrm{goodness})"/>
 
 
-###
+### 不同的流程
 
+- Batch Leaning：收集一波数据，一波输入机器学习算法（最常用的一种，“填鸭式”）
+- Online Learning：实时的输入数据，实时的改进，甚至最优解都可能是实时变化的（强化学习，通常也使用这种方式；还有PLA也可以很简单的实现；“上课式”）
+- Active Learning：类似于Online Learning，通过对于特定输入进行“提问”获得标注，通常在获取标记成本比较高的应用中（“提问式”）
+
+### 
 
 
 
