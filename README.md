@@ -356,7 +356,48 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 ---
 
-## Lecture 4: 
+## Lecture 4: Feasibility of Learning
+
+——
+
+### 哲学思考：机器学习真的是可能的吗？(Learning is impossible?)
+
+- Two Controversial Answers
+
+对于这个问题，可能有不同的答案。
+任意一个答案都有可能是正确的，也有可能是错误的；
+对于这种问题，再好的算法也可能永远无法完成。
+
+![Snap01](./Snapshot/Snap01.png)
+
+- 'Simple' Binary Classification Problem
+
+![Snap02](./Snapshot/Snap02.png)
+
+对于这个问题，我们可以得到多种函数，这些函数在数据集中都是完全正确的，但我们却不知道在未知的数据集中这些函数的表现如何。
+如果任选一种函数，那么它很有可能在未知的数据中是错误的；
+如果平均所有的函数，那么就相当于没有进行机器学习。
+
+**没有免费午餐（No Free Lunch）**：
+
+从已知的数据中获得与`目标函数`一样好的`假设函数`在很多情况下是不可能的，必须有某些**前提假设**，否则机器学习是不可能的。
+
+Fun Time：嘲讽一下某些“智商测试”
+
+![Snap03](./Snapshot/Snap03.png)
+
+###
+
+
+
+
+
+
+
+
+
+
+
 
 
 
