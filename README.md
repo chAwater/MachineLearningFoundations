@@ -327,9 +327,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 - 数据密度估计（~ unsupervised bounded regression）
 - 异常值检测（~ unsupervised binary classification）
 
-**半监督学习**：
-
-略
+**半监督学习**：略
 
 **增强学习**：Reinforcement Learning
 
@@ -386,7 +384,32 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ![Snap03](./Snapshot/Snap03.png)
 
-###
+### 那么怎样才能确保一个问题“能被机器学习”？
+
+Inferring Something Unknown
+
+假设有一个罐子，里面有很多很多...很多的球，有一些是绿色的，有一些是橘色的；
+我们有没有办法估计罐子里面有多少比例的球是橘色的？
+
+当然有，我们可以随机拿出 ___N___ 个球（Sample），看着这几个球中有多少比例的球是橘色的。
+
+假设在罐子中橘色球的比例是 <img src="http://latex.codecogs.com/svg.latex?\mu"/> （未知的），而在我们Sample中橘色球的比例是 <img src="http://latex.codecogs.com/svg.latex?\nu"/> （已知的），那这个Sample内的比例可以说明Sample外的比例吗？
+
+**有可能** 不能说明，但 **很有可能** 能够说明！
+
+在 ___N___ 很大时，这两个比例很相近（相差小于 <img src="http://latex.codecogs.com/svg.latex?\epsilon"/> ）的概率是符合以下不等式：（Hoeffding's Inequality）
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\leq2\,\textrm{exp}\,(-2\epsilon^2N)"/>
+
+
+这个公式非常有用：
+- 不需要"知道"未知的 <img src="http://latex.codecogs.com/svg.latex?\mu"/>
+- 对于任何 _N_ 和 <img src="http://latex.codecogs.com/svg.latex?\epsilon"/> 都是有效的
+- 在 _N_ 越大的时候偏差越小
+
+### 在机器学习中
+
+上面的讨论和统计的关系比较大，那么下面我们就来把这个转化到机器学习的问题中来。
 
 
 
