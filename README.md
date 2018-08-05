@@ -205,7 +205,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 我们使用 **向量内积** 的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
 如果两个向量越相似，他们的向量内积越大。
-此外，还需要考虑两个向量的模/长度，如果向量变长，內积也会变大，因此使用单位向量进行内积。
+此外，还需要考虑两个向量的模/长度（如果向量变长，內积也会变大）因此使用单位向量进行内积。
 所以，以下公式可以衡量这两个向量的相似程度：
 
 <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\;(\mathbf{w}_0=\mathbf{0})"/>
@@ -427,6 +427,47 @@ Inferring Something Unknown
 不过，我们可以用上述的方法作为验证（Verification）`机器学习算法`选出的某个`假设函数`的方法。
 
 ### 真正的机器学习
+
+对于某个`假设函数`，如果它在输入数据中的表现是好的，要不要选择这个函数呢？
+
+也 **不一定**，因为上述不等式是描述的是`假设函数`和`目标函数`差距很小的概率。即使概率很小，也**有可能**发生（两个函数差距很大的小概率“不好的”的事件发生）。尤其是在有很多次事件（`函数集合`很大），且这种不好的事件可能会被**选择**的时候）
+
+这种“不好的”的事件，比如投币五次都是正面，**相当于** 某个训练数据集评价某种`假设函数`“看似”很好，但实际其在输入空间中的表现不好。
+
+而Hoeffding不等式也保证了对于某一个`假设函数`，数据集中导致`假设函数`和`目标函数`出现差距的数据（“不好的”）**很少**。
+
+当有从有 _M_ 个函数`函数集合`中选择`假设函数`时，某个数据对于某个`假设函数`都有可能是好的或者不好的。
+
+如果对于任意一个数据，如果它对于这 _M_ 个函数中的某一个函数来说是“不好的”，我们就认为这是个不好的数据。因此，对于整个`函数集合`，不好的数据（BAD）出现的概率有：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]=\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2\,\textbf{or}\,\cdots\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]"/>
+
+(Union bound)
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]"/>
+
+(Hoeffding)
+
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)"/>
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
+
+这就是在有限空间中的Hoeffding公式。
+
+
+当 _N_ 很大而 _M_ 有限的时候，我们就可以保证我们的数据是“可靠的”，因此也能够保证`假设函数`在数据中的表现很好的时候，它也在输入空间中的表现很好，**机器学习是可能实现的！**
+
+思考： 当 _M_ 无限大的时候怎么办呢？我们将在后面进行分析
+
+####### 再次感受数学的力量吧！！！ #######
+
+---
+
+##
+
+
+
 
 
 
