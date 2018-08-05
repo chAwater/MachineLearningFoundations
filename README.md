@@ -286,7 +286,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ## Lecture 3: Types of Learning
 
-——
+—— 介绍不同的学习类型和方式：分类/回归，监督/无监督/强化，Batch/Online，Concrete/Raw/Abstract Feature
 
 ### 不同的输出空间
 
@@ -344,12 +344,19 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 - Online Learning：实时的输入数据，实时的改进，甚至最优解都可能是实时变化的（强化学习，通常也使用这种方式；还有PLA也可以很简单的实现；“上课式”）
 - Active Learning：类似于Online Learning，通过对于特定输入进行“提问”获得标注，通常在获取标记成本比较高的应用中（“提问式”）
 
-### 
+### 不同的输入空间
 
+- **Concrete** Feature：输入的每一个维度（特征）都具有一定的物理意义，这些特征带有人类的智慧，相当于是被人类预处理的数据（比如钱币分类中的大小、信用卡用户的工资、图像的对称性等）
+- **Raw** Feature：输入的特征更加的抽象，一个维度（特征）的物理意义对于这个问题而言不是那么的有意义（比如图像识别中的像素、声音识别中的信号）
+- **Abstract** Feature：输入的特征没有物理意义，（比如用户音乐推荐中的音乐和用户ID）
 
+特征工程（Feature Engineering）是指将Raw feature转换为Concrete feature的过程。
 
+对于机器学习来说，越抽象越难。
 
+---
 
+## Lecture 4: 
 
 
 
