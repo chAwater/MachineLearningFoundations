@@ -118,11 +118,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
   - 机器学习更重视计算结构，而统计学更加重视数学的严谨性（当然也损失了很多）
 
 ---
+---
+---
 
 ## Lecture 2: Learning Answer Yes/No
 
 —— 介绍感知机（线性分类器）的概念和数学表示
+
 —— 介绍感知机的算法（PLA）和数学表示
+
 —— 数学推导、证明 PLA 的可实现性
 
 ### 感知机（Perceptron）
@@ -339,8 +343,8 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 ### 不同的流程
 
 - Batch Leaning：收集一波数据，一波输入机器学习算法（最常用的一种，“填鸭式”）
-- Online Learning：实时的输入数据，实时的改进，甚至最优解都可能是实时变化的（强化学习，通常也使用这种方式；还有PLA也可以很简单的实现；“上课式”）
-- Active Learning：类似于Online Learning，通过对于特定输入进行“提问”获得标注，通常在获取标记成本比较高的应用中（“提问式”）
+- Online Learning：实时的输入数据，实时的改进，甚至最优解都可能是实时变化的（强化学习，还有以前我们提到的PLA也可以很简单的实现，“上课式”）
+- Active Learning：类似于Online Learning，通过对于特定输入进行“提问”获得标注（通常在获取标记成本比较高的应用中，“提问式”）
 
 ### 不同的输入空间
 
@@ -356,7 +360,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 ## Lecture 4: Feasibility of Learning
 
-—— 哲学思考和数学讨论机器学习是否是可能的
+—— 哲学思考和数学讨论**机器学习是否是可能的**
 
 ### 哲学思考：机器学习真的是可能的吗？(Learning is impossible?)
 
@@ -373,6 +377,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 ![Snap02](./Snapshot/Snap02.png)
 
 对于这个问题，我们可以得到多种函数，这些函数在数据集中都是完全正确的，但我们却不知道在未知的数据集中这些函数的表现如何。
+
 如果任选一种函数，那么它很有可能在未知的数据中是错误的；
 如果平均所有的函数，那么就相当于没有进行机器学习。
 
@@ -386,12 +391,12 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ### 那么怎样才能确保一个问题“能被机器学习”？
 
-Inferring Something Unknown
+—— Inferring Something Unknown
 
 假设有一个罐子，里面有很多很多...很多的球，有一些是绿色的，有一些是橘色的；
 我们有没有办法估计罐子里面有多少比例的球是橘色的？
 
-当然有，我们可以随机拿出 ___N___ 个球（Sample），看着这几个球中有多少比例的球是橘色的。
+当然有！我们可以随机拿出 ___N___ 个球（Sample），看着这几个球中有多少比例的球是橘色的。
 
 假设在罐子中橘色球的比例是 <img src="http://latex.codecogs.com/svg.latex?\mu"/> （未知的），而在我们Sample中橘色球的比例是 <img src="http://latex.codecogs.com/svg.latex?\nu"/> （已知的），那这个Sample内的比例可以说明Sample外的比例吗？
 
