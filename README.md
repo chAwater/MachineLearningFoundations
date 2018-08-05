@@ -356,7 +356,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 ## Lecture 4: Feasibility of Learning
 
-——
+—— 哲学思考和数学讨论机器学习是否是可能的
 
 ### 哲学思考：机器学习真的是可能的吗？(Learning is impossible?)
 
@@ -407,20 +407,26 @@ Inferring Something Unknown
 - 对于任何 _N_ 和 <img src="http://latex.codecogs.com/svg.latex?\epsilon"/> 都是有效的
 - 在 _N_ 越大的时候偏差越小
 
-### 在机器学习中
+### 在机器学习中使用类似方法
 
 上面的讨论和统计的关系比较大，那么下面我们就来把这个转化到机器学习的问题中来。
 
+- 罐子 **相当于** 机器学习问题中输入数据的空间
+- 拿出来的 _N_ 个球（Sample） **相当于** 机器学习的（训练）数据集
+- 球的颜色 **相当于** 某个`假设函数`在这个数据集（Sample）上的表现的好与不好
+- 要估计的罐子中球的颜色 **相当于** 估计这个`假设函数`在整个数据空间上的表现好与不好
 
+当 _N_ 很大时，且这个训练数据集是独立同分布（i.i.d.）的来自于整个输入数据空间中，我们就可以通过在训练数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
 
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\,\textrm{exp}\,(-2\epsilon^2N)"/>
 
+那么这样一来我们就能实现学习了吗？
 
+**不一定**，刚才的不等式只能保证某个`假设函数`在符合特定情况下可以在输入空间中的表现很好；但是，`机器学习算法`未必会从`函数集合`中选出这个`假设函数`。
 
+不过，我们可以用上述的方法作为验证（Verification）`机器学习算法`选出的某个`假设函数`的方法。
 
-
-
-
-
+### 真正的机器学习
 
 
 
