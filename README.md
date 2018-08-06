@@ -401,13 +401,13 @@ Fun Time：嘲讽一下某些“智商测试”
 假设有一个罐子，里面有很多很多...很多的球，有一些是绿色的，有一些是橘色的；
 我们有没有办法估计罐子里面有多少比例的球是橘色的？
 
-当然有！我们可以随机拿出 ___N___ 个球（Sample），看着这几个球中有多少比例的球是橘色的。
+当然有！我们可以随机拿出 ***N*** 个球（Sample），看着这几个球中有多少比例的球是橘色的。
 
 假设在罐子中橘色球的比例是 <img src="http://latex.codecogs.com/svg.latex?\mu"/> （未知的），而在我们Sample中橘色球的比例是 <img src="http://latex.codecogs.com/svg.latex?\nu"/> （已知的），那这个Sample内的比例可以说明Sample外的比例吗？
 
 **有可能** 不能说明，但 **很有可能** 能够说明！
 
-在 ___N___ 很大时，这两个比例很相近（相差小于 <img src="http://latex.codecogs.com/svg.latex?\epsilon"/> ）的概率是符合以下不等式：（Hoeffding's Inequality）
+在 ***N*** 很大时，这两个比例很相近（相差小于 <img src="http://latex.codecogs.com/svg.latex?\epsilon"/> ）的概率是符合以下不等式：（Hoeffding's Inequality）
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\leq2\,\textrm{exp}\,(-2\epsilon^2N)"/>
 
@@ -464,7 +464,6 @@ Fun Time：嘲讽一下某些“智商测试”
 
 (Hoeffding)
 
-
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)"/>
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
@@ -511,9 +510,54 @@ _M_ 在个过程中起到什么作用呢？
 
 我们想用一个有限的 _m_ 来代替无限的 _M_，并且仍然能够保证这个不等式的成立。
 
-###
+### Effective number
 
+那么 _M_ 这个“讨厌的”项是怎么来的？
 
+是在我们使用 **Union bound** 将“不好的”数据出现的概率拆成对每个 _h_“不好的”概率和时：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\cdots\,\textbf{b}_M]\leq\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
+
+当 _M_ 无限大的时候，我们就加和了无限多个项，导致我们后面出现的问题。
+
+---
+
+不过，这个 **Union bound** 的使用其实是太过宽松了（公式右边远大于左边）：
+
+>考虑两个非常相似的 _h_<sub>1</sub> 和 _h_<sub>2</sub>，
+>
+>因为它们非常相似，因此它们的表现也是非常相似的，
+>
+>所以让它们犯错误的数据（“不好的”数据也是非常相似的），
+>
+>所以将这些“重叠”在一起的事件发生的概率用加的方式替代时是过度高估了（over-estimation）的
+
+因此我们希望我们能够找出`假设函数`中有重叠的部分，把这些`假设函数`分成几类（_m_），来减少这个过度高估不等式的右边。
+
+---
+
+下面我们考虑一个平面的直线（线性分类器）：
+- 总共有多少条（`函数集合`，_M_）？
+无数条！
+- 根据 1 个数据点 **x**<sub>1</sub>，可能把这些直线分成多少种？
+**2种**，判断**x**<sub>1</sub>=-1和判断**x**<sub>1</sub>=+1；
+- 根据 2 个数据点 **x**<sub>1</sub>,**x**<sub>2</sub>，可能把这些直线分成多少种？
+**4种**，可以分别用**x**<sub>1</sub>,**x**<sub>2</sub>的判断值表示：(0,0)，(0,1)，(1,0)，(1,1)；
+- 根据 3 个数据点，可能把这些直线分成多少种？
+**最多8种**！在这三个数据点共线的情况下，有些判断值不可能出现！比如(0,1,0)和(1,0,1)；
+- 根据 4 个数据点，可能把这些直线分成多少种？
+**最多** ***14*** **种**！在任意的情况下都会有一些判断值的组合不可能出现！（比如产生这样判断值的直线在这个平面上是不存在的 <img src="http://latex.codecogs.com/svg.latex?\begin{matrix}0&1\\1&0\end{matrix}"/> ）
+- 根据 ***N*** 个数据点，可能把这些直线分成多少种？
+最多 **2<sup>_N_</sup>** 种！但是当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>N</sup>
+！
+
+因此有
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\cdot\,\textrm{effective}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
+
+如果 effective(_N_) << 2<sup>N</sup> ，那么机器学习就是可能的！
+
+### 
 
 
 
