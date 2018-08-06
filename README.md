@@ -464,8 +464,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 (Hoeffding)
 
-<img src="http://latex.codecogs.com/svg.latex?
-\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq&2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)\\\leq&2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq&2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)\\\leq&2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
 
 <!-- <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)"/> -->
 
