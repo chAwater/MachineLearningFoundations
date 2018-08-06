@@ -464,9 +464,12 @@ Fun Time：嘲讽一下某些“智商测试”
 
 (Hoeffding)
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?
+\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq&2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)\\\leq&2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<!-- <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)"/> -->
+
+<!-- <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/> -->
 
 这就是在有限空间中的Hoeffding公式。
 
@@ -494,31 +497,31 @@ Fun Time：嘲讽一下某些“智商测试”
 <img src="http://latex.codecogs.com/svg.latex?\begin{matrix}E_{out}(g)\underbrace{\approx}_\textrm{test}{E}_{in}(g)\underbrace{\approx}_\textrm{train}0\end{matrix}"/>
 
 经过前面的学习，我们知道机器学习问题可以被分为两个部分：
-1. 确保_E_<sub>in</sub>(_g_)和_E_<sub>out</sub>(_g_)是相近的
-2. 确保_E_<sub>in</sub>(_g_)足够小
+1. 确保 <i>E</i><sub>in</sub>(<i>g</i>)和 <i>E</i><sub>out</sub>(<i>g</i>)是相近的
+2. 确保 <i>E</i><sub>in</sub>(<i>g</i>)足够小
 
 ![Snap04](./Snapshot/Snap04.png)
 
 _M_ 在个过程中起到什么作用呢？
-- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让_E_<sub>in</sub>(_g_)很小的_g_）
+- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让<i>E</i><sub>in</sub>(<i>g</i>)很小的<i>g</i>）
 - 如果 _M_ 很大，那么 (1) “不好的”事情发生的概率会变大，但是 (2) 更有可能实现
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
 
 
-因此 _M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
+因此，_M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
 
-我们想用一个有限的 _m_ 来代替无限的 _M_，并且仍然能够保证这个不等式的成立。
+我们希望能有一个**有限的** _m_ 来代替无限的 _M_，并且仍然能够保证这个不等式的成立。
 
 ### Effective Number of Line
 
-那么 _M_ 这个“讨厌的”项是怎么来的？
+回顾一下 _M_ 这个“讨厌的”项是怎么来的？
 
-是在我们使用 **Union bound** 将“不好的”数据出现的概率拆成对每个 _h_“不好的”概率和时：
+是在我们使用 **Union bound** 将“不好的”数据出现的概率拆成对每个 _h_ “不好的”概率之和：
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\cdots\,\textbf{b}_M]\leq\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
 
-当 _M_ 无限大的时候，我们就加和了无限多个项，导致我们后面出现的问题。
+当 _M_ 无限大的时候，我们就加和了无限多个项，这导致了我们面临问题。
 
 ---
 
@@ -537,25 +540,25 @@ _M_ 在个过程中起到什么作用呢？
 ---
 
 下面我们考虑一个平面的直线（线性分类器）：
-- 总共有多少条（`函数集合`，_M_）？
+- （`函数集合`中）总共有多少条线（_M_）？
 无数条！
 - 根据 1 个数据点 **x**<sub>1</sub>，可能把这些直线分成多少种？
 **2种**，判断**x**<sub>1</sub>=-1和判断**x**<sub>1</sub>=+1；
 - 根据 2 个数据点 **x**<sub>1</sub>,**x**<sub>2</sub>，可能把这些直线分成多少种？
-**4种**，可以分别用**x**<sub>1</sub>,**x**<sub>2</sub>的判断值表示：(0,0)，(0,1)，(1,0)，(1,1)；
+**4种**，可以分别用这些线对**x**<sub>1</sub>,**x**<sub>2</sub>的判断值表示：(0,0)，(0,1)，(1,0)，(1,1)；
 - 根据 3 个数据点，可能把这些直线分成多少种？
-**最多8种**！在这三个数据点共线的情况下，有些判断值不可能出现！比如(0,1,0)和(1,0,1)；
+**最多8种**！因为在三点共线的情况下，有些判断值不可能出现！比如(0,1,0)和(1,0,1)；
 - 根据 4 个数据点，可能把这些直线分成多少种？
-**最多** ***14*** **种**！在任意的情况下都会有一些判断值的组合不可能出现！（比如产生这样判断值的直线在这个平面上是不存在的 <img src="http://latex.codecogs.com/svg.latex?\begin{matrix}0&1\\1&0\end{matrix}"/> ）
+**最多** ***14*** **种**！在任意的情况下都会有一些判断值的组合不可能出现！（比如产生这样判断值的直线在这个平面上是不存在的 <img src="http://latex.codecogs.com/svg.latex?\begin{smallmatrix}0&1\\1&0\end{smallmatrix}"/> ）
 - 根据 ***N*** 个数据点，可能把这些直线分成多少种？
-最多 **2<sup>_N_</sup>** 种！但是当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>N</sup>
+最多 **2<sup>_N_</sup>** 种！但是当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>_N_</sup>
 ！
 
 因此，如果能够使用这个值替换掉 _M_ ，就有
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\cdot\,\textrm{effective}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
 
-如果 effective(_N_) << 2<sup>N</sup> ，那么机器学习就是可能的！
+如果 effective(_N_) << 2<sup>_N_</sup> ，那么机器学习就是可能的！
 
 ### Effective Number of Hypothesis
 
@@ -565,7 +568,9 @@ Hypotheses: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\in\mathbb{
 
 Dichotomies: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N)\leq2^N"/>
 
-Dichotomy的大小取决于输入空间，因此在某个输入空间中，最大的Dichotomy的大小是输入空间的函数，这个函数叫做**成长函数**（Growth Function）：
+Dichotomy的大小取决于输入空间，因此在某个输入空间中，最大的Dichotomy的大小是输入空间的函数。
+
+这个函数叫做**成长函数**（Growth Function）：
 
 <img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)=\mathop{\max}_{\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N\in\mathcal{X}}|\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N)|\leq2^N"/>
 
@@ -581,7 +586,7 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 ![Snap06](./Snapshot/Snap06.png)
 
-这些例子中的`成长函数`都远远小于2<sup>N</sup>
+这些例子中的`成长函数`都远远小于2<sup>_N_</sup>
 
 ---
 
@@ -591,13 +596,13 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 这个`函数集合`的`成长函数`是多少？
 
-考虑将这_N_个点随机放在一个圆上，任意一种分类结果（判断值）都可以通过选取所有判断值为+1的点作为顶点，绘出一个多边形。
+考虑将这 _N_ 个点随机放在一个圆上，任意一种分类结果（判断值）都可以通过选取所有判断值为+1的点作为顶点，绘出一个多边形。
 
-因此`成长函数`是2<sup>N</sup>。
+因此`成长函数`是2<sup>_N_</sup>。
 
 ![Snap07](./Snapshot/Snap07.png)
 
-这种情况，我们称为这_N_个输入被这个`函数集合` shattered（完全二分的）
+这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（shattered，完全二分的）
 
 ###
 
