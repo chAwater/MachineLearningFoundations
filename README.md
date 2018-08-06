@@ -144,7 +144,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)-\textrm{threshold}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\textrm{threshold}\right)"/>
 
 这就是**感知机**。
 
@@ -152,9 +152,13 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\left\(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right\)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right\)"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textrm{sign}(\mathbf{w}^T\mathbf{x})"/>
+<!-- <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)"/> -->
+
+<!-- <img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&=\textrm{sign}(\mathbf{w}^T\mathbf{x})\\\end{align*}"/> -->
+
+<!-- <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textrm{sign}(\mathbf{w}^T\mathbf{x})"/> -->
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
@@ -464,14 +468,9 @@ Fun Time：嘲讽一下某些“智商测试”
 
 (Hoeffding)
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq&2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)\\\leq&2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
-
-<!-- <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdot+2\,\textrm{exp}\,(-2\epsilon^2N)"/> -->
-
-<!-- <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/> -->
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq&2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\textrm{exp}\,(-2\epsilon^2N)\\\leq&2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
 
 这就是在有限空间中的Hoeffding公式。
-
 
 当 _N_ 很大而 _M_ 有限的时候，我们就可以保证我们的数据是“可靠的”；
 
@@ -539,7 +538,7 @@ _M_ 在个过程中起到什么作用呢？
 ---
 
 下面我们考虑一个平面的直线（线性分类器）：
-- （`函数集合`中）总共有多少条线（_M_）？
+- 总共（`函数集合`中）有多少条线（_M_）？
 无数条！
 - 根据 1 个数据点 **x**<sub>1</sub>，可能把这些直线分成多少种？
 **2种**，判断**x**<sub>1</sub>=-1和判断**x**<sub>1</sub>=+1；
