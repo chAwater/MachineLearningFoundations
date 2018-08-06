@@ -510,7 +510,7 @@ _M_ 在个过程中起到什么作用呢？
 
 我们想用一个有限的 _m_ 来代替无限的 _M_，并且仍然能够保证这个不等式的成立。
 
-### Effective number
+### Effective Number of Line
 
 那么 _M_ 这个“讨厌的”项是怎么来的？
 
@@ -551,15 +551,54 @@ _M_ 在个过程中起到什么作用呢？
 最多 **2<sup>_N_</sup>** 种！但是当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>N</sup>
 ！
 
-因此有
+因此，如果能够使用这个值替换掉 _M_ ，就有
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\cdot\,\textrm{effective}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
 
 如果 effective(_N_) << 2<sup>N</sup> ，那么机器学习就是可能的！
 
-### 
+### Effective Number of Hypothesis
 
+上面我们提到的，将数据区分成不同判断值的多种Hypotheses叫做Dichotomy，有：
 
+Hypotheses: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\in\mathbb{R}^2"/>
 
+Dichotomies: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N)\leq2^N"/>
+
+Dichotomy的大小取决于输入空间，因此在某个输入空间中，最大的Dichotomy的大小是输入空间的函数，这个函数叫做**成长函数**（Growth Function）：
+
+<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)=\mathop{\max}_{\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N\in\mathcal{X}}|\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N)|\leq2^N"/>
+
+---
+
+考虑一维空间中的几个例子：
+
+- Positive Rays
+
+![Snap05](./Snapshot/Snap05.png)
+
+- Positive Intervals
+
+![Snap06](./Snapshot/Snap06.png)
+
+这些例子中的`成长函数`都远远小于2<sup>N</sup>
+
+---
+
+考虑二维空间中的一个例子：
+
+如果 **x** 是在一个凸（Convex）的区域中，则为+1，否则为-1；
+
+这个`函数集合`的`成长函数`是多少？
+
+考虑将这_N_个点随机放在一个圆上，任意一种分类结果（判断值）都可以通过选取所有判断值为+1的点作为顶点，绘出一个多边形。
+
+因此`成长函数`是2<sup>N</sup>。
+
+![Snap07](./Snapshot/Snap07.png)
+
+这种情况，我们称为这_N_个输入被这个`函数集合` shattered（完全二分的）
+
+###
 
 ---
