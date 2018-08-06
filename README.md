@@ -476,7 +476,9 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ## Lecture 5: Training versus Testing
 
-——
+—— 介绍当 _M_ 无限大时机器学习面临的问题，并为解决这个问题做些准备
+
+—— 介绍 Effective Number 和 Shattered 的概念
 
 ### 总结概括前面学到的内容
 
@@ -505,7 +507,7 @@ _M_ 在个过程中起到什么作用呢？
 
 是在我们使用 **Union bound** 将“不好的”数据出现的概率拆成对每个 _h_ “不好的”概率之和：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\cdots\,\textbf{b}_M]\leq\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\cdots\,\textbf{B}_M]\leq\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
 
 当 _M_ 无限大的时候，我们就加和了无限多个项，这导致了我们面临问题。
 
@@ -513,31 +515,29 @@ _M_ 在个过程中起到什么作用呢？
 
 不过，这个 **Union bound** 的使用其实是太过宽松了（公式右边远大于左边）：
 
->考虑两个非常相似的 _h_<sub>1</sub> 和 _h_<sub>2</sub>，
->
->因为它们非常相似，因此它们的表现也是非常相似的，
->
->所以让它们犯错误的数据（“不好的”数据也是非常相似的），
->
->所以将这些“重叠”在一起的事件发生的概率用加的方式替代时是过度高估了（over-estimation）的
+考虑两个非常相似的 _h_<sub>1</sub> 和 _h_<sub>2</sub>，因为它们非常相似，因此它们的表现也是非常相似的；
 
-因此我们希望我们能够找出`假设函数`中有重叠的部分，把这些`假设函数`分成几类（_m_），来减少这个过度高估不等式的右边。
+所以让它们犯错误的数据（“不好的”数据）也是非常相似的；
+
+所以将这些“重叠”在一起的事件发生的概率用加的方式替代时是过度高估了（over-estimation）的。
+
+因此我们希望我们能够找出`假设函数`中有重叠的部分，把这些`假设函数`分成（有限的）几类（_m_），来减少这个过度高估不等式的右边。
 
 ---
 
 下面我们考虑一个平面的直线（线性分类器）：
 - 总共（`函数集合`中）有多少条线（_M_）？
-无数条！
+**无数条**！
 - 根据 1 个数据点 **x**<sub>1</sub>，可能把这些直线分成多少种？
-**2种**，判断**x**<sub>1</sub>=-1和判断**x**<sub>1</sub>=+1；
-- 根据 2 个数据点 **x**<sub>1</sub>,**x**<sub>2</sub>，可能把这些直线分成多少种？
-**4种**，可以分别用这些线对**x**<sub>1</sub>,**x**<sub>2</sub>的判断值表示：(0,0)，(0,1)，(1,0)，(1,1)；
+**2种**，产生判断**x**<sub>1</sub>=-1的直线和产生判断**x**<sub>1</sub>=+1的直线；
+- 根据 2 个数据点 **x**<sub>1</sub>, **x**<sub>2</sub>，可能把这些直线分成多少种？
+**4种**，可以分别用这些线对**x**<sub>1</sub>, **x**<sub>2</sub>的判断值表示：(0,0)，(0,1)，(1,0)，(1,1)；
 - 根据 3 个数据点，可能把这些直线分成多少种？
-**最多8种**！因为在三点共线的情况下，有些判断值不可能出现！比如(0,1,0)和(1,0,1)；
+**最多8种**！因为在三点共线的情况下，有些判断值不可能出现！比如(0,1,0) 和 (1,0,1)；
 - 根据 4 个数据点，可能把这些直线分成多少种？
 **最多** ***14*** **种**！在任意的情况下都会有一些判断值的组合不可能出现！（比如产生这样判断值的直线在这个平面上是不存在的 <img src="http://latex.codecogs.com/svg.latex?\begin{smallmatrix}0&1\\1&0\end{smallmatrix}"/> ）
 - 根据 ***N*** 个数据点，可能把这些直线分成多少种？
-最多 **2<sup>_N_</sup>** 种！但是当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>_N_</sup>
+**最多 2<sup><i>N</i></sup>** 种！但是当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>_N_</sup>
 ！
 
 因此，如果能够使用这个值替换掉 _M_ ，就有
@@ -548,7 +548,7 @@ _M_ 在个过程中起到什么作用呢？
 
 ### Effective Number of Hypothesis
 
-上面我们提到的，将数据区分成不同判断值的多种Hypotheses叫做Dichotomy，有：
+在上面我们提到的，一个将数据区分成不同判断值的多种Hypotheses集合，叫做Dichotomy，有：
 
 Hypotheses: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\in\mathbb{R}^2"/>
 
@@ -588,8 +588,43 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 ![Snap07](./Snapshot/Snap07.png)
 
-这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（shattered，完全二分的）
+这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（Shattered，完全二分的）
 
-###
+### Break Point
+
+上面我们提到，
+- 如果能够使用 effective(_N_) 替换掉 _M_
+- 且 effective(_N_) << 2<sup>_N_</sup>
+
+那么机器学习就是可能的。
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\cdot\,m_{\mathcal{H}}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
+
+因此我们希望决定 effective(_N_) 大小的这个**成长函数**是比较小的，
+是多项式而不是指数的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
+
+---
+
+上面我们还提到了 Shattered 的概念，很明显，Shattered 对于我们来说是不好的，因为 Shattered 的时候成长函数是 2<sup>_N_</sup>。
+
+当 _k_ 个输入不能够 Shattered 的时候，就成 _k_ 为 Break Point，因为对于 _k_+1, _k_+2, ... 来说，都不能 Shattered。因此最小的 _k_ 对于我们来说就非常重要了。
+
+回顾我们之前的例子：
+- Positive Rays: <img src="http://latex.codecogs.com/svg.latex?k=2\,,\,m_{\mathcal{H}}(N)=N+1=O(N)"/>
+- Positive Intervals: <img src="http://latex.codecogs.com/svg.latex?k=3\,,\,m_{\mathcal{H}}(N)=\frac{1}{2}N^2+\frac{1}{2}N+1=O(N^2)"/>
+- Convex Sets: <img src="http://latex.codecogs.com/svg.latex?k=+\infty\,,\,m_{\mathcal{H}}(N)=2^N"/>
+- 2D Perceptrons: <img src="http://latex.codecogs.com/svg.latex?k=4\,,\,m_{\mathcal{H}}(N)<2^N"/>
+
+我们猜测，当有 Break Point _k_ 的时候，<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)=O(N^{k-1})"/>
+
+后面我们再证明。
+
+---
+
+## 
+
+
+
+
 
 ---
