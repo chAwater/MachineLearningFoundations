@@ -152,13 +152,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}"/>
-
-<!-- <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)"/> -->
-
-<!-- <img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&=\textrm{sign}(\mathbf{w}^T\mathbf{x})\\\end{align*}"/> -->
-
-<!-- <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right\)=\textrm{sign}(\mathbf{w}^T\mathbf{x})"/> -->
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}"/>
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
@@ -221,19 +215,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 对于**分子**部分，有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_T}=\mathbf{w}^T_f(\mathbf{w}_{T-1}}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})"/>
-
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_T}\geq\mathbf{w}^T_f\mathbf{w}_{T-1}}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&=\mathbf{w}^T_f(\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})\\&\geq\mathbf{w}^T_f\mathbf{w}_{T-1}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
 
 迭代后有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}^T_f\mathbf{w}_T\geq\mathbf{w}^T_f\mathbf{w}_0+T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n=T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\geq\mathbf{w}^T_f\mathbf{w}_0+T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\\&\geq\,T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
 
 对于**分母**部分，有：
 
-<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2=||\mathbf{w}_{T-1}}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2"/>
-
-<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2=||\mathbf{w}_{T-1}||^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&=||\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&=||\mathbf{w}_{T-1}||^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\end{align*}"/>
 
 因为只有在某个数据出现错误时，才会使用这个数据更新向量，所以有：
 
@@ -241,19 +231,17 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 所以，上面的公式可以简化为：
 
-<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2\leq||\mathbf{w}_{T-1}||^2+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2"/>
-
-<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2\leq||\mathbf{w}_{T-1}||^2+\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\leq\,||\mathbf{w}_{T-1}||^2+0+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\leq\,||\mathbf{w}_{T-1}||^2+\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}"/>
 
 迭代后有：
 
-<img src="http://latex.codecogs.com/svg.latex?||\mathbf{w}_T||^2\leq||\mathbf{w}_0||^2+T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2=T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\leq\,||\mathbf{w}_0||^2+T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\\&\leq\,T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}"/>
 
 综上，
 
-<img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\frac{T\mathop{\min}\limits_n\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\geq\frac{T\mathop{\min}\limits{_n}\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits{_n}||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\geq\sqrt{T}\cdot{C}\end{align*}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\sqrt{T}\cdot{C}"/>
+<!-- <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\sqrt{T}\cdot{C}"/> -->
 
 其中，
 
@@ -468,7 +456,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 (Hoeffding)
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq&2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\textrm{exp}\,(-2\epsilon^2N)\\\leq&2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\textrm{exp}\,(-2\epsilon^2N)\\&\\&\leq\,2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
 
 这就是在有限空间中的Hoeffding公式。
 
