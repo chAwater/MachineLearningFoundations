@@ -478,7 +478,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 —— 介绍当 _M_ 无限大时机器学习面临的问题，并为解决这个问题做些准备
 
-—— 介绍 Effective Number 和 Shattered 的概念
+—— 介绍 Effective Number 和 Shatter 的概念
 
 ### 总结概括前面学到的内容
 
@@ -588,7 +588,7 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 ![Snap07](./Snapshot/Snap07.png)
 
-这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（Shattered，完全二分的）
+这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（Shatter，完全二分的）
 
 ### Break Point
 
@@ -605,23 +605,68 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 ---
 
-上面我们还提到了 Shattered 的概念，很明显，Shattered 对于我们来说是不好的，因为 Shattered 的时候成长函数是 2<sup>_N_</sup>。
+上面我们还提到了 Shatter 的概念，很明显，Shatter 对于我们来说是不好的，因为 Shatter 的时候成长函数是 2<sup>_N_</sup>。
 
-当 _k_ 个输入不能够 Shattered 的时候，就成 _k_ 为 Break Point，因为对于 _k_+1, _k_+2, ... 来说，都不能 Shattered。因此最小的 _k_ 对于我们来说就非常重要了。
+当 _k_ 个输入不能够 Shatter 的时候，就称 _k_ 为 Break Point。
+当然，对于 _k_+1, _k_+2, ... 来说，都不能 Shatter。因此最小的 _k_ 对于我们来说就是非常重要的，可以帮助我们减小成长函数。
 
 回顾我们之前的例子：
-- Positive Rays: <img src="http://latex.codecogs.com/svg.latex?k=2\,,\,m_{\mathcal{H}}(N)=N+1=O(N)"/>
-- Positive Intervals: <img src="http://latex.codecogs.com/svg.latex?k=3\,,\,m_{\mathcal{H}}(N)=\frac{1}{2}N^2+\frac{1}{2}N+1=O(N^2)"/>
-- Convex Sets: <img src="http://latex.codecogs.com/svg.latex?k=+\infty\,,\,m_{\mathcal{H}}(N)=2^N"/>
-- 2D Perceptrons: <img src="http://latex.codecogs.com/svg.latex?k=4\,,\,m_{\mathcal{H}}(N)<2^N"/>
+- Positive Rays
+
+<img src="http://latex.codecogs.com/svg.latex?k=2\,,\,m_{\mathcal{H}}(N)=N+1=O(N)"/>
+
+- Positive Intervals
+
+<img src="http://latex.codecogs.com/svg.latex?k=3\,,\,m_{\mathcal{H}}(N)=\frac{1}{2}N^2+\frac{1}{2}N+1=O(N^2)"/>
+
+- Convex Sets
+
+<img src="http://latex.codecogs.com/svg.latex?k=+\infty\,,\,m_{\mathcal{H}}(N)=2^N"/>
+
+- 2D Perceptrons
+
+<img src="http://latex.codecogs.com/svg.latex?k=4\,,\,m_{\mathcal{H}}(N)<2^N"/>
 
 我们猜测，当有 Break Point _k_ 的时候，<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)=O(N^{k-1})"/>
 
 后面我们再证明。
 
 ---
+---
+---
 
-## 
+## Lecture 6: Theory of Generalization
+
+——
+
+### 考虑 Break Point 带来了什么
+
+我们还有两个问题没有解决：
+1. 成长函数不能是以 _N_ 为指数形式
+2. 能否用成长函数来代替 _M_
+
+对于 (1)，我们尝试用 Break Point 进行分析。
+
+如果已知 Break Point _k_ = 2，那么：
+- 当 _N_ = 1 的时候，增长函数应该是 2；
+- 当 _N_ = 2 的时候，增长函数应该小于 4，最大为 3；
+- 当 _N_ = 3 的时候，这三个点中的任何两个点都不能 Shatter，否则 _k_ = 2 就不成立；最大为 4，远小于 2<sup>_N_</sup>！
+
+可见 Break Point 对成长函数进行了很强的限制，我们希望能够找到 Break Point，并且能够证明有 Break Point 后成长函数是一个多项式的形式。
+
+### Bounding Function
+
+我们定义一个上限函数（Bounding Function，<img src="http://latex.codecogs.com/svg.latex?B(N,k)"/> ）：是对 _N_ 个数据来说，在 Break Point 为 _k_ 的时候，成长函数可能的最大的值。
+
+将`成长函数`转化成`上限函数`的好处是：
+1. 它是一个 _N_ 和 _k_ 组合和值（很有可能不是指数形式的）
+2. 它和`假设函数`没有关系
+
+当 _k_ > _N_ 时，_B_(_N_,_K_) = 2<sup>_N_</sup>；
+
+当 _k_ = _N_ 时，_B_(_N_,_K_) = 2<sup>_N_</sup>-1；
+
+当 _k_ < _N_ 时，_B_(_N_,_K_)
 
 
 
