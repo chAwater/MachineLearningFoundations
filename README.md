@@ -488,6 +488,30 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ## Lecture 5: Training versus Testing
 
+——
+
+### 总结概括前面学到的内容
+
+<img src="http://latex.codecogs.com/svg.latex?\begin{matrix}E_{out}(g)\underbrace{\approx}_\textrm{test}{E}_{in}(g)\underbrace{\approx}_\textrm{train}0\end{matrix}"/>
+
+经过前面的学习，我们知道机器学习问题可以被分为两个部分：
+1. 确保_E_<sub>in</sub>(_g_)和_E_<sub>out</sub>(_g_)是相近的
+2. 确保_E_<sub>in</sub>(_g_)足够小
+
+![Snap04](./Snapshot/Snap04.png)
+
+_M_ 在个过程中起到什么作用呢？
+- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让_E_<sub>in</sub>(_g_)很小的_g_）
+- 如果 _M_ 很大，那么 (1) “不好的”事情发生的概率会变大，但是 (2) 更有可能实现
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
+
+
+因此 _M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
+
+我们想用一个有限的 _m_ 来代替无限的 _M_，并且仍然能够保证这个不等式的成立。
+
+###
 
 
 
