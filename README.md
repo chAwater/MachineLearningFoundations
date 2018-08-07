@@ -87,7 +87,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 数据集（Data）：
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\left\{(\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\ldots,(\mathbf{x}_N,\mathrm{y}_N)\right\}"/>
 
-机器学习算法（Learning algorithm)：
+机器学习算法（Learning algorithm）：
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{A}"/>
 
 函数集合（Hypothesis set）：
@@ -701,9 +701,9 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 如果对 _N_-1 时公式成立，对于 _N_ 时，有
 
-<img src="http://latex.codecogs.com/svg.latex?
-B(N,k)\,\leq\,B(N-1,k)+B(N-1,k-1)}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}B(N,k)&\,\leq\,B(N-1,k)\,&\,+&\,B(N-1,k-1)\\&&&\\&\,\leq\,\sum_{i=0}^{k-1}C_{N-1}^{\,i}\,&\,+&\,\sum_{i=0}^{k-2}C_{N-1}^{\,i}\\&&&\\&\,\leq\,1+\sum_{i=1}^{k-1}C_{N-1}^{\,i}\,&\,+&\,\sum_{i=1}^{k-1}C_{N-1}^{\,i-1}\\&&&\\&\,\leq\,1+\sum_{i=1}^{k-1}[C_{N-1}^{\,i}+C_{N-1}^{\,i-1}]&&\\&&&\\&\,\leq\,1+\sum_{i=1}^{k-1}C_{N}^{\,i}&&\\&&&\\&\,\leq\,\sum_{i=0}^{k-1}C_{N}^{\,i}&&\\\end{align*}"/>
 
+所以，不等式成立。
 
 
 
