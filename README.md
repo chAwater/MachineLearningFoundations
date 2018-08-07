@@ -85,7 +85,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 <img src="http://latex.codecogs.com/svg.latex?f:\mathcal{X}\to\mathcal{Y}"/>
 
 数据集（Data）：
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\left\{(\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\cdots,(\mathbf{x}_N,\mathrm{y}_N)\right\}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\left\{(\mathbf{x}_1,\mathrm{y}_1),(\mathbf{x}_2,\mathrm{y}_2),\ldots,(\mathbf{x}_N,\mathrm{y}_N)\right\}"/>
 
 机器学习算法（Learning algorithm)：
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{A}"/>
@@ -135,7 +135,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 考虑一个简单的分类问题，是否给一个顾客办理信用卡。
 
 假设每个顾客有一系列的特征（Feature），比如年薪、花费、债务等：
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}=(\mathrm{x}_1,\mathrm{x}_2,\cdots,\mathrm{x}_d)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}=(\mathrm{x}_1,\mathrm{x}_2,\ldots,\mathrm{x}_d)"/>
 
 计算特征的加权求和作为分数：
 
@@ -203,7 +203,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\geq\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0"/>
 
-（任意一个数据点的向量表示与分割线法向量的夹角小于90度，向量内积等于向量的长度与夹角cos值的乘积）
+（任意一个数据点的向量表示与分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角cos值的乘积）
 
 我们使用 **向量内积** 的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
@@ -227,15 +227,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 因为只有在某个数据出现错误时，才会使用这个数据更新向量，所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}\leq0"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}\,\leq\,0"/>
 
 所以，上面的公式可以简化为：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\leq\,||\mathbf{w}_{T-1}||^2+0+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\leq\,||\mathbf{w}_{T-1}||^2+\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_{T-1}||^2+0+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\,\leq\,||\mathbf{w}_{T-1}||^2+\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}"/>
 
 迭代后有：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\leq\,||\mathbf{w}_0||^2+T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\\&\leq\,T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_0||^2+T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\\&\,\leq\,T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}"/>
 
 综上，
 
@@ -291,7 +291,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 **分类** 问题：Binary Classification => Multiclass Classification
 
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\;\mathcal{Y}=\left\{1,2,3,\cdots,K\right\};"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\;\mathcal{Y}=\left\{1,2,3,\ldots,K\right\};"/>
 
 - 健康/病人诊断
 - 正常/垃圾邮件
@@ -401,7 +401,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 在 ***N*** 很大时，这两个比例很相近（相差小于 <img src="http://latex.codecogs.com/svg.latex?\epsilon"/> ）的概率是符合以下不等式：（Hoeffding's Inequality）
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\leq2\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\,\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)"/>
 
 
 这个公式非常有用：
@@ -420,7 +420,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 当 _N_ 很大时，且这个数据集是独立同分布（i.i.d.）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)"/>
 
 ---
 
@@ -452,11 +452,11 @@ Fun Time：嘲讽一下某些“智商测试”
 
 (Union bound)
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\leq\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\,\leq\,\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]"/>
 
 (Hoeffding)
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\textrm{exp}\,(-2\epsilon^2N)\\&\\&\leq\,2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\,\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\textrm{exp}\,(-2\epsilon^2N)\\&\\&\,\leq\,2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
 
 这就是在有限空间中的Hoeffding公式。
 
@@ -485,16 +485,16 @@ Fun Time：嘲讽一下某些“智商测试”
 <img src="http://latex.codecogs.com/svg.latex?\begin{matrix}E_{out}(g)\underbrace{\approx}_\textrm{test}{E}_{in}(g)\underbrace{\approx}_\textrm{train}0\end{matrix}"/>
 
 经过前面的学习，我们知道机器学习问题可以被分为两个部分：
-1. 确保 <i>E</i><sub>in</sub>(<i>g</i>)和 <i>E</i><sub>out</sub>(<i>g</i>)是相近的
-2. 确保 <i>E</i><sub>in</sub>(<i>g</i>)足够小
+1. 确保 <i>E</i><sub>in</sub> (<i>g</i>) 和 <i>E</i><sub>out</sub> (<i>g</i>) 是相近的
+2. 确保 <i>E</i><sub>in</sub> (<i>g</i>)足够小
 
 ![Snap04](./Snapshot/Snap04.png)
 
 _M_ 在个过程中起到什么作用呢？
-- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让<i>E</i><sub>in</sub>(<i>g</i>)很小的<i>g</i>）
+- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
 - 如果 _M_ 很大，那么 (1) “不好的”事情发生的概率会变大，但是 (2) 更有可能实现
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
 
 
 因此，_M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
@@ -507,7 +507,7 @@ _M_ 在个过程中起到什么作用呢？
 
 是在我们使用 **Union bound** 将“不好的”数据出现的概率拆成对每个 _h_ “不好的”概率之和：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\cdots\,\textbf{B}_M]\leq\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\ldots\,\textbf{B}_M]\,\leq\,\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
 
 当 _M_ 无限大的时候，我们就加和了无限多个项，这导致了我们面临问题。
 
@@ -542,7 +542,7 @@ _M_ 在个过程中起到什么作用呢？
 
 因此，如果能够使用这个值替换掉 _M_ ，就有
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\cdot\,\textrm{effective}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\textrm{effective}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
 
 如果 effective(_N_) << 2<sup>_N_</sup> ，那么机器学习就是可能的！
 
@@ -552,13 +552,13 @@ _M_ 在个过程中起到什么作用呢？
 
 Hypotheses: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\in\mathbb{R}^2"/>
 
-Dichotomies: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N)\leq2^N"/>
+Dichotomies: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N)\,\leq\,2^N"/>
 
 Dichotomy的大小取决于输入空间，因此在某个输入空间中，最大的Dichotomy的大小是输入空间的函数。
 
 这个函数叫做**成长函数**（Growth Function）：
 
-<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)=\mathop{\max}_{\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N\in\mathcal{X}}|\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N)|\leq2^N"/>
+<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)=\mathop{\max}_{\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N\in\mathcal{X}}|\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N)|\,\leq\,2^N"/>
 
 ---
 
@@ -598,16 +598,16 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 那么机器学习就是可能的。
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\leq2\cdot\,m_{\mathcal{H}}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
 
 因此我们希望决定 effective(_N_) 大小的这个**成长函数**是比较小的，
 是多项式而不是指数的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
 
----
-
 上面我们还提到了 Shatter 的概念，很明显，Shatter 对于我们来说是不好的，因为 Shatter 的时候成长函数是 2<sup>_N_</sup>。
 
-当 _k_ 个输入不能够 Shatter 的时候，就称 _k_ 为 Break Point。
+---
+
+当 _k_ 个输入不能 Shatter 的时候，就称 _k_ 为 Break Point。
 当然，对于 _k_+1, _k_+2, ... 来说，都不能 Shatter。因此最小的 _k_ 对于我们来说就是非常重要的，可以帮助我们减小成长函数。
 
 回顾我们之前的例子：
@@ -648,25 +648,64 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 对于 (1)，我们尝试用 Break Point 进行分析。
 
 如果已知 Break Point _k_ = 2，那么：
-- 当 _N_ = 1 的时候，增长函数应该是 2；
-- 当 _N_ = 2 的时候，增长函数应该小于 4，最大为 3；
-- 当 _N_ = 3 的时候，这三个点中的任何两个点都不能 Shatter，否则 _k_ = 2 就不成立；最大为 4，远小于 2<sup>_N_</sup>！
+- 当 _N_ = 1 的时候，成长函数应该是 2；
+- 当 _N_ = 2 的时候，成长函数应该小于 4，最大为 3；
+- 当 _N_ = 3 的时候，这三个点中的任何两个点都不能 Shatter，否则 _k_ = 2 就不成立；成长函数最大为 4，远小于 2<sup>_N_</sup>！
 
 可见 Break Point 对成长函数进行了很强的限制，我们希望能够找到 Break Point，并且能够证明有 Break Point 后成长函数是一个多项式的形式。
 
 ### Bounding Function
 
-我们定义一个上限函数（Bounding Function，<img src="http://latex.codecogs.com/svg.latex?B(N,k)"/> ）：是对 _N_ 个数据来说，在 Break Point 为 _k_ 的时候，成长函数可能的最大的值。
+我们定义一个上限函数（Bounding Function，_B_(_N_, _k_) ）：对 _N_ 个数据来说，在 Break Point 为 _k_ 的时候，成长函数可能的最大的值。
 
 将`成长函数`转化成`上限函数`的好处是：
 1. 它是一个 _N_ 和 _k_ 组合和值（很有可能不是指数形式的）
 2. 它和`假设函数`没有关系
 
-当 _k_ > _N_ 时，_B_(_N_,_K_) = 2<sup>_N_</sup>；
+---
 
-当 _k_ = _N_ 时，_B_(_N_,_K_) = 2<sup>_N_</sup>-1；
+当 _k_ > _N_ 时，_B_(_N_, _k_) = 2<sup>_N_</sup>；
 
-当 _k_ < _N_ 时，_B_(_N_,_K_)
+当 _k_ = _N_ 时，_B_(_N_, _k_) = 2<sup>_N_</sup>-1；
+
+当 _k_ < _N_ 时，可将 _B_(_N_, _k_) 个 Dichotomies 分为两类：
+- 在 _N_-1 个数据中是成对出现的，它们在第 _N_ 个数据上的判断分别是 -1 和 +1：&alpha;
+- 非成对出现的：&beta;
+
+有 _B_(_N_, _k_) = 2&alpha;+&beta;
+
+假设我们去掉第 _N_ 个数据，在这 _N_-1 个数据中就有 &alpha;+&beta; 个 Dichotomies。
+
+根据 _k_ < _N_ 的前提，_k_ &le; _N_-1，所以这 _N_-1 个数据也不能 Shatter （否则 Break Point 就不是 _k_）。
+
+因此， &alpha;+&beta; &le; _B_(_N_-1, _k_)。
+
+类似的，如果只看成对出现的部分，这 _N_-1 个数据也不能被 _k_-1 Shatter，否则加上 Shatter 的第 _N_ 个数据就会 Shatter 了。
+
+因此， &alpha; &le; _B_(_N_-1, _k_-1)。
+
+综上，有 _B_(_N_, _k_) &le; _B_(_N_-1, _k_) + _B_(_N_-1, _k_-1)
+
+组合中有一个类似的定理：
+
+<img src="http://latex.codecogs.com/svg.latex?C_N^{\,k}=C_{N-1}^{\,k}+C_{N-1}^{\,k-1}"/>
+
+从 _N_ 个里选 _k_ 个，等于从 _N_-1 个里选 _k_ 个（不选第 _N_ 个），加上等于从 _N_-1 个里选 _k_-1 个（再选第 _N_ 个）。
+
+使用上面的公式和数学归纳法可以证明：
+
+<img src="http://latex.codecogs.com/svg.latex?B(N,k)\,\leq\,\sum_{i=0}^{k-1}C_{N}^{\,i}"/>
+
+当 _k_ = 1 的时候， _B_(_N_, 1) = 1，公式成立；
+如果对 _k_ 时公式成立，对于 _k_+1 时，有
+
+<img src="http://latex.codecogs.com/svg.latex?B(N,k+1)\,\leq\,B(N-1,k+1)+B(N-1,k)
+\,\leq\sum_{i=0}^{k}C_{N}^{\,i}"/>
+
+
+
+
+
 
 
 
