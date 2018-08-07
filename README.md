@@ -152,7 +152,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&\,=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&\,=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&\,=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}"/>
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
@@ -201,7 +201,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 当数据线性可分时，存在一条线（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_f"/> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\geq\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\,\geq\,\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0"/>
 
 （任意一个数据点的向量表示与分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角cos值的乘积）
 
@@ -215,15 +215,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 对于**分子**部分，有：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&=\mathbf{w}^T_f(\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})\\&\geq\mathbf{w}^T_f\mathbf{w}_{T-1}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,=\mathbf{w}^T_f(\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})\\&\,\geq\,\mathbf{w}^T_f\mathbf{w}_{T-1}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
 
 迭代后有：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\geq\mathbf{w}^T_f\mathbf{w}_0+T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\\&\geq\,T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,\geq\,\mathbf{w}^T_f\mathbf{w}_0+T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\\&\,\geq\,T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
 
 对于**分母**部分，有：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&=||\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&=||\mathbf{w}_{T-1}||^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\,=||\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\,=||\mathbf{w}_{T-1}||^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\end{align*}"/>
 
 因为只有在某个数据出现错误时，才会使用这个数据更新向量，所以有：
 
@@ -239,9 +239,9 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 综上，
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\geq\frac{T\mathop{\min}\limits{_n}\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits{_n}||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\geq\sqrt{T}\cdot{C}\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\,\geq\,\frac{T\mathop{\min}\limits{_n}\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits{_n}||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}"/>
 
-<!-- <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\geq\sqrt{T}\cdot{C}"/> -->
+<!-- <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\,\geq\,\sqrt{T}\cdot{C}"/> -->
 
 其中，
 
@@ -688,19 +688,21 @@ Dichotomy的大小取决于输入空间，因此在某个输入空间中，最�
 
 组合中有一个类似的定理：
 
-<img src="http://latex.codecogs.com/svg.latex?C_N^{\,k}=C_{N-1}^{\,k}+C_{N-1}^{\,k-1}"/>
+<img src="http://latex.codecogs.com/svg.latex?C_{N}^{\,i+1}=C_{N-1}^{\,i}+C_{N-1}^{\,i+1}"/>
 
-从 _N_ 个里选 _k_ 个，等于从 _N_-1 个里选 _k_ 个（不选第 _N_ 个），加上等于从 _N_-1 个里选 _k_-1 个（再选第 _N_ 个）。
+从 _N_ 个里选 _i_+1 个，等于从 _N_-1 个里选 _i_ 个（再选第 _N_ 个），加上从 _N_-1 个里选 _i_+1 个（不选第 _N_ 个）。
 
 使用上面的公式和数学归纳法可以证明：
 
 <img src="http://latex.codecogs.com/svg.latex?B(N,k)\,\leq\,\sum_{i=0}^{k-1}C_{N}^{\,i}"/>
 
-当 _k_ = 1 的时候， _B_(_N_, 1) = 1，公式成立；
-如果对 _k_ 时公式成立，对于 _k_+1 时，有
+当 _N_ = 1, _k_ = 1 的时候， _B_(1, 1) = 1，公式成立；
+当 _N_ = 1, _k_ &ge; 2 的时候， _B_(1, _k_) = 2，公式成立；
 
-<img src="http://latex.codecogs.com/svg.latex?B(N,k+1)\,\leq\,B(N-1,k+1)+B(N-1,k)
-\,\leq\sum_{i=0}^{k}C_{N}^{\,i}"/>
+如果对 _N_-1 时公式成立，对于 _N_ 时，有
+
+<img src="http://latex.codecogs.com/svg.latex?
+B(N,k)\,\leq\,B(N-1,k)+B(N-1,k-1)}"/>
 
 
 
