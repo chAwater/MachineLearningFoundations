@@ -367,11 +367,11 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 任意一个答案都有可能是正确的，也有可能是错误的；
 对于这种问题，再好的算法也可能永远无法完成。
 
-![Snap01](./Snapshot/Snap01.png)
+<div align=center><img width="50%" src="./Snapshot/Snap01.png"/></div>
 
 - 'Simple' Binary Classification Problem
 
-![Snap02](./Snapshot/Snap02.png)
+<div align=center><img width="50%" src="./Snapshot/Snap02.png"/></div>
 
 对于这个问题，我们可以得到多种函数，这些函数在数据集中都是完全正确的，但我们却不知道在未知的数据集中这些函数的表现如何。
 
@@ -384,7 +384,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 Fun Time：嘲讽一下某些“智商测试”
 
-![Snap03](./Snapshot/Snap03.png)
+<div align=center><img width="50%" src="./Snapshot/Snap03.png"/></div>
 
 ### 那么怎样才能确保一个问题“能被机器学习”？
 
@@ -488,7 +488,7 @@ Fun Time：嘲讽一下某些“智商测试”
 1. 确保 <i>E</i><sub>in</sub> (<i>g</i>) 和 <i>E</i><sub>out</sub> (<i>g</i>) 是相近的
 2. 确保 <i>E</i><sub>in</sub> (<i>g</i>)足够小
 
-![Snap04](./Snapshot/Snap04.png)
+<div align=center><img width="50%" src="./Snapshot/Snap04.png"/></div>
 
 _M_ 在个过程中起到什么作用呢？
 - 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
