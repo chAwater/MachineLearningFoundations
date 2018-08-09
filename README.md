@@ -442,7 +442,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ---
 
-那么怎么办？还是Hoeffding不等式！它也保证了对于某一个`假设函数`，数据集中出现导致`假设函数`和`目标函数`出现差距的数据（“不好的”）**很少**。
+那么怎么办？还是 Hoeffding 不等式！它也保证了对于某一个`假设函数`，数据集中出现导致`假设函数`和`目标函数`出现差距的数据（“不好的”）**很少**。
 
 当有从有 _M_ 个函数`函数集合`中选择`假设函数`时，某个数据对于某个`假设函数`都有可能是好的或者不好的。
 
@@ -458,7 +458,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\,\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\textrm{exp}\,(-2\epsilon^2N)\\&\\&\,\leq\,2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
 
-这就是在有限空间中（Finite-bin）的Hoeffding公式。
+这就是在有限空间中（Finite-bin）的 Hoeffding 公式。
 
 当 ***N*** **很大**，而 ***M*** **有限** 的时候，我们就可以保证我们的数据是“可靠的”；
 
@@ -678,7 +678,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 当 _k_ = _N_ 时，_B_(_N_, _k_) = 2<sup>_N_</sup>-1；
 
 当 _k_ < _N_ 时，（这是我们比较关心的情况）可将这 _B_(_N_, _k_) 个 Dichotomies 分为两类：
-- 在 _N_-1 个数据中是成对出现的，它们在第 _N_ 个数据上的判断分别是 -1 和 +1：&alpha;
+- 在 _N_-1 个数据中是成对出现的，它们在第 _N_ 个数据上的判断分别是 -1 和 +1：2&alpha;
 - 非成对出现的：&beta;
 
 有 _B_(_N_, _k_) = 2&alpha;+&beta;
@@ -689,7 +689,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 因此， &alpha;+&beta; &le; _B_(_N_-1, _k_)。
 
-类似的，如果只看成对出现的部分，这 _N_-1 个数据也不能被 _k_-1 Shatter，否则加上 Shatter 的第 _N_ 个数据就会 Shatter 了。
+类似的，如果只看成对出现的部分（ &alpha; ），这 _N_-1 个数据也不能被 _k_-1 Shatter，否则加上 Shatter 的第 _N_ 个数据就会 Shatter 了。
 
 因此， &alpha; &le; _B_(_N_-1, _k_-1)。
 
@@ -712,7 +712,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}B(N,k)&\,\leq\,B(N-1,k)\,&\,+&\,B(N-1,k-1)\\&&&\\&\,\leq\,\sum_{i=0}^{k-1}C_{N-1}^{\,i}\,&\,+&\,\sum_{i=0}^{k-2}C_{N-1}^{\,i}\\&&&\\&\,\leq\,1+\sum_{i=1}^{k-1}C_{N-1}^{\,i}\,&\,+&\,\sum_{i=1}^{k-1}C_{N-1}^{\,i-1}\\&&&\\&\,\leq\,1+\sum_{i=1}^{k-1}[\,C_{N-1}^{\,i}\,&\,+&\,C_{N-1}^{\,i-1}\,]\\&&&\\&\,\leq\,1+\sum_{i=1}^{k-1}C_{N}^{\,i}&&\\&&&\\&\,\leq\,\sum_{i=0}^{k-1}C_{N}^{\,i}&&\\\end{align*}"/>
 
-所以，不等式成立，这里的最高项是 _N_<sup> _k_-1</sup>！
+所以，不等式成立！这里的最高项是 _N_<sup> _k_-1</sup>！
 
 因此`成长函数`的`上限函数`的**上限**是多项式的，而不是指数形式的！
 
@@ -731,16 +731,33 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 不过，我们还剩下一个问题没有解决：
 - 能否用成长函数来代替 _M_
 
+答案是可以的，不过会在之前的 Hoeffding 不等式会增加一些“无所谓”的常数项：
 
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\textrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
 
+对于不等式 **左边** 是在`函数集合`中存在一个 _h_ 使得 <i>E</i><sub>in</sub> (<i>h</i>) 和 <i>E</i><sub>out</sub> (<i>h</i>) 的差距很大的概率，我们希望这个概率很小，这样就可以机器学习。
 
+这里的数学过程比较复杂、对多数人来说太细节了，可以 **不必深究**，不过推倒过程中也稍微回顾了一下前面的知识，可以有个大概的整体理解。
 
+#### 替换 <i>E</i><sub>out</sub>
 
+不等式 **左边** 很难处理，因为其中的 <i>E</i><sub>out</sub> 是无限多的，因此我们需要用一个有限的东西代替  <i>E</i><sub>out</sub> 。
 
+怎么代替呢？用验证（Verification）！
 
+对于一个 _h_，可以用一些数据（ <img src="http://latex.codecogs.com/svg.latex?\mathcal{D}^{'}"/> ）来得到 <i>E</i><sub>in</sub><sup><i>'</i></sup> 从而估计 <i>E</i><sub>out</sub> 。如果 <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 的差距很大，那么假设再进行一次抽样（Sample）的时候，很大概率下 <i>E</i><sub>in</sub><sup><i>'</i></sup> 和 <i>E</i><sub>in</sub> 也会差距很大。类似于之前投硬币的问题，那个五次正面的人如果再投5次硬币，其结果会和之前的五次差距很大。
 
+这个描述，就把无限的 <i>E</i><sub>out</sub> 转换成了有限的、类似于 <i>E</i><sub>in</sub> 的 <i>E</i><sub>in</sub><sup><i>'</i></sup> 。不过其概率和“差距”的量会稍有些变化：
 
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]"/>
 
+这里，假设发生的验证（Verification）所用到的数据叫做“Ghost data”。
+
+- 替换`函数集合`
+
+另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2_N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(2N)"/> 种 _h_，所以有：
+
+<img src="http://latex.codecogs.com/svg.latex?2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|"/>
 
 
 
