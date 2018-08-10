@@ -144,7 +144,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\textrm{threshold}\right)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\mathrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)"/>
 
 这就是**感知机**。
 
@@ -152,7 +152,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&\,=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\textrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&\,=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&\,=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&\,=\mathrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\mathrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&\,=\mathrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&\,=\mathrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}"/>
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
@@ -178,13 +178,13 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
-> - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?\textrm{sign}(\mathbf{w}_t^T\mathbf{x}_{n(t)})\ne\mathrm{y}_{n(t)}"/>
+> - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?\mathrm{sign}(\mathbf{w}_t^T\mathbf{x}_{n(t)})\ne\mathrm{y}_{n(t)}"/>
 >
 >
 > - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}"/>
 >
 >
-> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g"/>
+> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{\mathrm{PLA}}\;\mathrm{as}\;g"/>
 >
 
 但是，这个算法还有一些问题：
@@ -269,7 +269,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 因此我们可以找到一条线，使它在这个数据集中出现的错误最少：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_g\gets\mathop{\textrm{argmin}}_\mathbf{w}\sum_{n=1}^N[\![\mathrm{y}_n\ne\textrm{sign}(\mathbf{w}^T\mathbf{x}_n)]\!]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_g\gets\mathop{\mathrm{argmin}}_\mathbf{w}\sum_{n=1}^N[\![\mathrm{y}_n\ne\mathrm{sign}(\mathbf{w}^T\mathbf{x}_n)]\!]"/>
 
 但是这是一个 **NP-hard 问题**。
 
@@ -300,7 +300,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 **回归** 分析：Regression, bounded regression
 
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}\;\textrm{or}\;\mathcal{Y}=[\textrm{lower},\textrm{upper}]\subset\mathbb{R}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}\;\mathrm{or}\;\mathcal{Y}=[\mathrm{lower},\mathrm{upper}]\subset\mathbb{R}"/>
 
 - 股价、房价预测
 - 天气、温度预测
@@ -332,7 +332,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 最难的，但是是最自然的学习方法，比如训练宠物
 
-有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\textrm{goodness})"/>
+有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\mathrm{goodness})"/>
 
 
 ### 不同的流程
@@ -401,7 +401,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 在 ***N*** 很大时，这两个比例很相近（相差小于 <i>&epsilon;</i> ）的概率是符合以下不等式：（Hoeffding's Inequality）
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\,\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\,\leq\,2\,\mathrm{exp}\,(-2\epsilon^2N)"/>
 
 
 这个公式非常有用：
@@ -420,7 +420,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 当 _N_ 很大时，且这个数据集是独立同分布（i.i.d.）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\mathrm{exp}\,(-2\epsilon^2N)"/>
 
 ---
 
@@ -448,15 +448,15 @@ Fun Time：嘲讽一下某些“智商测试”
 
 对于任意一个数据，如果它对于这 _M_ 个函数中的某一个函数来说是“不好的”，我们就认为这是个不好的数据。因此，对于整个`函数集合`，不好的（BAD）数据出现的概率有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]=\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2\,\textbf{or}\,\cdots\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]=\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_1\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_2\,\textbf{or}\,\cdots\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_M]"/>
 
 (Union bound)
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\,\leq\,\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\,\leq\,\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_M]"/>
 
 (Hoeffding)
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\,\leq\,2\,\textrm{exp}\,(-2\epsilon^2N)+2\,\textrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\textrm{exp}\,(-2\epsilon^2N)\\&\\&\,\leq\,2M\,\textrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\,\leq\,2\,\mathrm{exp}\,(-2\epsilon^2N)+2\,\mathrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\mathrm{exp}\,(-2\epsilon^2N)\\&\\&\,\leq\,2M\,\mathrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
 
 这就是在有限空间中（Finite-bin）的 Hoeffding 公式。
 
@@ -482,7 +482,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ### 总结概括前面学到的内容
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{matrix}E_{out}(g)\underbrace{\approx}_\textrm{test}{E}_{in}(g)\underbrace{\approx}_\textrm{train}0\end{matrix}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{matrix}E_{out}(g)\underbrace{\approx}_\mathrm{test}{E}_{in}(g)\underbrace{\approx}_\mathrm{train}0\end{matrix}"/>
 
 经过前面的学习，我们知道机器学习问题可以被分为两个部分：
 1. 确保 <i>E</i><sub>in</sub> (<i>g</i>) 和 <i>E</i><sub>out</sub> (<i>g</i>) 是相近的
@@ -494,7 +494,7 @@ _M_ 在个过程中起到什么作用呢？
 - 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
 - 如果 _M_ 很大，那么 (1) “不好的”事情发生的概率会变大，但是 (2) 更有可能实现
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2M\,\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2M\,\mathrm{exp}\,(-2\epsilon^2N)"/>
 
 
 因此，_M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
@@ -507,7 +507,7 @@ _M_ 在个过程中起到什么作用呢？
 
 是在我们使用 **Union bound** 将“不好的”数据出现的概率拆成对每个 _h_ “不好的”概率之和：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\ldots\,\textbf{B}_M]\,\leq\,\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\mathrm{or}\,\textbf{B}_2\,\mathrm{or}\,\ldots\,\textbf{B}_M]\,\leq\,\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]"/>
 
 当 _M_ 无限大的时候，我们就加和了无限多个项，这导致了我们面临问题。
 
@@ -541,7 +541,7 @@ _M_ 在个过程中起到什么作用呢？
 
 因此，**如果** (1) 能够使用这个值替换掉 _M_ ，就有
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\textrm{effective}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{effective}(N)\cdot\mathrm{exp}\,(-2\epsilon^2N)"/>
 
 那么，**如果** (2) effective(_N_) << 2<sup>_N_</sup> ，则 **机器学习就是可能的**！
 
@@ -599,7 +599,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 那么机器学习就是可能的：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\textrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\mathrm{exp}\,(-2\epsilon^2N)"/>
 
 因此，我们希望决定 effective(_N_) 大小的这个 **成长函数** 是比较小的，
 希望它是多项式形式的而不是指数形式的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
@@ -733,7 +733,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 答案是可以的，不过会在之前的 Hoeffding 不等式会增加一些“无所谓”的常数项：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\textrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
 
 对于不等式 **左边** 是在`函数集合`中存在一个 _h_ 使得 <i>E</i><sub>in</sub> (<i>h</i>) 和 <i>E</i><sub>out</sub> (<i>h</i>) 的差距很大的概率，我们希望这个概率很小，这样就可以机器学习。
 
@@ -757,7 +757,43 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2_N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(2N)"/> 种 _h_，所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|"/>
+<img src="http://latex.codecogs.com/svg.latex?2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]"/>
+
+- 运用 Hoeffding (without replacement)
+
+想象有一个罐子里面有 2_N_ 个小球，抓出 _N_ 个，考虑这 _N_ 个小球和所有小球的差别，这就可以使用 Hoeffding 。
+
+<img src="http://latex.codecogs.com/svg.latex?|E_{in}-E_{in}^{'}|>\frac{\epsilon}{2}\iff|E_{in}-\frac{E_{in}+E_{in}^{'}}{2}|>\frac{\epsilon}{4}"/>
+
+<img src="http://latex.codecogs.com/svg.latex?2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\mathrm{exp}\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)"/>
+
+整理一下公式得到：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
+
+- 通过 `Verification` 替换无限的 <i>E</i><sub>out</sub>
+- 通过 `上限函数` 替换无限的`函数集合`
+- 通过 `Hoeffding` 描述概率
+
+这个公式叫做 Vapnik-Chervonenkis (VC) bound，描述了的“坏事情”发生概率的上限。
+
+因此，当 Break Point 存在的时候，只要 _N_ 足够大，机器学习就是可能的！
+
+具体来说，我们已经证明了：
+
+对于 2D Perceptrons，因为 Break Point 是 4，所以机器学习是可以完成的！
+
+思考，对于其他的机器学习问题，如果使用 Break Point
+
+####### 数学证明二维空间中的线性分类器是可以通过机器学习完成的！！ #######
+
+---
+---
+---
+
+## VC Dimension
+
+
 
 
 
