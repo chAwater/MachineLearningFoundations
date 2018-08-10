@@ -797,7 +797,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 ---
 ---
 
-## VC Dimension
+## Lecture 7: VC Dimension
 
 ——
 
@@ -805,8 +805,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 上面我们已经证明了：
 
-<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)\,\leq\,B(N,\,k)=\sum_{i=0}^{k-1}C_{N}^{\,i}\,\leq\,N^{\,k-1}
-"/>
+<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)\,\leq\,B(N,\,k)=\sum_{i=0}^{k-1}C_{N}^{\,i}\,\leq\,N^{\,k-1}"/>
 
 一张图总结一下：
 
@@ -816,40 +815,49 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 我们给最大的、非 Break Point 的 输入叫做 **VC Dimension**，，标注为 _d_<sub>VC</sub> = _k_-1，它是一个`函数集合`的性质。
 
-如果 _N_(_k_) >  _d_<sub> VC</sub> ，则 _N_(_k_) 就是 Break Point。
+如果 _N_(_k_) >  _d_<sub>VC</sub> ，则 _N_(_k_) 就是 Break Point。
 
 VC Dimension 和下面这些都没有关系：
 - 机器学习算法
 - 输入数据的分布
 - 目标函数
 
-因此，在VC Dimension 是有限的时候，我们无论如何都可以确保 <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 是接近的。
+因此，在 VC Dimension 是有限的时候，我们无论如何都可以确保 <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 是接近的。
 
 ---
 
-### _d_<sub> VC</sub> for Perceptrons
+### _d_<sub>VC</sub> for Perceptrons
 
-我们上一章讨论的 2D Perceptrons 因为 _d_<sub> VC</sub> = 3 (Break Point _k_ = 4 )，所以可以学习。那么在更高维度的 Perceptrons 时怎么办呢？
+我们上一章讨论的 2D Perceptrons 因为 _d_<sub>VC</sub> = 3 (Break Point _k_ = 4 )，所以可以学习。那么在更高维度的 Perceptrons 时怎么办呢？
 
-我们通过观察 1D 和 2D Perceptrons 发现 对于 _d_-D Perceptrons 有可能 _d_<sub> VC</sub> = _d_+1
+我们通过观察 1D 和 2D Perceptrons 发现 对于 _d_-D Perceptrons 有可能 _d_<sub>VC</sub> = _d_+1
 
 下面我们就从两个角度来证明：
-1. _d_<sub> VC</sub> &geq; _d_+1
-2. _d_<sub> VC</sub> &leq; _d_+1
+1. _d_<sub>VC</sub> &geq; _d_+1
+2. _d_<sub>VC</sub> &leq; _d_+1
 
-为了证明 (1)，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter
+- 为了证明 (1)，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter
 
 ![](./Snapshot/Snap09.png)
 
-为了证明 (2)，我们需要证明任何 _d_+2 个输入，都不能 Shatter
+- 为了证明 (2)，我们需要证明任何 _d_+2 个输入，都不能 Shatter
 
 ![](./Snapshot/Snap10.png)
 
 ---
 
-###
+### _d_<sub>VC</sub> 的`物理意义`
 
+那么 VC Dimension 为什么要叫 "Dimension" 呢？
 
+上面我们已经证明了，VC Dimension 和 Perceptrons 的维度有很密切的关系，可以把 Perceptrons 的 **w** 就当成是这个（假设）函数集合的自由度。
+
+类似的，VC Dimension 就表示了这个`函数集合`的**自由度**，衡量这个`函数集合`能够产生多少 Dichotomies 。
+
+- 如果 _d_<sub>VC</sub> 很小，那么“坏事情”发生的几率很小，但是函数集合可能只有很少的选择；
+- 如果 _d_<sub>VC</sub> 很小，“坏事情”发生的几率会变大，但是函数集合中有很多的选择；
+
+---
 
 
 
