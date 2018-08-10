@@ -801,6 +801,8 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 ——
 
+### Definition
+
 上面我们已经证明了：
 
 <img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)\,\leq\,B(N,\,k)=\sum_{i=0}^{k-1}C_{N}^{\,i}\,\leq\,N^{\,k-1}
@@ -824,6 +826,28 @@ VC Dimension 和下面这些都没有关系：
 因此，在VC Dimension 是有限的时候，我们无论如何都可以确保 <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 是接近的。
 
 ---
+
+### _d_<sub> VC</sub> for Perceptrons
+
+我们上一章讨论的 2D Perceptrons 因为 _d_<sub> VC</sub> = 3 (Break Point _k_ = 4 )，所以可以学习。那么在更高维度的 Perceptrons 时怎么办呢？
+
+我们通过观察 1D 和 2D Perceptrons 发现 对于 _d_-D Perceptrons 有可能 _d_<sub> VC</sub> = _d_+1
+
+下面我们就从两个角度来证明：
+1. _d_<sub> VC</sub> &geq; _d_+1
+2. _d_<sub> VC</sub> &leq; _d_+1
+
+为了证明 (1)，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter
+
+![](./Snapshot/Snap09.png)
+
+为了证明 (2)，我们需要证明任何 _d_+2 个输入，都不能 Shatter
+
+![](./Snapshot/Snap10.png)
+
+---
+
+###
 
 
 
