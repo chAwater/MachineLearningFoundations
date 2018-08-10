@@ -724,7 +724,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <img src="http://latex.codecogs.com/svg.latex?B(N,k)\,\geq\,2B(N-1,k-1)+(B(N-1,k)-B(N-1,j-1))"/>
 
-不过我不会证明，也没找到资料（T_T），向会玩的同学们求助！请在 [issues #1](https://github.com/chAwater/MachineLearningFoundations/issues/1) 中回答。
+不过我不会证明，也没找到资料（T_T），向会玩的同学们求助！请在 [Issues #1](https://github.com/chAwater/MachineLearningFoundations/issues/1) 中回答。
 
 ---
 
@@ -749,23 +749,25 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 这个描述，就把无限的 <i>E</i><sub>out</sub> 转换成了有限的、类似于 <i>E</i><sub>in</sub> 的 <i>E</i><sub>in</sub><sup><i>'</i></sup> 。不过其概率和“差距”的量会稍有些变化：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]"/>
+<img src="http://latex.codecogs.com/svg.latex?\small{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]}"/>
 
 这里，假设发生的验证（Verification）所用到的数据叫做“Ghost data”。
 
-- 替换`函数集合`
+#### 替换`函数集合`
 
 另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2_N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(2N)"/> 种 _h_，所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]"/>
+<img src="http://latex.codecogs.com/svg.latex?\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]}"/>
 
-- 运用 Hoeffding (without replacement)
+#### 运用 Hoeffding (without replacement)
 
 想象有一个罐子里面有 2_N_ 个小球，抓出 _N_ 个，考虑这 _N_ 个小球和所有小球的差别，这就可以使用 Hoeffding 。
 
 <img src="http://latex.codecogs.com/svg.latex?|E_{in}-E_{in}^{'}|>\frac{\epsilon}{2}\iff|E_{in}-\frac{E_{in}+E_{in}^{'}}{2}|>\frac{\epsilon}{4}"/>
 
 <img src="http://latex.codecogs.com/svg.latex?2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\mathrm{exp}\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)"/>
+
+#### VC bound
 
 整理一下公式得到：
 
@@ -775,7 +777,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 - 通过 `上限函数` 替换无限的`函数集合`
 - 通过 `Hoeffding` 描述概率
 
-这个公式叫做 Vapnik-Chervonenkis (VC) bound，描述了的“坏事情”发生概率的上限。
+这个公式叫做 **Vapnik-Chervonenkis (VC) bound**，描述了的“坏事情”发生概率的上限。
 
 因此，当 Break Point 存在的时候，只要 _N_ 足够大，机器学习就是可能的！
 
