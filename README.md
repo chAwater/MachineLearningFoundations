@@ -357,7 +357,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 ## Lecture 4: Feasibility of Learning
 
-—— 哲学思考和数学讨论**机器学习是否是可能的**
+—— 哲学思考和数学讨论：**机器学习是否是可能的**
 
 ### 哲学思考：机器学习真的是可能的吗？(Learning is impossible?)
 
@@ -476,7 +476,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ## Lecture 5: Training versus Testing
 
-—— 介绍当 _M_ 无限大时机器学习面临的问题，并为解决这个问题做些准备
+—— 介绍当函数集合（ _M_ ）无限大时机器学习面临的问题，并为解决这个问题做些准备
 
 —— 介绍 Effective Number 和 Shatter 的概念
 
@@ -640,7 +640,11 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 ## Lecture 6: Theory of Generalization
 
-——
+—— 数学推倒存在 Break Point 时候成长函数的上限
+
+—— 数学推倒解决函数集合（ _M_ ）无限大时的机器学习
+
+—— 证明 2D Perceptrons 是可以机器学习的
 
 ### 考虑 Break Point 带来了什么
 
@@ -785,7 +789,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 对于 2D Perceptrons，因为 Break Point 是 4，所以机器学习是可以完成的！
 
-思考，对于其他的机器学习问题，如果使用 Break Point
+思考：对于其他的机器学习问题，如何使用 Break Point？
 
 ####### 数学证明二维空间中的线性分类器是可以通过机器学习完成的！！ #######
 
@@ -794,6 +798,33 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 ---
 
 ## VC Dimension
+
+——
+
+上面我们已经证明了：
+
+<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)\,\leq\,B(N,\,k)=\sum_{i=0}^{k-1}C_{N}^{\,i}\,\leq\,N^{\,k-1}
+"/>
+
+一张图总结一下：
+
+![](./Snapshot/Snap08.png)
+
+---
+
+我们给最大的、非 Break Point 的 输入叫做 **VC Dimension**，，标注为 _d_<sub>VC</sub> = _k_-1，它是一个`函数集合`的性质。
+
+如果 _N_(_k_) >  _d_<sub> VC</sub> ，则 _N_(_k_) 就是 Break Point。
+
+VC Dimension 和下面这些都没有关系：
+- 机器学习算法
+- 输入数据的分布
+- 目标函数
+
+因此，在VC Dimension 是有限的时候，我们无论如何都可以确保 <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 是接近的。
+
+---
+
 
 
 
