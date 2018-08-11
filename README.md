@@ -18,8 +18,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 从基础角度出发，既能保证学生能够了解机器学习的基本概念，同时对学生基础的要求最少，也能够保证课程不会太枯燥。
 
-（如果从理论角度出发，需要深入掌握各种机器学习理论，花费大量时间，但却不实用；
-而如果从技术角度出发，快速介绍多种机器学习方法，但无法清晰理解，难以选择和应用。）
+（如果从理论角度出发，需要深入掌握各种机器学习理论，花费大量时间，但却不实用；而如果从技术角度出发，快速介绍多种机器学习方法，但无法清晰理解，难以选择和应用。）
 
 
 ## Lecture 1: The Learning Problem
@@ -98,6 +97,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ---
 
+#### 小结：机器学习
+
 机器学习的过程，就是：
 - 在**符合**`目标函数`的**数据**上；
 - 运用用`机器学习算法`；
@@ -141,8 +142,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i"/>
 
-如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。
-因此有：
+如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。因此有：
 
 <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\mathrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)"/>
 
@@ -207,8 +207,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 我们使用 **向量内积** 的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
-如果两个向量越相似，他们的向量内积越大。
-此外，还需要考虑两个向量的模/长度（如果向量变长，內积也会变大）因此使用单位向量进行内积。
+如果两个向量越相似，他们的向量内积越大。此外，还需要考虑两个向量的模/长度（如果向量变长，內积也会变大）因此使用单位向量进行内积。
+
 所以，以下公式可以衡量这两个向量的相似程度：
 
 <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\;(\mathbf{w}_0=\mathbf{0})"/>
@@ -241,8 +241,6 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\,\geq\,\frac{T\mathop{\min}\limits{_n}\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits{_n}||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}"/>
 
-<!-- <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\,\geq\,\sqrt{T}\cdot{C}"/> -->
-
 其中，
 
 <img src="http://latex.codecogs.com/svg.latex?C=\frac{\mathop{\min}\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\mathop{\max}\limits_n||\mathbf{x}_n||^2}}>0"/>
@@ -256,7 +254,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ####### 怎么样！有没有感受到数学的NB之处！！ #######
 
-### Non-Separable Data
+### Non-Separable Data & Pocket Algorithm
 
 不过，PLA仍然有一些问题：
 
@@ -363,9 +361,7 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 - Two Controversial Answers
 
-对于这个问题，可能有不同的答案。
-任意一个答案都有可能是正确的，也有可能是错误的；
-对于这种问题，再好的算法也可能永远无法完成。
+对于这个问题，可能有不同的答案。任意一个答案都有可能是正确的，也有可能是错误的；对于这种问题，再好的算法也可能永远无法完成。
 
 <div align=center><img width="70%" src="./Snapshot/Snap01.png"/></br></br></div>
 
@@ -375,10 +371,9 @@ Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, wi
 
 对于这个问题，我们可以得到多种函数，这些函数在数据集中都是完全正确的，但我们却不知道在未知的数据集中这些函数的表现如何。
 
-如果任选一种函数，那么它很有可能在未知的数据中是错误的；
-如果平均所有的函数，那么就相当于没有进行机器学习。
+如果任选一种函数，那么它很有可能在未知的数据中是错误的；如果平均所有的函数，那么就相当于没有进行机器学习。
 
-**没有免费午餐（No Free Lunch）**：
+#### 没有免费午餐（No Free Lunch）
 
 从已知的数据中获得与`目标函数`一样好的`假设函数`在很多情况下是不可能的，必须有某些**前提假设**，否则机器学习是不可能的。
 
@@ -390,8 +385,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 —— Inferring Something Unknown
 
-假设有一个罐子，里面有很多很多...很多的球，有一些是绿色的，有一些是橘色的；
-我们有没有办法估计罐子里面有多少比例的球是橘色的？
+假设有一个罐子，里面有很多很多...很多的球，有一些是绿色的，有一些是橘色的；我们有没有办法估计罐子里面有多少比例的球是橘色的？
 
 当然有！我们可以随机拿出 ***N*** 个球（Sample），看着这几个球中有多少比例的球是橘色的。
 
@@ -438,7 +432,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 想象一下，如果有150人（`函数集合`）每人投5次硬币（`数据`），五次都是正面的那个人（`假设函数`），再以后的投硬币（`输出空间`）中就一定能一直正面吗？
 
-这种“不好的”的事件，比如投币五次都是正面，**相当于** 某个数据集评价某种`假设函数`“看似”很好，但实际其在输入空间中的表现不好。
+这种“不好的”的事件，比如投币五次都是正面，**相当于** 某个`数据集`评价某种`假设函数`“看似”很好，但实际其在输入空间中的表现不好。
 
 ---
 
@@ -462,9 +456,9 @@ Fun Time：嘲讽一下某些“智商测试”
 
 当 ***N*** **很大**，而 ***M*** **有限** 的时候，我们就可以保证我们的数据是“可靠的”；
 
-因此也能够保证`假设函数`在数据中的表现很好的时候，它也在输入空间中的表现很好；
+因此，我们也能够保证`假设函数`在数据中的表现很好的时候，它也在输入空间中的表现很好；
 
-因此**机器学习是可能实现的！**
+因此，**机器学习是可能实现的！**
 
 思考： 通常 _M_ 都是无限大的，怎么办呢？我们将在后面进行分析
 
@@ -476,7 +470,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ## Lecture 5: Training versus Testing
 
-—— 介绍当函数集合（ _M_ ）无限大时机器学习面临的问题，并为解决这个问题做些准备
+—— 介绍当函数集合无限大时（ _M_ = &infin; ）机器学习面临的问题，并为解决这个问题做些准备
 
 —— 介绍 Effective Number 和 Shatter 的概念
 
@@ -491,11 +485,11 @@ Fun Time：嘲讽一下某些“智商测试”
 <div align=center><img width="70%" src="./Snapshot/Snap04.png"/></br></br></div>
 
 _M_ 在个过程中起到什么作用呢？
-- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
-- 如果 _M_ 很大，那么 (1) “不好的”事情发生的概率会变大，但是 (2) 更有可能实现
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2M\,\mathrm{exp}\,(-2\epsilon^2N)"/>
 
+- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
+- 如果 _M_ 很大，那么 (1) “不好的”事情发生的概率会变大，但是 (2) 更有可能实现
 
 因此，_M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
 
@@ -513,17 +507,21 @@ _M_ 在个过程中起到什么作用呢？
 
 ---
 
+#### Union Bound
+
 不过，这个 **Union bound** 的使用其实是太过宽松了（公式右边远大于左边）：
 
 考虑两个非常相似的 _h_<sub>1</sub> 和 _h_<sub>2</sub>，因为它们非常相似，因此它们的表现也是非常相似的；
 
 所以让它们犯错误的数据（“不好的”数据）也是非常相似的；
 
-所以将这些“重叠”在一起的事件发生的概率用加的方式替代时是过度高估了（Over-estimation）的。
+所以把这些“重叠”在一起的事件发生的概率，用每个事件**单独**发生的概率加的方式替代，其实是过度高估了（Over-estimation）的。
 
-因此我们希望我们能够找出`假设函数`中有重叠的部分，把这些`假设函数`分成（有限的）几类（_m_），来减少这个过度高估不等式的右边。
+因此，我们希望我们能够找出`假设函数`中有重叠的部分，把这些`假设函数`分成（有限的）几类（_m_），来减少这个不等式被过度高估的右边。
 
 ---
+
+#### Effective Number
 
 下面我们考虑一个平面的直线（线性分类器）：
 - 总共（`函数集合`中）有多少条线（_M_）？
@@ -539,19 +537,19 @@ _M_ 在个过程中起到什么作用呢？
 - 根据 ***N*** 个数据点，可能把这些直线分成多少种？
 **最多 2<sup><i>N</i></sup>** 种！不过当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>_N_</sup> ！
 
-因此，**如果** (1) 能够使用这个值替换掉 _M_ ，就有
+因此，**如果 (1)** 能够使用这个值替换掉 _M_ ，就有
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{effective}(N)\cdot\mathrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{ef\/fective}(N)\cdot\mathrm{exp}\,(-2\epsilon^2N)"/>
 
-那么，**如果** (2) effective(_N_) << 2<sup>_N_</sup> ，则 **机器学习就是可能的**！
+那么，**如果 (2)** effective(_N_) << 2<sup>_N_</sup> ，则 **机器学习就是可能的**！
 
 ### Effective Number of Hypothesis
 
 在上面我们提到的，一个将数据区分成不同判断值的多种 **Hypotheses集合**，叫做 **Dichotomy**，有：
 
-Hypotheses: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\in\mathbb{R}^2"/>
+Hypotheses: &nbsp; <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}\in\mathbb{R}^2"/>
 
-Dichotomies: <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N)\,\leq\,2^N"/>
+Dichotomies: &nbsp; <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N)\,\leq\,2^N"/>
 
 Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，最大的 Dichotomy 的 **大小** 是`输入空间`的函数。
 
@@ -587,7 +585,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <div align=center><img width="70%" src="./Snapshot/Snap07.png"/></br></br></div>
 
-这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（Shatter，完全二分的）
+这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（**Shatter**，完全二分的）
 
 ### Break Point
 
@@ -601,17 +599,17 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\mathrm{exp}\,(-2\epsilon^2N)"/>
 
-因此，我们希望决定 effective(_N_) 大小的这个 **成长函数** 是比较小的，
-希望它是多项式形式的而不是指数形式的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
+因此，我们希望决定 effective(_N_) 大小的这个 **成长函数** 是比较小的，希望它是多项式形式的而不是指数形式的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
 
 上面我们还提到了 Shatter 的概念，很明显，Shatter 对于我们来说是不好的，因为 Shatter 的时候成长函数是 2<sup>_N_</sup>。
 
 ---
 
+#### 引入 Break Point
+
 下面我们引入一个新的概念：
 
-对于一个函数集合，当 _k_ 个输入不能被 Shatter 的时候，就称 _k_ 为 **Break Point** 。
-当然，对于 _k_+1, _k_+2, ... 来说，都不能 Shatter。因此最小的 _k_ 对于我们来说就是非常重要的，可以帮助我们减小成长函数。
+对于一个函数集合，当 _k_ 个输入不能被 Shatter 的时候，就称 _k_ 为 **Break Point** 。当然，对于 _k_+1, _k_+2, ... 来说，都不能 Shatter。因此最小的 _k_ 对于我们来说就是非常重要的，可以帮助我们减小成长函数。
 
 回顾我们之前的例子：
 - Positive Rays
@@ -659,7 +657,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 - 当 _N_ = 2 的时候，成长函数应该小于 4 ( 2<sup>2</sup> )，最大为 3；
 - 当 _N_ = 3 的时候，这三个点中的任何两个点都不能 Shatter，否则 _k_ = 2 就不成立；成长函数最大为 4，远小于 2<sup>_N_</sup>！
 
-可见 Break Point 对`成长函数`进行了很强的限制！太好了！
+可见 **Break Point** 对`成长函数`进行了很强的限制！太好了！
 
 我们希望能够：
 1. **找到 Break Point**
@@ -859,7 +857,7 @@ VC Dimension 和下面这些都没有关系：
 
 ---
 
-
+###
 
 
 ---
