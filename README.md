@@ -757,7 +757,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 #### 替换`函数集合`
 
-另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2_N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(2N)"/> 种 _h_，所以有：
+另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2 _N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(2N)"/> 种 _h_，所以有：
 
 <img src="http://latex.codecogs.com/svg.latex?\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]}"/>
 
@@ -783,9 +783,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 因此，当 Break Point 存在的时候，只要 _N_ 足够大，机器学习就是可能的！
 
-具体来说，我们已经证明了：
-
-对于 2D Perceptrons，因为 Break Point 是 4，所以机器学习是可以完成的！
+具体来说，我们已经证明了：对于 2D Perceptrons，因为 Break Point 是 4，所以机器学习是可以完成的！
 
 思考：对于其他的机器学习问题，如何使用 Break Point？
 
@@ -834,17 +832,17 @@ VC Dimension 和下面这些都没有关系：
 1. _d_<sub>VC</sub> &geq; _d_+1
 2. _d_<sub>VC</sub> &leq; _d_+1
 
-- 为了证明 (1)，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter
+- 为了证明 (1)，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter：
 
 ![](./Snapshot/Snap09.png)
 
-- 为了证明 (2)，我们需要证明任何 _d_+2 个输入，都不能 Shatter
+- 为了证明 (2)，我们需要证明任何 _d_+2 个输入，都不能 Shatter：
 
 ![](./Snapshot/Snap10.png)
 
 ---
 
-### _d_<sub>VC</sub> 的`物理意义`
+### _d_<sub>VC</sub> 的 `物理意义`
 
 那么 VC Dimension 为什么要叫 "Dimension" 呢？
 
@@ -852,12 +850,63 @@ VC Dimension 和下面这些都没有关系：
 
 类似的，VC Dimension 就表示了这个`函数集合`的**自由度**，衡量这个`函数集合`能够产生多少 Dichotomies 。
 
-- 如果 _d_<sub>VC</sub> 很小，那么“坏事情”发生的几率很小，但是函数集合可能只有很少的选择；
-- 如果 _d_<sub>VC</sub> 很小，“坏事情”发生的几率会变大，但是函数集合中有很多的选择；
+- 如果 _d_<sub>VC</sub> 很小，那么“坏事情”发生的概率很小，但是函数集合可能只有很少的选择；
+- 如果 _d_<sub>VC</sub> 很小，“坏事情”发生的概率会变大，但是函数集合中有很多的选择；
 
 ---
 
-###
+### _d_<sub>VC</sub> 对于`机器学习`的意义
+
+#### VC Bound
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_{\mathcal{D}}[|E_{in}(g)-E_{out}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_{VC}}\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
+
+不等式左边是“坏事情”发生的概率，如果我们把不等式右边作为 &delta; ，那么“好事情”发生的概率就是 1-&delta;，因此有：
+
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}4\,(2N)^{d_{VC}}\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\mathrm{ln}\left(\frac{4(2N)^{d_{VC}}}{x}\right)}&\end{align*}"/>
+
+等式右边的这个项叫做 (Penalty for) Model Complexity，<img src="http://latex.codecogs.com/svg.latex?\mathbf{\Omega}\,(N,\mathcal{H},\delta)"/>
+
+VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E</i><sub>in</sub> + &Omega;
+
+所以，就有下面这个在机器学习中非常常见的一张图：
+
+![](./Snapshot/Snap11.png)
+
+#### Sample Complexity
+
+类似的，VC Bound 的这个公式将 &epsilon; , &delta; , _d_<sub>VC</sub> 和 _N_ 联系起来，因此，对于一个机器学习问题，我们就可以根据我们对其准确度的要求（ &epsilon; , &delta; ）和模型的复杂度（ _d_<sub>VC</sub> ）计算出我们对数据集大小的要求（ _N_ ）。
+
+通常情况下，理论上需要的 _N_ &asymp; 10,000 _d_<sub>VC</sub>
+
+不过实际上一般只需要 _N_ &asymp; 10 _d_<sub>VC</sub>
+
+这是因为我们在 VC Bound 推导的过程中使用了很多非常“宽松”的替换：
+- Hoeffding for <i>E</i><sub>out</sub>
+  - 包含了任意的数据分布
+  - 包含了任何的目标函数
+- 使用了`成长函数`，而非 Dichotomies
+  - 任何数据都符合
+- 使用`上限函数`
+  - 上限的上限，非常宽松
+  - 只需要考虑 _d_<sub>VC</sub> 而不需要考虑`函数集合`的其他细节
+- 使用 `Union Bound`
+  - 考虑了最坏的情况（可能重叠发生事件的概率被独立发生的概率累加）
+  - 机器学习算法可以随意选择
+
+---
+---
+---
+
+## Lecture 8:
+
+
+
+
+
+
+
+
 
 
 ---
