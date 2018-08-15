@@ -900,8 +900,23 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
 ---
 ---
 
-## Lecture 8:
+## Lecture 8: Noise and Error
 
+——
+
+### Noise and Probabilistic Target
+
+思考：当数据引入了噪音之后，之前我们推导的这些东西（ VC Bound ）还满足吗？
+
+VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“类比”，在有噪音的情况下，这些小球就变成了“变色龙”，但是仍然满足：
+
+![](./Snapshot/Snap12.png)
+
+在这种情况下，`目标函数`就变成了`目标分布`( Probabilistic Target )，因为这个函数告诉了我们对于每个 **x** ，最好的预测是什么。比如预测结果是 70% : +1, 30% : -1，那么可以把这些猜错的情况当做噪音。
+
+---
+
+###
 
 
 
