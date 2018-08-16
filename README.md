@@ -916,8 +916,20 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ---
 
-###
+### Error Measure
 
+之前我们一直在使用 <i>E</i><sub>out</sub> 来衡量我们得到的函数（ _g_ ）和目标函数（ _f_ ）的差距，它有三个特点：
+- Out-of-sample: 来自于我们没有看过的数据
+- Pointwise: 针对每一个 **x** 都可以衡量（ Pointwise error measure: **err**，我们主要使用这种方式来衡量，但是还有一些其他的衡量方式，本课程不涉及）
+- Classification: 只考虑对/错，0/1
+
+有两种比较常用的 Pointwise error measures：
+- 0/1 error, for classification
+- Squared error, for regression
+
+不同的错误衡量方式也会影响我们最终的结论。
+
+---
 
 
 
