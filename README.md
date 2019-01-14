@@ -994,10 +994,24 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ![](./Snapshot/Snap13.png)
 
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\min}_\mathbf{w}\,E_{in}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathbf{y}||^2"/>
 
+这个函数是连续的（continuus）、可微分的（differentiable）、凸函数（convex），所以对于这个函数的最小值，任意一个方向上的斜率 / 梯度（偏微分）都是 0。
 
+和二项式求导类似，我们也可以对这个函数求导：
 
+![](./Snapshot/Snap14.png)
 
+<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{2}{N}\,(\mathbf{X}^T\mathbf{X}\mathbf{w}-\mathbf{X}^T\mathbf{y})=0"/>
 
+和二项式类似，当 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}^T\mathbf{X}"/> 的反矩阵存在时（invertible），这个解就是
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathbf{y}"/>
+
+通常情况下反矩阵都是存在的，因为 _d_<sub>VC</sub> &geq; _d_+1 。
+
+如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}=\mathbf{X}^\dagger\mathbf{y}"/>。
+
+####### Issues #######
 
 ---
