@@ -1004,14 +1004,79 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{2}{N}\,(\mathbf{X}^T\mathbf{X}\mathbf{w}-\mathbf{X}^T\mathbf{y})=0"/>
 
-和二项式类似，当 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}^T\mathbf{X}"/> 的反矩阵存在时（invertible），这个解就是
+和二项式类似，当 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}^T\mathbf{X}"/> 的反矩阵存在时（invertible），这个解就是：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathbf{y}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathbf{y}"/>
 
 通常情况下反矩阵都是存在的，因为 _d_<sub>VC</sub> &geq; _d_+1 。
 
-如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}=\mathbf{X}^\dagger\mathbf{y}"/>。
+如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathbf{y}"/>。
 
-####### Issues #######
+####### Issues TODO #######
+为什么说因为 _d_<sub>VC</sub> &geq; _d_+1 ，所以反矩阵通常都是存在的？
+这个 pseudo-inverse 是如何计算的？
+
+---
+
+大家可能感觉上面讲到的线性回归不是很像一个 `机器学习`，因为：
+1. 用上面这个公式，一下子就算出来了这个解 (Analytic Solution)；
+2. 无论是 _E_<sub>in</sub> 还是 _E_<sub>out</sub> 都没有不断得改进；
+
+但是，_E_<sub>in</sub> 肯定是很小的，如果 _E_<sub>out</sub> 也很小，那么就可是算是 **学习** 到了。而且当计算这个 pseudo-inverse 的时候，其实也可以看做是不断改进的过程，_E_<sub>in</sub> 也是在不断的变好的。
+
+####### Issues TODO #######
+
+那么这个方法的 _E_<sub>out</sub> 是不是也会很小呢？
+
+我们先来看看 _E_<sub>in</sub> 的均值：
+
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathbf{y}-\mathbf{\hat{y}}||^2&\,=\frac{1}{N}||& \mathbf{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathbf{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathbf{y}||^2\end{align*}"/>
+
+这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}\mathbf{X}^\dagger"/> 被称为 hat 矩阵 **H**，因为 y 乘以这个矩阵就变成了带 ^ 的 y 。
+
+那么这个 **H** 都做了什么？我们用几何的角度来说明。
+
+- 首先，y 是一个 _N_ 维空间中的向量，我们用 X 乘以 w 作为预测，相当于用 X 的每一个列（也是一个 _N_ 维的向量）做 **线性组合**；因此，在这个空间中，预测值 y' 是落在 X 展开的空间中；
+- 我们的线性回归希望 |y'-y| 越小越好，我们希望 y'-y 要垂直于 X 的展开空间；
+- 因此，**H** 就相当于把任何一个向量 y **投影** 到 X 的展开空间上，变成 y'；
+- **I** - **H** 就是”余数”的部分；
+
+矩阵的迹（主对角线和）trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
+这个公式的物理意义是：自由度为 _N_ 的向量，投影到 _d_ + 1 维的空间时，剩下的自由度最多只有 _N_ - ( _d_ + 1 )。
+
+####### Issues TODO #######
+这个矩阵的迹是怎么算出来的？
+
+下面看一下 _E_<sub>in</sub> 的均值和这些的关系：
+
+- 我们可以把 y 看成一个理想的函数 _f_(X)，加上一些噪音（noise）
+- 我们也可以把 噪音 对这个平面的“投影 - 余数”的转换（**I** - **H**），也能够得到 y'-y
+
+所以有：
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathbf{y}-\mathbf{\hat{y}}||^2&\,=\frac{1}{N}||(\mathbf{I}-\mathbf{H})\textrm{noise}||^2\\&\,=\frac{1}{N}(N-(d+1))||\textrm{noise}||^2\end{align*}"/>
+
+![](./Snapshot/Snap15.png)
+
+因此：
+
+<img src="http://latex.codecogs.com/svg.latex?\overline{E_{in}}=\textrm{noise level}\,\cdot\,(1-\frac{d+1}{N})"/>
+
+类似的有：
+
+<img src="http://latex.codecogs.com/svg.latex?\overline{E_{out}}=\textrm{noise level}\,\cdot\,(1+\frac{d+1}{N})"/>
+
+哲学上来说，对于 _E_<sub>in</sub>，看到的数据对于 noise 来说是反方向的，会让 _E_<sub>in</sub> 小一些；而对于 _E_<sub>out</sub>，因为有新的数据，因此新的 noise 有可能和以前的方向是反的，因此会让 _E_<sub>out</sub> 大一些。
+
+所以当 _N_ 很大时， _E_<sub>in</sub> 和 _E_<sub>out</sub> 的差距是很小的，学习是发生了的！
+
+![](./Snapshot/Snap16.png)
+
+---
+
+
+
+
+
+
 
 ---
