@@ -902,7 +902,7 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
 
 ## Lecture 8: Noise and Error
 
-——
+—— 介绍噪音和错误衡量的概念
 
 ### 噪音和目标的概率分布
 
@@ -959,8 +959,40 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 ---
 ---
 
-##
+## Lecture 9: Linear Regression
 
+——
+
+### 线性回归
+
+回想一下我们介绍 **感知机** 时提到的那个简单的分类问题，是否给一个顾客办理信用卡。
+
+假设每个顾客有一系列的特征（Feature），比如年薪、花费、债务等：
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}=(\mathrm{x}_1,\mathrm{x}_2,\ldots,\mathrm{x}_d)"/>
+
+计算特征的加权求和作为分数：
+
+<img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i"/>
+
+如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。因此有：
+
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\mathrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)"/>
+
+这就是 Linear Regression，相当于没有取 **sign** 的 **感知机** 。
+
+在二维中，Linear Regression 是找出一条线来描述我们的数据；在三维中，则是一个平面。
+
+在我们用 Linear Regression 做出预测之后，我们希望我们的预测结果与真实的数据相近，也就是预测结果与真实数据的差距（“余数”，residuals）比较小。
+
+我们用这个差距作为这个模型错误的衡量：err(y'-y) = (y'-y)<sup>2
+
+那么要如何最小化这个差距呢？
+
+---
+
+我们先把这个错误的公式做一个简化：
+
+![](./Snapshot/Snap13.png)
 
 
 
