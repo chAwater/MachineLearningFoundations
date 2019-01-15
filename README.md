@@ -961,7 +961,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ## Lecture 9: Linear Regression
 
-——
+—— 介绍线性回归，比较线性回归和分类的区别
 
 ### 线性回归
 
@@ -1112,11 +1112,45 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 在这里，我们用上限的上限限制住了 <i>E</i><sub>out</sub>，用一个宽松的限制来换取更高的计算效率。
 
-通常情况下，我们可以用线性回归得到的解来作为 PLA 的起始值，来加速 PLA 的计算次数。
+通常情况下，我们可以用线性回归得到的解来作为 PLA 的起始值来减少 PLA 的计算次数。
 
 ---
+---
+---
 
+## Lecture 10: Logistic Regression
 
+——
+
+### 逻辑回归
+
+思考一个简单的问题：根据多个指标来判断一个人是否患有某种疾病。这是一个典型的分类问题（患病、没患病），我们最关心的是分类的结果或错误。
+
+所以这个理想的函数（分类器），相当于判断目标数据的分布在 0.5 的左边还是右边：
+
+<img src="http://latex.codecogs.com/svg.latex?f(\textbf{x})=\textrm{sign}\left(P(+1|\textbf{x})-\frac{1}{2}\right)\in\left\{-1,\,+1\right\}"/>
+
+下面思考一个类似的问题：判断一个人患某种疾病的风险（患病的概率）。这个问题和分类问题类似，也叫 soft 分类问题，我们最关心的是这个概率。
+
+<img src="http://latex.codecogs.com/svg.latex?f(\textbf{x})=P(+1|\textbf{x})\in[0,\,1]"/>
+
+在理想的情况中，对于每一个数据 x，我们希望数据 y （标记）是这个概率；
+
+但在现实世界中，我们无法知道这个概率，而只知道其结果（患病、没患病）。我们可以把这个结果看做概率加上一些噪音，得到了 0 和 1 。
+
+那么对于这个问题，类似于前面的解决方法，我们可以算一个加权的分数：
+
+<img src="http://latex.codecogs.com/svg.latex?s=\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i"/>
+
+不过我们还需要一个函数来把这个分数转化为一个概率，这个函数就叫做 Logistic function: <i>&theta;</i> 。
+
+所以我们的 hypothesis 就是：<img src="http://latex.codecogs.com/svg.latex?h(\textbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
+
+其中：<img src="http://latex.codecogs.com/svg.latex?\theta\,(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}"/>
+
+这个函数叫做 sigmoid function 。
+
+---
 
 
 
