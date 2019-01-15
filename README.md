@@ -1015,6 +1015,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathrm{y}"/>。
 
 ####### Issues TODO #######
+
 为什么说因为 _d_<sub>VC</sub> &geq; _d_+1 ，所以反矩阵通常都是存在的？
 这个 pseudo-inverse 是如何计算的？
 
@@ -1049,6 +1050,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 这个公式的物理意义是：自由度为 _N_ 的向量，投影到 _d_ + 1 维的空间时，剩下的自由度最多只有 _N_ - ( _d_ + 1 )。
 
 ####### Issues TODO #######
+
 这个矩阵的迹是怎么算出来的？
 
 下面看一下 <i>E</i><sub>in</sub> 的均值和这些的关系：
@@ -1063,11 +1065,11 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 因此：
 
-<img src="http://latex.codecogs.com/svg.latex?\overline{E_{in}}=\textrm{noise level}\,\cdot\,(1-\frac{d+1}{N})"/>
+<img src="http://latex.codecogs.com/svg.latex?\overline{E_{in}}=\textrm{noise\;level}\,\cdot\,(1-\frac{d+1}{N})"/>
 
 类似的有：
 
-<img src="http://latex.codecogs.com/svg.latex?\overline{E_{out}}=\textrm{noise level}\,\cdot\,(1+\frac{d+1}{N})"/>
+<img src="http://latex.codecogs.com/svg.latex?\overline{E_{out}}=\textrm{noise\;level}\,\cdot\,(1+\frac{d+1}{N})"/>
 
 哲学上来说，对于 <i>E</i><sub>in</sub>，看到的数据对于 noise 来说是反方向的，会让 <i>E</i><sub>in</sub> 小一些；而对于 <i>E</i><sub>out</sub>，因为有新的数据，因此新的 noise 有可能和以前的方向是反的，因此会让 <i>E</i><sub>out</sub> 大一些。
 
