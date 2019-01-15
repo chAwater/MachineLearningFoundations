@@ -14,11 +14,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 《机器学习基石》是国立台湾大学资讯工程系的 **林轩田** 老师开设的课程（**中文授课**）。
 
-该课程旨在从基础的角度介绍机器学习，包括机器学习的**哲学**、关键**理论**和核心**技术**。
+该课程旨在从基础的角度介绍机器学习，包括机器学习的 **哲学**、关键 **理论** 和核心 **技术** 。
 
 从基础角度出发，既能保证学生能够了解机器学习的基本概念，同时对学生基础的要求最少，也能够保证课程不会太枯燥。
 
-（如果从理论角度出发，需要深入掌握各种机器学习理论，花费大量时间，但却不实用；而如果从技术角度出发，快速介绍多种机器学习方法，但无法清晰理解，难以选择和应用。）
+（如果从理论角度出发，需要深入掌握各种机器学习理论，花费大量时间，却不实用；而如果从技术角度出发，虽然可以快速介绍多种机器学习方法，但无法清晰理解，难以帮助应用。）
 
 
 ## Lecture 1: The Learning Problem
@@ -250,7 +250,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加；
 
-因此，在数据**线性可分**时，PLA的循环**最终会停下来**，找到一个很好的分割线。
+因此，在数据 **线性可分** 时，PLA的循环 **最终会停下来**，找到一个很好的分割线。
 
 ####### 怎么样！有没有感受到数学的NB之处！！ #######
 
@@ -1208,6 +1208,42 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 cross-entropy 的由来。
 
 ---
+
+### 梯度 (Gradient)
+
+可以证明逻辑回归的 <i>E</i><sub>in</sub> 是连续的、可微分的、凸的；所以可以用和线性回归类似的方法，算出它的梯度，从而找到最小值。
+
+利用微积分中逐项代换的方式（连锁）来求：
+
+<img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\ln\left(\underbrace{1+\exp\overbrace{(-\textrm{y}_n\textbf{w}^T\textbf{x}_n)}^{\bigcirc}}_{\square}\right)"/>
+
+对于每个维度上的梯度（偏微分）：
+
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial\,E_{in}(\textbf{w})}{\partial\textbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\textrm{y}_n\textbf{w}^T\textbf{x}_n)}{\partial\textbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\textrm{y}_n\textrm{x}_{n,i})\end{align*}"/>
+
+整合每个维度（向量表示），并且我们希望这个梯度等于 0 ：
+
+<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\textbf{w}^T\textbf{x}_{n})(-\textrm{y}_n\textbf{x}_{n})=0"/>
+
+这个公式可以看成被 <i>&theta;</i> 加权的数据（x,y）求和。
+
+- 如果所有的 <i>&theta;</i> 都是 0 的时候，这个梯度就是 0
+  - 这表示 <img src="http://latex.codecogs.com/svg.latex?\textrm{y}_n\textbf{w}^T\textbf{x}_{n}\,\gg\,0"/> ，也就是说这个数据是 **线性可分** 的；
+- 如果上述不成立（比如有噪音），我们就需要求解这个公式
+  - 但是，和线性回归不同，这个方程式是 **非线性** 的，因此没有一个解析解；
+
+我们可以参考 PLA ，一步一步的优化。
+
+原先 PLA 只针对错误的点进行改进，在这里我们做了一些简化，任取一个点，因为正确的点中的前一项是 0 ，因此也是成立的：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\,\underbrace{1}_\eta\,\cdot\,\underbrace{[\![\,\textrm{sign}(\textbf{w}_t^T\textbf{x}_n)\ne\textrm{y}_n\,]\!],\cdot\,\mathrm{y}_n\mathbf{x}_n}_\textbf{v}"/>
+
+其中，**v** 是更新的方向，<i>&eta;</i> 是更新的距离。
+
+---
+
+### 梯度下降 (Gradient Descent)
+
 
 
 
