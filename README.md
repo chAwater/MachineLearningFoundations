@@ -1035,7 +1035,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 我们先来看看 <i>E</i><sub>in</sub> 的均值：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}||^2\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{Identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}||^2\end{align*}"/>
 
 这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}\mathbf{X}^\dagger"/> 被称为 hat 矩阵 **H**，因为 y 乘以这个矩阵就变成了带 ^ 的 y 。
 
@@ -1152,10 +1152,62 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ---
 
+### 逻辑回归的错误衡量
 
+如何衡量逻辑回归的错误？
 
+首先，我们的目标函数可以改写为：
 
+<img src="http://latex.codecogs.com/svg.latex?f(\textbf{x})=P(+1|\textbf{x})\,\Longleftrightarrow\,P(\textrm{y}|\textbf{x})=\begin{cases}f(\textbf{x})&\textrm{for\;y}=+1\\1-f(\textbf{x})&\textrm{for\;y}=-1\end{cases}"/>
 
+那么，对于我们的数据：
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\{(\textbf{x}_1,+1),(\textbf{x}_2,-1),\cdots,(\textbf{x}_N,-1)\}"/>
+
+则产生这个数据的概率（Probability）是：
+
+<img src="http://latex.codecogs.com/svg.latex?\quad\,P(\textbf{x}_1)P(+1|\textbf{x}_1)\,\times\,P(\textbf{x}_2)P(-1|\textbf{x}_2)\,\times\,\cdots\,\times\,P(\textbf{x}_N)P(-1|\textbf{x}_1)"/>
+
+<img src="http://latex.codecogs.com/svg.latex?=P(\textbf{x}_1)f(\textbf{x}_1)\,\times\,P(\textbf{x}_2)(1-f(\textbf{x}_2))\,\times\,\cdots\,\times\,P(\textbf{x}_N)(1-f(\textbf{x}_N))"/>
+
+通常情况下，因为这些数据是真的产生了的，因此这个概率会很大。
+
+如果我们用 _h_ 来代替 _f_ ，这个 **概率** 就变成了我们的 hypothesis 也产生这些数据的 **可能性**（Likelihood）。当我们的 hypothesis 和目标函数很相似，这个可能性就会很大，所以我们只要选择这个 **可能性** 最大的 hypothesis 就行了。
+
+对于逻辑回归：<img src="http://latex.codecogs.com/svg.latex?h(\textbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
+
+由于 Logistic function <i>&theta;</i> 有对称的特性，有：<img src="http://latex.codecogs.com/svg.latex?1-h(\textbf{x})=h(-\textbf{x})"/>
+
+所以：
+
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\textrm{Probability}(f)\approx\textrm{likelihood}(h)=\,&\,P(\textbf{x}_1)h(\textbf{x}_1)\,&\times&\,P(\textbf{x}_2)(1-h(\textbf{x}_2))\,&\times\,\cdots\,&\times\,P(\textbf{x}_N)(1-h(\textbf{x}_N))\\=\,&\,P(\textbf{x}_1)h(+\textbf{x}_1)\,&\times&\,P(\textbf{x}_2)(-h(\textbf{x}_2))\,&\times\,\cdots\,&\times\,P(\textbf{x}_N)(-h(\textbf{x}_N))\\\end{align*}"/>
+
+对于任意一个 _h_ ， _P_(x) 是不变的，所以：
+
+<img src="http://latex.codecogs.com/svg.latex?\textrm{likelihood}(h)\,\propto\,\prod_{n=1}^{N}(\textrm{y}_n\textbf{x}_n)"/>
+
+下面我们就需要最大化这个乘积，先用 **w** 来代替 _h_：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{max}}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\textrm{y}_n\textbf{w}^T\textbf{x}_n)"/>
+
+连乘很难处理，而连加相对容易；
+类似的，最大化不好处理，而最小化相对容易；
+因此我们需要做一些转换：
+用取对数的方法把连乘换成连加，用取负的方法把最大化换成最小化；再除以 _N_ 做一个常数标准化；
+因此有：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\textrm{y}_n\textbf{w}^T\textbf{x}_n)"/>
+
+把 <i>&theta;</i> 代入：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\textrm{y}_n\textbf{w}^T\textbf{x}_n)\right)}_{E_{in}(\textbf{w})}"/>
+
+这个就是逻辑回归的错误衡量，叫做 **cross-entropy error** 。
+
+####### TODO #######
+
+cross-entropy 的由来。
+
+---
 
 
 
