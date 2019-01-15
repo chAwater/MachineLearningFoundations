@@ -267,7 +267,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 因此我们可以找到一条线，使它在这个数据集中出现的错误最少：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_g\gets\mathop{\mathrm{argmin}}_\mathbf{w}\sum_{n=1}^N[\![\mathrm{y}_n\ne\mathrm{sign}(\mathbf{w}^T\mathbf{x}_n)]\!]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_g\gets\mathop{\mathrm{argmin}}_\mathbf{w}\sum_{n=1}^N[\![\,\mathrm{y}_n\ne\mathrm{sign}(\mathbf{w}^T\mathbf{x}_n)\,]\!]"/>
 
 但是这是一个 **NP-hard 问题**。
 
@@ -990,11 +990,13 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ---
 
+### 线性回归算法
+
 我们先把这个错误的公式做一个简化：
 
 ![](./Snapshot/Snap13.png)
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\min}_\mathbf{w}\,E_{in}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathbf{y}||^2"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\min}_\mathbf{w}\,E_{in}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathrm{y}||^2"/>
 
 这个函数是连续的（continuus）、可微分的（differentiable）、凸函数（convex），所以对于这个函数的最小值，任意一个方向上的斜率 / 梯度（偏微分）都是 0。
 
@@ -1002,15 +1004,15 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ![](./Snapshot/Snap14.png)
 
-<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{2}{N}\,(\mathbf{X}^T\mathbf{X}\mathbf{w}-\mathbf{X}^T\mathbf{y})=0"/>
+<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{2}{N}\,(\mathbf{X}^T\mathbf{X}\mathbf{w}-\mathbf{X}^T\mathrm{y})=0"/>
 
 和二项式类似，当 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}^T\mathbf{X}"/> 的反矩阵存在时（invertible），这个解就是：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathbf{y}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathrm{y}"/>
 
 通常情况下反矩阵都是存在的，因为 _d_<sub>VC</sub> &geq; _d_+1 。
 
-如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathbf{y}"/>。
+如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathrm{y}"/>。
 
 ####### Issues TODO #######
 为什么说因为 _d_<sub>VC</sub> &geq; _d_+1 ，所以反矩阵通常都是存在的？
@@ -1018,19 +1020,21 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ---
 
+### 线性回归的 `Generalization`
+
 大家可能感觉上面讲到的线性回归不是很像一个 `机器学习`，因为：
 1. 用上面这个公式，一下子就算出来了这个解 (Analytic Solution)；
-2. 无论是 _E_<sub>in</sub> 还是 _E_<sub>out</sub> 都没有不断得改进；
+2. 无论是 <i>E</i><sub>in</sub> 还是 <i>E</i><sub>out</sub> 都没有不断得改进；
 
-但是，_E_<sub>in</sub> 肯定是很小的，如果 _E_<sub>out</sub> 也很小，那么就可是算是 **学习** 到了。而且当计算这个 pseudo-inverse 的时候，其实也可以看做是不断改进的过程，_E_<sub>in</sub> 也是在不断的变好的。
+但是，<i>E</i><sub>in</sub> 肯定是很小的，如果 <i>E</i><sub>out</sub> 也很小，那么就可是算是 **学习** 到了。而且当计算这个 pseudo-inverse 的时候，其实也可以看做是不断改进的过程，<i>E</i><sub>in</sub> 也是在不断的变好的。
 
 ####### Issues TODO #######
 
-那么这个方法的 _E_<sub>out</sub> 是不是也会很小呢？
+那么这个方法的 <i>E</i><sub>out</sub> 是不是也会很小呢？
 
-我们先来看看 _E_<sub>in</sub> 的均值：
+我们先来看看 <i>E</i><sub>in</sub> 的均值：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathbf{y}-\mathbf{\hat{y}}||^2&\,=\frac{1}{N}||& \mathbf{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathbf{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathbf{y}||^2\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}||^2\end{align*}"/>
 
 这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}\mathbf{X}^\dagger"/> 被称为 hat 矩阵 **H**，因为 y 乘以这个矩阵就变成了带 ^ 的 y 。
 
@@ -1047,13 +1051,13 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 ####### Issues TODO #######
 这个矩阵的迹是怎么算出来的？
 
-下面看一下 _E_<sub>in</sub> 的均值和这些的关系：
+下面看一下 <i>E</i><sub>in</sub> 的均值和这些的关系：
 
 - 我们可以把 y 看成一个理想的函数 _f_(X)，加上一些噪音（noise）
 - 我们也可以把 噪音 对这个平面的“投影 - 余数”的转换（**I** - **H**），也能够得到 y'-y
 
 所以有：
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathbf{y}-\mathbf{\hat{y}}||^2&\,=\frac{1}{N}||(\mathbf{I}-\mathbf{H})\textrm{noise}||^2\\&\,=\frac{1}{N}(N-(d+1))||\textrm{noise}||^2\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||(\mathbf{I}-\mathbf{H})\textrm{noise}||^2\\&\,=\frac{1}{N}(N-(d+1))||\textrm{noise}||^2\end{align*}"/>
 
 ![](./Snapshot/Snap15.png)
 
@@ -1065,13 +1069,55 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 <img src="http://latex.codecogs.com/svg.latex?\overline{E_{out}}=\textrm{noise level}\,\cdot\,(1+\frac{d+1}{N})"/>
 
-哲学上来说，对于 _E_<sub>in</sub>，看到的数据对于 noise 来说是反方向的，会让 _E_<sub>in</sub> 小一些；而对于 _E_<sub>out</sub>，因为有新的数据，因此新的 noise 有可能和以前的方向是反的，因此会让 _E_<sub>out</sub> 大一些。
+哲学上来说，对于 <i>E</i><sub>in</sub>，看到的数据对于 noise 来说是反方向的，会让 <i>E</i><sub>in</sub> 小一些；而对于 <i>E</i><sub>out</sub>，因为有新的数据，因此新的 noise 有可能和以前的方向是反的，因此会让 <i>E</i><sub>out</sub> 大一些。
 
-所以当 _N_ 很大时， _E_<sub>in</sub> 和 _E_<sub>out</sub> 的差距是很小的，学习是发生了的！
+所以当 _N_ 很大时， <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 的差距是很小的，学习是发生了的！
 
 ![](./Snapshot/Snap16.png)
 
 ---
+
+### 线性回归和线性分类的区别
+
+我们来比较一下之前我们介绍的线性分类和刚才的线性回归：
+
+- 线性分类
+  -  <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\}"/>
+  - <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\mathrm{sign}(\mathbf{w}^T\mathbf{x})"/>
+  - <img src="http://latex.codecogs.com/svg.latex?\textrm{err}(\mathrm{\hat{y}},\mathrm{y})=[\![\,\mathrm{\hat{y}}\ne\mathrm{y}\,]\!]"/>
+  - NP-hard 问题
+- 线性回归
+  - <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}"/>
+  - <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\mathbf{w}^T\mathbf{x}"/>
+  - <img src="http://latex.codecogs.com/svg.latex?\textrm{err}(\mathrm{\hat{y}},\mathrm{y})=(\mathrm{\hat{y}}-\mathrm{y})^2"/>
+  - 有解析解（一下子就算出来）
+
+那么，能否把线性分类中的 +1 和 -1 看做线性回归中的实数空间呢？这样我们就可以用线性回归很容易算出来的解析解来解决线性分类的问题。
+
+我们先来看看这两个算法最大的差别：错误的衡量
+
+<img src="http://latex.codecogs.com/svg.latex?\textrm{err}_{0/1}=[\![\,\mathrm{sign}(\mathbf{w}^T\mathbf{x})\ne\mathrm{y}\,]\!];\quad\,\textrm{err}_\textrm{sqr}=(\mathbf{w}^T\mathbf{x}-\mathrm{y})^2;"/>
+
+画出这两个函数的图像，我们可以看出来，err<sub>0/1</sub> &le; err<sub>sqr</sub>
+
+![](./Snapshot/Snap17.png)
+
+在我们介绍 **VC Bound** 的时候，有：
+- classification <i>E</i><sub>out</sub> &leq; classification <i>E</i><sub>in</sub> + &Omega;
+
+所以，当我们用线性回归的 <i>E</i><sub>in</sub> 代替，不等式仍然成立：
+- classification <i>E</i><sub>out</sub> &leq; regression <i>E</i><sub>in</sub> + &Omega;
+
+在这里，我们用上限的上限限制住了 <i>E</i><sub>out</sub>，用一个宽松的限制来换取更高的计算效率。
+
+通常情况下，我们可以用线性回归得到的解来作为 PLA 的起始值，来加速 PLA 的计算次数。
+
+---
+
+
+
+
+
 
 
 
