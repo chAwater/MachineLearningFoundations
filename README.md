@@ -156,7 +156,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?h"/>（Hypothesis）。
 
-在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?\mathbb{R}^2"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?h"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫**线性分类器（Linear/binary classifiers）**
+在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?\mathbb{R}^2"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?h"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫 **线性分类器（Linear/binary classifiers）** 。
 
 ### Perceptron Learning Algorithm (PLA)
 
@@ -188,8 +188,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 >
 
 但是，这个算法还有一些问题：
-- 算法中的循环不一定会**停止**
-- 算法能够保证在已有的数据中是正确的，但未必在**未知数据**中也是正确的
+- 算法中的循环不一定会 **停止**
+- 算法能够保证在已有的数据中是正确的，但未必在 **未知数据** 中也是正确的
 
 ### Guarantee of PLA
 
@@ -1128,11 +1128,11 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 所以这个理想的函数（分类器），相当于判断目标数据的分布在 0.5 的左边还是右边：
 
-<img src="http://latex.codecogs.com/svg.latex?f(\textbf{x})=\textrm{sign}\left(P(+1|\textbf{x})-\frac{1}{2}\right)\in\left\{-1,\,+1\right\}"/>
+<img src="http://latex.codecogs.com/svg.latex?f(\mathbf{x})=\textrm{sign}\left(P(+1|\mathbf{x})-\frac{1}{2}\right)\in\left\{-1,\,+1\right\}"/>
 
 下面思考一个类似的问题：判断一个人患某种疾病的风险（患病的概率）。这个问题和分类问题类似，也叫 soft 分类问题，我们最关心的是这个概率。
 
-<img src="http://latex.codecogs.com/svg.latex?f(\textbf{x})=P(+1|\textbf{x})\in[0,\,1]"/>
+<img src="http://latex.codecogs.com/svg.latex?f(\mathbf{x})=P(+1|\mathbf{x})\in[0,\,1]"/>
 
 在理想的情况中，对于每一个数据 x，我们希望数据 y （标记）是这个概率；
 
@@ -1144,7 +1144,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 不过我们还需要一个函数来把这个分数转化为一个概率，这个函数就叫做 Logistic function: <i>&theta;</i> 。
 
-所以我们的 hypothesis 就是：<img src="http://latex.codecogs.com/svg.latex?h(\textbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
+所以我们的 hypothesis 就是：<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
 
 其中：<img src="http://latex.codecogs.com/svg.latex?\theta\,(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}"/>
 
@@ -1158,36 +1158,36 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 首先，我们的目标函数可以改写为：
 
-<img src="http://latex.codecogs.com/svg.latex?f(\textbf{x})=P(+1|\textbf{x})\,\Longleftrightarrow\,P(\textrm{y}|\textbf{x})=\begin{cases}f(\textbf{x})&\textrm{for\;y}=+1\\1-f(\textbf{x})&\textrm{for\;y}=-1\end{cases}"/>
+<img src="http://latex.codecogs.com/svg.latex?f(\mathbf{x})=P(+1|\mathbf{x})\,\Longleftrightarrow\,P(\textrm{y}|\mathbf{x})=\begin{cases}f(\mathbf{x})&\textrm{for\;y}=+1\\1-f(\mathbf{x})&\textrm{for\;y}=-1\end{cases}"/>
 
 那么，对于我们的数据：
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\{(\textbf{x}_1,+1),(\textbf{x}_2,-1),\cdots,(\textbf{x}_N,-1)\}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\{(\mathbf{x}_1,+1),(\mathbf{x}_2,-1),\cdots,(\mathbf{x}_N,-1)\}"/>
 
 则产生这个数据的概率（Probability）是：
 
-<img src="http://latex.codecogs.com/svg.latex?\quad\,P(\textbf{x}_1)P(+1|\textbf{x}_1)\,\times\,P(\textbf{x}_2)P(-1|\textbf{x}_2)\,\times\,\cdots\,\times\,P(\textbf{x}_N)P(-1|\textbf{x}_1)"/>
+<img src="http://latex.codecogs.com/svg.latex?\quad\,P(\mathbf{x}_1)P(+1|\mathbf{x}_1)\,\times\,P(\mathbf{x}_2)P(-1|\mathbf{x}_2)\,\times\,\cdots\,\times\,P(\mathbf{x}_N)P(-1|\mathbf{x}_1)"/>
 
-<img src="http://latex.codecogs.com/svg.latex?=P(\textbf{x}_1)f(\textbf{x}_1)\,\times\,P(\textbf{x}_2)(1-f(\textbf{x}_2))\,\times\,\cdots\,\times\,P(\textbf{x}_N)(1-f(\textbf{x}_N))"/>
+<img src="http://latex.codecogs.com/svg.latex?=P(\mathbf{x}_1)f(\mathbf{x}_1)\,\times\,P(\mathbf{x}_2)(1-f(\mathbf{x}_2))\,\times\,\cdots\,\times\,P(\mathbf{x}_N)(1-f(\mathbf{x}_N))"/>
 
 通常情况下，因为这些数据是真的产生了的，因此这个概率会很大。
 
 如果我们用 _h_ 来代替 _f_ ，这个 **概率** 就变成了我们的 hypothesis 也产生这些数据的 **可能性**（Likelihood）。当我们的 hypothesis 和目标函数很相似，这个可能性就会很大，所以我们只要选择这个 **可能性** 最大的 hypothesis 就行了。
 
-对于逻辑回归：<img src="http://latex.codecogs.com/svg.latex?h(\textbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
+对于逻辑回归：<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
 
-由于 Logistic function <i>&theta;</i> 有对称的特性，有：<img src="http://latex.codecogs.com/svg.latex?1-h(\textbf{x})=h(-\textbf{x})"/>
+由于 Logistic function <i>&theta;</i> 有对称的特性，有：<img src="http://latex.codecogs.com/svg.latex?1-h(\mathbf{x})=h(-\mathbf{x})"/>
 
 所以：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\textrm{Probability}(f)\approx\textrm{likelihood}(h)=\,&\,P(\textbf{x}_1)h(\textbf{x}_1)\,&\times&\,P(\textbf{x}_2)(1-h(\textbf{x}_2))\,&\times\,\cdots\,&\times\,P(\textbf{x}_N)(1-h(\textbf{x}_N))\\=\,&\,P(\textbf{x}_1)h(+\textbf{x}_1)\,&\times&\,P(\textbf{x}_2)(-h(\textbf{x}_2))\,&\times\,\cdots\,&\times\,P(\textbf{x}_N)(-h(\textbf{x}_N))\\\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\textrm{Probability}(f)\approx\textrm{likelihood}(h)=\,&\,P(\mathbf{x}_1)h(\mathbf{x}_1)\,&\times&\,P(\mathbf{x}_2)(1-h(\mathbf{x}_2))\,&\times\,\cdots\,&\times\,P(\mathbf{x}_N)(1-h(\mathbf{x}_N))\\=\,&\,P(\mathbf{x}_1)h(+\mathbf{x}_1)\,&\times&\,P(\mathbf{x}_2)(-h(\mathbf{x}_2))\,&\times\,\cdots\,&\times\,P(\mathbf{x}_N)(-h(\mathbf{x}_N))\\\end{align*}"/>
 
 对于任意一个 _h_ ， _P_(x) 是不变的，所以：
 
-<img src="http://latex.codecogs.com/svg.latex?\textrm{likelihood}(h)\,\propto\,\prod_{n=1}^{N}(\textrm{y}_n\textbf{x}_n)"/>
+<img src="http://latex.codecogs.com/svg.latex?\textrm{likelihood}(h)\,\propto\,\prod_{n=1}^{N}(\textrm{y}_n\mathbf{x}_n)"/>
 
 下面我们就需要最大化这个乘积，先用 **w** 来代替 _h_：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{max}}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\textrm{y}_n\textbf{w}^T\textbf{x}_n)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{max}}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)"/>
 
 连乘很难处理，而连加相对容易；
 类似的，最大化不好处理，而最小化相对容易；
@@ -1195,11 +1195,11 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 用取对数的方法把连乘换成连加，用取负的方法把最大化换成最小化；再除以 _N_ 做一个常数标准化；
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\textrm{y}_n\textbf{w}^T\textbf{x}_n)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)"/>
 
 把 <i>&theta;</i> 代入：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\textrm{y}_n\textbf{w}^T\textbf{x}_n)\right)}_{E_{in}(\textbf{w})}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{in}(\mathbf{w})}"/>
 
 这个就是逻辑回归的错误衡量，叫做 **cross-entropy error** 。
 
@@ -1215,20 +1215,20 @@ cross-entropy 的由来。
 
 利用微积分中逐项代换的方式（连锁）来求：
 
-<img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\ln\left(\underbrace{1+\exp\overbrace{(-\textrm{y}_n\textbf{w}^T\textbf{x}_n)}^{\bigcirc}}_{\square}\right)"/>
+<img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\ln\left(\underbrace{1+\exp\overbrace{(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)}^{\bigcirc}}_{\square}\right)"/>
 
 对于每个维度上的梯度（偏微分）：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial\,E_{in}(\textbf{w})}{\partial\textbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\textrm{y}_n\textbf{w}^T\textbf{x}_n)}{\partial\textbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\textrm{y}_n\textrm{x}_{n,i})\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial\,E_{in}(\mathbf{w})}{\partial\mathbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)}{\partial\mathbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\textrm{y}_n\textrm{x}_{n,i})\end{align*}"/>
 
 整合每个维度（向量表示），并且我们希望这个梯度等于 0 ：
 
-<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\textbf{w}^T\textbf{x}_{n})(-\textrm{y}_n\textbf{x}_{n})=0"/>
+<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\textrm{y}_n\mathbf{x}_{n})=0"/>
 
 这个公式可以看成被 <i>&theta;</i> 加权的数据（x,y）求和。
 
 - 如果所有的 <i>&theta;</i> 都是 0 的时候，这个梯度就是 0
-  - 这表示 <img src="http://latex.codecogs.com/svg.latex?\textrm{y}_n\textbf{w}^T\textbf{x}_{n}\,\gg\,0"/> ，也就是说这个数据是 **线性可分** 的；
+  - 这表示 <img src="http://latex.codecogs.com/svg.latex?\textrm{y}_n\mathbf{w}^T\mathbf{x}_{n}\,\gg\,0"/> ，也就是说这个数据是 **线性可分** 的；
 - 如果上述不成立（比如有噪音），我们就需要求解这个公式
   - 但是，和线性回归不同，这个方程式是 **非线性** 的，因此没有一个解析解；
 
@@ -1236,7 +1236,7 @@ cross-entropy 的由来。
 
 原先 PLA 只针对错误的点进行改进，在这里我们做了一些简化，任取一个点，因为正确的点中的前一项是 0 ，因此也是成立的：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\,\underbrace{1}_\eta\,\cdot\,\underbrace{[\![\,\textrm{sign}(\textbf{w}_t^T\textbf{x}_n)\ne\textrm{y}_n\,]\!],\cdot\,\mathrm{y}_n\mathbf{x}_n}_\textbf{v}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\,\underbrace{1}_\eta\,\cdot\,\underbrace{[\![\,\textrm{sign}(\mathbf{w}_t^T\mathbf{x}_n)\ne\textrm{y}_n\,]\!],\cdot\,\mathrm{y}_n\mathbf{x}_n}_\mathbf{v}"/>
 
 其中，**v** 是更新的方向，<i>&eta;</i> 是更新的距离。
 
@@ -1246,19 +1246,19 @@ cross-entropy 的由来。
 
 利用上面的公式，现在的问题就是：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{||\textbf{v}||=1}\,E_{in}(\textbf{w}_T+\eta\textbf{v})"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,E_{in}(\mathbf{w}_T+\eta\mathbf{v})"/>
 
 这个公式看起来也很难，但是我们可以利用局部的近似（在 <i>&eta;</i> 很小的情况下泰勒展开）来简化这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?E_{in}(\textbf{w}_T+\eta\textbf{v})\,\approx\,E_{in}(\textbf{w}_t)+\eta\,\textbf{v}^T\cdot\nabla\,E_{in}(\textbf{w}_t)"/>
+<img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w}_T+\eta\mathbf{v})\,\approx\,E_{in}(\mathbf{w}_t)+\eta\,\mathbf{v}^T\cdot\nabla\,E_{in}(\mathbf{w}_t)"/>
 
 因此这个问题就变成：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{||\textbf{v}||=1}\,\underbrace{E_{in}(\textbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\textbf{v}^T\cdot\underbrace{\nabla\,E_{in}(\textbf{w}_t)}_{\textrm{known}}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{in}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{in}(\mathbf{w}_t)}_{\textrm{known}}"/>
 
 为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?\textbf{v}=-\frac{\nabla\,E_{in}(\textbf{w}_t)}{||\nabla\,E_{in}(\textbf{w}_t)||}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{v}=-\frac{\nabla\,E_{in}(\mathbf{w}_t)}{||\nabla\,E_{in}(\mathbf{w}_t)||}"/>
 
 这就是 **梯度下降** 。
 
@@ -1270,11 +1270,11 @@ cross-entropy 的由来。
 
 一个很好的策略是：当梯度很大的时候，选择很大的 <i>&eta;</i>，来快速的优化；而当梯度很小的时候，选择比较小的 <i>&eta;</i>，达到准确的优化；
 
-因此有：<img src="http://latex.codecogs.com/svg.latex?\eta\propto||\nabla\,E_{in}(\textbf{w}_t)||}"/>
+因此有：<img src="http://latex.codecogs.com/svg.latex?\eta\propto||\nabla\,E_{in}(\mathbf{w}_t)||}"/>
 
 所以将这个 <i>&eta;</i> 带入原先的公式，可以与分母的部分抵消，我们用一个新的 <i>&eta;</i> 来表示剩下的部分：
 
-<img src="http://latex.codecogs.com/svg.latex?\textbf{w}_{t+1}\gets\textbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\textbf{w}_t)}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\mathbf{w}_t)}"/>
 
 总结一下：
 
@@ -1283,10 +1283,10 @@ cross-entropy 的由来。
 在一个循环 *t* = 0,1,2,3,... 中：
 >
 > - 计算梯度：
->> <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\textbf{w}^T\textbf{x}_{n})(-\textrm{y}_n\textbf{x}_{n})=0"/>
+>> <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\textrm{y}_n\mathbf{x}_{n})=0"/>
 >
 > - 更新 **w**：
->> <img src="http://latex.codecogs.com/svg.latex?\textbf{w}_{t+1}\gets\textbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\textbf{w}_t)}"/>
+>> <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\mathbf{w}_t)}"/>
 >
 > - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环
 >
