@@ -239,14 +239,14 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 综上，
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\,\geq\,\frac{T\mathop{\min}\limits{_n}\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits{_n}||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\,\geq\,\frac{T\mathop{\min}\limits_n\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}"/>
 
 其中，
 
 <img src="http://latex.codecogs.com/svg.latex?C=\frac{\mathop{\min}\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\mathop{\max}\limits_n||\mathbf{x}_n||^2}}>0"/>
 
 
-可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越**接近**的；
+可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越 **接近** 的；
 
 同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加；
 
@@ -287,67 +287,48 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ### 不同的输出空间
 
-**分类** 问题：Binary Classification => Multiclass Classification
-
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\;\mathcal{Y}=\left\{1,2,3,\ldots,K\right\};"/>
-
-- 健康/病人诊断
-- 正常/垃圾邮件
-- 衣服大小
-- 硬币识别
-
-**回归** 分析：Regression, bounded regression
-
-<img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}\;\mathrm{or}\;\mathcal{Y}=[\mathrm{lower},\mathrm{upper}]\subset\mathbb{R}"/>
-
-- 股价、房价预测
-- 天气、温度预测
-
-结构 学习：Structured learning
-
-Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, without class definition
-
-- 自然语言处理，句子形式判断
-- 蛋白质折叠预测
+- **分类** 问题：Binary Classification => Multiclass Classification
+  - <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\;\mathcal{Y}=\left\{1,2,3,\ldots,K\right\};"/>
+    - 健康/病人诊断
+    - 正常/垃圾邮件
+    - 衣服大小
+    - 硬币识别
+- **回归** 分析：Regression, bounded regression
+  - <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}\;\mathrm{or}\;\mathcal{Y}=[\mathrm{lower},\mathrm{upper}]\subset\mathbb{R}"/>
+    - 股价、房价预测
+    - 天气、温度预测
+- 结构 学习：Structured learning
+  - Structure <img src="http://latex.codecogs.com/svg.latex?\equiv"/> Hyperclass, without class definition
+    - 自然语言处理，句子形式判断
+    - 蛋白质折叠预测
 
 ### 不同的输出标注
 
-**监督学习**：Supervised Learning
-
-有数据标注，每个数据都有相应的标注 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x}_n,\mathrm{y}_n)"/>
-
-**无监督学习**：Unsupervised Learning
-
-无数据标注，目标也比较分散
-
-- 数据分群（~ unsupervised multiclass classification）
-- 数据密度估计（~ unsupervised bounded regression）
-- 异常值检测（~ unsupervised binary classification）
-
-**半监督学习**：略
-
-**增强学习**：Reinforcement Learning
-
-最难的，但是是最自然的学习方法，比如训练宠物
-
-有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\mathrm{goodness})"/>
-
+- **监督学习**：Supervised Learning
+  - 有数据标注，每个数据都有相应的标注 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x}_n,\mathrm{y}_n)"/>
+- **无监督学习**：Unsupervised Learning
+  - 无数据标注，目标也比较分散
+    - 数据分群（~ unsupervised multiclass classification）
+    - 数据密度估计（~ unsupervised bounded regression）
+    - 异常值检测（~ unsupervised binary classification）
+- **半监督学习**：略
+- **增强学习**：Reinforcement Learning
+  - 最难的，但是是最自然的学习方法，比如训练宠物
+  - 有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?(\mathbf{x},\mathrm{\tilde{y}},\mathrm{goodness})"/>
 
 ### 不同的流程
 
-- Batch Leaning：收集一波数据，一波输入机器学习算法（最常用的一种，“填鸭式”）
-- Online Learning：实时的输入数据，实时的改进，甚至最优解都可能是实时变化的（强化学习，还有以前我们提到的PLA也可以很简单的实现，“上课式”）
+- **Batch** Leaning：收集一波数据，一波输入机器学习算法（最常用的一种，“填鸭式”）
+- **Online** Learning：实时的输入数据，实时的改进，甚至最优解都可能是实时变化的（强化学习，还有以前我们提到的PLA也可以很简单的实现，“上课式”）
 - Active Learning：类似于Online Learning，通过对于特定输入进行“提问”获得标注（通常在获取标记成本比较高的应用中，“提问式”）
 
 ### 不同的输入空间
 
-- **Concrete** Feature：输入的每一个维度（特征）都具有一定的物理意义，这些特征带有人类的智慧，相当于是被人类预处理的数据（比如钱币分类中的大小、信用卡用户的工资、图像的对称性等）
-- **Raw** Feature：输入的特征更加的抽象，一个维度（特征）的物理意义对于这个问题而言不是那么的有意义（比如图像识别中的像素、声音识别中的信号）
-- **Abstract** Feature：输入的特征没有物理意义，（比如用户音乐推荐中的音乐和用户ID）
-
-特征工程（Feature Engineering）是指将Raw feature转换为Concrete feature的过程。
-
-对于机器学习来说，越抽象越难。
+- **Concrete** Feature：输入的每一个维度（特征）都具有一定的 **物理意义**，这些特征带有人类的智慧，相当于是被人类预处理的数据（比如钱币分类中的 **大小**、信用卡用户的工资、图像的对称性等）
+- **Raw** Feature：输入的特征更加的 **抽象**，一个维度（特征）的物理意义对于这个问题而言不是那么的有意义（比如图像识别中的 **像素**、声音识别中的信号）
+- **Abstract** Feature：输入的特征 **没有物理意义**，（比如用户音乐推荐中的音乐和用户ID）
+  - 特征工程（Feature Engineering）是指将Raw feature转换为Concrete feature的过程
+  - 对于机器学习来说，越抽象越难
 
 ---
 ---
@@ -381,6 +362,8 @@ Fun Time：嘲讽一下某些“智商测试”
 
 <div align=center><img width="70%" src="./Snapshot/Snap03.png"/></br></br></div>
 
+---
+
 ### 那么怎样才能确保一个问题“能被机器学习”？
 
 —— Inferring Something Unknown
@@ -395,8 +378,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 在 ***N*** 很大时，这两个比例很相近（相差小于 <i>&epsilon;</i> ）的概率是符合以下不等式：（Hoeffding's Inequality）
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\,\leq\,2\,\mathrm{exp}\,(-2\epsilon^2N)"/>
-
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\,\leq\,2\,\exp\,(-2\epsilon^2N)"/>
 
 这个公式非常有用：
 - 不需要"知道"未知的 <i>&mu;</i>
@@ -408,27 +390,27 @@ Fun Time：嘲讽一下某些“智商测试”
 上面的讨论和统计的关系比较大，那么下面我们就来把这个转化到机器学习的问题中来。
 
 - 罐子 **相当于** 机器学习问题中`输入`数据的空间
-- 拿出来的 _N_ 个球（Sample） **相当于** 机器学习的`数据集`
+- 拿出来的 ***N*** 个球（Sample） **相当于** 机器学习的`数据集`
 - 球的颜色 **相当于** 某个`假设函数`在这个数据集（Sample）上的表现的好与不好
 - 要估计的罐子中球的颜色 **相当于** 估计这个`假设函数`在整个数据空间上的表现好与不好
 
 当 _N_ 很大时，且这个数据集是独立同分布（i.i.d.）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\mathrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\exp\,(-2\epsilon^2N)"/>
 
 ---
 
 那么这样一来我们就能实现学习了吗？
 
-**不一定**，刚才的不等式只能保证某个`假设函数`在符合特定情况下可以在输入空间中的表现很好；但是，`机器学习算法`未必会从`函数集合`中选出这个`假设函数`。
+**不一定**，刚才的不等式只能保证某个`假设函数`在符合特定情况下可以在输入空间中的表现很好；**但是**，`机器学习算法`未必会从`函数集合`中选出这个`假设函数`。
 
-不过，我们可以用上述的方法作为验证（Verification）`机器学习算法`选出的某个`假设函数`的方法。
+不过，我们可以用上述的方法作为 **验证**（Verification）`机器学习算法`选出的某个`假设函数`的方法。
 
 ### 真正的机器学习
 
 对于某个`假设函数`，如果它在输入数据中的表现是好的，要不要选择这个函数呢？
 
-也 **不一定**！因为上述不等式是描述的是`假设函数`和`目标函数`差距很小的概率。即使概率很小，也**有可能**发生（两个函数差距很大的、小概率“不好的”的事件发生）。尤其是在有很多次事件（`函数集合`很大），且这种不好的事件可能会被**选择**的时候！
+也 **不一定**！因为上述不等式是描述的是`假设函数`和`目标函数`差距很小的概率。即使概率很小，也 **有可能** 发生（两个函数差距很大的、小概率“不好的”的事件发生）。尤其是在有很多次事件（`函数集合`很大），且这种不好的事件可能会被 **选择** 的时候！
 
 想象一下，如果有150人（`函数集合`）每人投5次硬币（`数据`），五次都是正面的那个人（`假设函数`），再以后的投硬币（`输出空间`）中就一定能一直正面吗？
 
@@ -444,13 +426,13 @@ Fun Time：嘲讽一下某些“智商测试”
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]=\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_1\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_2\,\textbf{or}\,\cdots\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_M]"/>
 
-(Union bound)
+使用 Union bound：
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\,\leq\,\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_M]"/>
 
-(Hoeffding)
+使用 Hoeffding：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\,\leq\,2\,\mathrm{exp}\,(-2\epsilon^2N)+2\,\mathrm{exp}\,(-2\epsilon^2N)+\cdots+2\,\mathrm{exp}\,(-2\epsilon^2N)\\&\\&\,\leq\,2M\,\mathrm{exp}\,(-2\epsilon^2N)\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]&\,\leq\,2\,\exp\,(-2\epsilon^2N)+2\,\exp\,(-2\epsilon^2N)+\cdots+2\,\exp\,(-2\epsilon^2N)\\&\\&\,\leq\,2M\,\exp\,(-2\epsilon^2N)\end{align*}"/>
 
 这就是在有限空间中（Finite-bin）的 Hoeffding 公式。
 
@@ -486,10 +468,10 @@ Fun Time：嘲讽一下某些“智商测试”
 
 _M_ 在个过程中起到什么作用呢？
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2M\,\mathrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2M\,\exp\,(-2\epsilon^2N)"/>
 
-- 如果 _M_ 很小，那么 (1) 是可以实现的，但是 (2) 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
-- 如果 _M_ 很大，那么 (1) “不好的”事情发生的概率会变大，但是 (2) 更有可能实现
+- 如果 _M_ 很小，那么 1 是可以实现的，但是 2 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
+- 如果 _M_ 很大，那么 1 “不好的”事情发生的概率会变大，但是 2 更有可能实现
 
 因此，_M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
 
@@ -515,7 +497,7 @@ _M_ 在个过程中起到什么作用呢？
 
 所以让它们犯错误的数据（“不好的”数据）也是非常相似的；
 
-所以把这些“重叠”在一起的事件发生的概率，用每个事件**单独**发生的概率加的方式替代，其实是过度高估了（Over-estimation）的。
+所以把这些“重叠”在一起的事件发生的概率，用每个事件 **单独** 发生的概率加的方式替代，其实概率是被过度高估了（Over-estimation）的。
 
 因此，我们希望我们能够找出`假设函数`中有重叠的部分，把这些`假设函数`分成（有限的）几类（_m_），来减少这个不等式被过度高估的右边。
 
@@ -537,11 +519,11 @@ _M_ 在个过程中起到什么作用呢？
 - 根据 ***N*** 个数据点，可能把这些直线分成多少种？
 **最多 2<sup><i>N</i></sup>** 种！不过当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>_N_</sup> ！
 
-因此，**如果 (1)** 能够使用这个值替换掉 _M_ ，就有
+因此，**(1) 如果** 能够使用这个值替换掉 _M_ ，就有
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{ef\/fective}(N)\cdot\mathrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{ef\/fective}(N)\cdot\exp\,(-2\epsilon^2N)"/>
 
-那么，**如果 (2)** effective(_N_) << 2<sup>_N_</sup> ，则 **机器学习就是可能的**！
+那么，**(2) 如果** effective(_N_) << 2<sup>_N_</sup> ，则 **机器学习就是可能的**！
 
 ### Effective Number of Hypothesis
 
@@ -587,6 +569,8 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 这种情况，我们称为这 _N_ 个输入被这个`函数集合` “击碎”（**Shatter**，完全二分的）
 
+---
+
 ### Break Point
 
 #### 稍微总结一下
@@ -597,7 +581,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 那么机器学习就是可能的：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\mathrm{exp}\,(-2\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\exp\,(-2\epsilon^2N)"/>
 
 因此，我们希望决定 effective(_N_) 大小的这个 **成长函数** 是比较小的，希望它是多项式形式的而不是指数形式的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
 
@@ -613,20 +597,16 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 回顾我们之前的例子：
 - Positive Rays
-
-<img src="http://latex.codecogs.com/svg.latex?k=2\,,\,m_{\mathcal{H}}(N)=N+1=O(N)"/>
+> <img src="http://latex.codecogs.com/svg.latex?k=2\,,\,m_{\mathcal{H}}(N)=N+1=O(N)"/>
 
 - Positive Intervals
-
-<img src="http://latex.codecogs.com/svg.latex?k=3\,,\,m_{\mathcal{H}}(N)=\frac{1}{2}N^2+\frac{1}{2}N+1=O(N^2)"/>
+> <img src="http://latex.codecogs.com/svg.latex?k=3\,,\,m_{\mathcal{H}}(N)=\frac{1}{2}N^2+\frac{1}{2}N+1=O(N^2)"/>
 
 - Convex Sets
-
-<img src="http://latex.codecogs.com/svg.latex?k=+\infty\,,\,m_{\mathcal{H}}(N)=2^N"/>
+> <img src="http://latex.codecogs.com/svg.latex?k=+\infty\,,\,m_{\mathcal{H}}(N)=2^N"/>
 
 - 2D Perceptrons
-
-<img src="http://latex.codecogs.com/svg.latex?k=4\,,\,m_{\mathcal{H}}(N)<2^N"/>
+> <img src="http://latex.codecogs.com/svg.latex?k=4\,,\,m_{\mathcal{H}}(N)<2^N"/>
 
 我们猜测，当有 Break Point _k_ 的时候，<img src="http://latex.codecogs.com/svg.latex?m_{\mathcal{H}}(N)=O(N^{k-1})"/>
 
@@ -650,7 +630,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 1. 成长函数不能是以 _N_ 为指数的形式
 2. 能否用成长函数来代替 _M_
 
-我们先来解决 (1)，下一章解决 (2)。
+我们先来解决 1，下一章解决 2。
 
 如果已知 Break Point _k_ = 2，那么：
 - 当 _N_ = 1 的时候，成长函数应该是 2 ( 2<sup>1</sup> )；
@@ -663,7 +643,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 1. **找到 Break Point**
 2. 证明有 Break Point 后，**成长函数** 是一个 **多项式** 的形式
 
-我们先来看 (2)。
+我们先来看 2。
 
 ### Bounding Function
 
@@ -674,6 +654,8 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 2. 它和`假设函数`没有关系
 
 ---
+
+这里开始有点儿复杂了，请慢慢看：
 
 当 _k_ > _N_ 时，_B_(_N_, _k_) = 2<sup>_N_</sup>；
 
@@ -733,9 +715,9 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 不过，我们还剩下一个问题没有解决：
 - 能否用成长函数来代替 _M_
 
-答案是可以的，不过会在之前的 Hoeffding 不等式会增加一些“无所谓”的常数项：
+答案是可以的，不过需要在之前的 Hoeffding 不等式会增加一些“无所谓”的常数项：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)"/>
 
 对于不等式 **左边** 是在`函数集合`中存在一个 _h_ 使得 <i>E</i><sub>in</sub> (<i>h</i>) 和 <i>E</i><sub>out</sub> (<i>h</i>) 的差距很大的概率，我们希望这个概率很小，这样就可以机器学习。
 
@@ -763,17 +745,17 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 #### 运用 Hoeffding (without replacement)
 
-想象有一个罐子里面有 2_N_ 个小球，抓出 _N_ 个，考虑这 _N_ 个小球和所有小球的差别，这就可以使用 Hoeffding 。
+想象有一个罐子里面有 2 _N_ 个小球，抓出 _N_ 个，考虑这 _N_ 个小球和所有小球的差别，这就可以使用 Hoeffding 。
 
 <img src="http://latex.codecogs.com/svg.latex?|E_{in}-E_{in}^{'}|>\frac{\epsilon}{2}\iff|E_{in}-\frac{E_{in}+E_{in}^{'}}{2}|>\frac{\epsilon}{4}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\mathrm{exp}\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)"/>
+<img src="http://latex.codecogs.com/svg.latex?2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)"/>
 
 #### VC bound
 
 整理一下公式得到：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)"/>
 
 - 通过 `Verification` 替换无限的 <i>E</i><sub>out</sub>
 - 通过 `上限函数` 替换无限的`函数集合`
@@ -820,8 +802,6 @@ VC Dimension 和下面这些都没有关系：
 
 因此，在 VC Dimension 是有限的时候，我们无论如何都可以确保 <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 是接近的。
 
----
-
 ### _d_<sub>VC</sub> for Perceptrons
 
 我们上一章讨论的 2D Perceptrons 因为 _d_<sub>VC</sub> = 3 (Break Point _k_ = 4 )，所以可以学习。那么在更高维度的 Perceptrons 时怎么办呢？
@@ -832,11 +812,11 @@ VC Dimension 和下面这些都没有关系：
 1. _d_<sub>VC</sub> &geq; _d_+1
 2. _d_<sub>VC</sub> &leq; _d_+1
 
-- 为了证明 (1)，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter：
+- 为了证明 1，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter：
 
 ![](./Snapshot/Snap09.png)
 
-- 为了证明 (2)，我们需要证明任何 _d_+2 个输入，都不能 Shatter：
+- 为了证明 2，我们需要证明任何 _d_+2 个输入，都不能 Shatter：
 
 ![](./Snapshot/Snap10.png)
 
@@ -853,17 +833,15 @@ VC Dimension 和下面这些都没有关系：
 - 如果 _d_<sub>VC</sub> 很小，那么“坏事情”发生的概率很小，但是函数集合可能只有很少的选择；
 - 如果 _d_<sub>VC</sub> 很小，“坏事情”发生的概率会变大，但是函数集合中有很多的选择；
 
----
-
 ### _d_<sub>VC</sub> 对于`机器学习`的意义
 
 #### VC Bound
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_{\mathcal{D}}[|E_{in}(g)-E_{out}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_{VC}}\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_{\mathcal{D}}[|E_{in}(g)-E_{out}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_{V\!C}}\,\exp\,(-\frac{1}{8}\epsilon^2N)"/>
 
 不等式左边是“坏事情”发生的概率，如果我们把不等式右边作为 &delta; ，那么“好事情”发生的概率就是 1-&delta;，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}4\,(2N)^{d_{VC}}\,\mathrm{exp}\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\mathrm{ln}\left(\frac{4(2N)^{d_{VC}}}{x}\right)}&\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}4\,(2N)^{d_{V\!C}}\,\exp\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\mathrm{ln}\left(\frac{4(2N)^{d_{V\!C}}}{x}\right)}&\end{align*}"/>
 
 等式右边的这个项叫做 (Penalty for) Model Complexity，<img src="http://latex.codecogs.com/svg.latex?\mathbf{\Omega}\,(N,\mathcal{H},\delta)"/>
 
@@ -873,11 +851,11 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
 
 ![](./Snapshot/Snap11.png)
 
-####### 从未想过这个图其实是数学推导得来的... #######
+####### 从未想过这个图其实是可以数学推导得来的... #######
 
 #### Sample Complexity
 
-类似的，VC Bound 的这个公式将 &epsilon; , &delta; , _d_<sub>VC</sub> 和 _N_ 联系起来，因此，对于一个机器学习问题，我们就可以根据我们对其准确度的要求（ &epsilon; , &delta; ）和模型的复杂度（ _d_<sub>VC</sub> ）计算出我们对数据集大小的要求（ _N_ ）。
+类似的，VC Bound 的这个公式将 <i>&epsilon;</i> , <i>&delta;</i> , _d_<sub>VC</sub> 和 _N_ 联系起来，因此，对于一个机器学习问题，我们就可以根据我们对其准确度的要求（ <i>&epsilon;</i> , <i>&delta;</i> ）和模型的复杂度（ _d_<sub>VC</sub> ）计算出我们对数据集大小的要求（ _N_ ）。
 
 通常情况下，理论上需要的 _N_ &asymp; 10,000 _d_<sub>VC</sub>
 
@@ -931,8 +909,6 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 不同的错误衡量方式也会影响我们最终的结论。
 
----
-
 ### 不同错误衡量方式的选择
 
 对于分类问题，有两种错误类型：
@@ -941,11 +917,9 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 对于 0/1 error，这两种错误是一样的，但是考虑下面两个情形：
 1. 超市判断顾客，并给老顾客打折：对于 False Reject，老顾客会很不开心，影响很不好；对于 False Accept，超市只是损失了一点儿利润，影响很小；
-2. CIA 判断员工，通过的可以查看机密资料：对于 False Accept，机密文件可能被泄露，影响非常不好；对于 False Reject，员工会很不方便、不开心，但是没有什么损失；
+2. CIA 判断员工，员工的可以查看机密资料：对于 False Accept，机密文件可能被泄露，影响非常不好；对于 False Reject，员工会很不方便、不开心，但是没有什么损失；
 
 因此，不同的应用也会用一些不同的错误衡量方式，但是通常这些错误衡量的细节、程度很难用数学来表示（很难数字化），所以通常会用一些有意义的错误衡量方式来替代，比如口袋算法中的 0/1 error，或者最小化 **高斯噪音** 的 Squared error。除此以外，还有一些其他的错误衡量方式，这些方式对机器学习算法来说比较简单、容易设计。
-
----
 
 ### 权重
 
@@ -961,7 +935,9 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ## Lecture 9: Linear Regression
 
-—— 介绍线性回归，比较线性回归和分类的区别
+—— 介绍线性回归的概念
+
+—— 比较线性回归和分类的区别
 
 ### 线性回归
 
@@ -972,11 +948,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 计算特征的加权求和作为分数：
 
-<img src="http://latex.codecogs.com/svg.latex?\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i"/>
-
-如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。因此有：
-
-<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\mathrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)"/>
+<img src="http://latex.codecogs.com/svg.latex?h(x)=\mathbf{w}^T\mathbf{x}"/>
 
 这就是 Linear Regression，相当于没有取 **sign** 的 **感知机** 。
 
@@ -984,11 +956,9 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 在我们用 Linear Regression 做出预测之后，我们希望我们的预测结果与真实的数据相近，也就是预测结果与真实数据的差距（“余数”，residuals）比较小。
 
-我们用这个差距作为这个模型错误的衡量：err(y'-y) = (y'-y)<sup>2
+我们用这个差距作为这个模型错误的衡量： <img src="http://latex.codecogs.com/svg.latex?\textrm{err}(\mathrm{\hat{y}}-\mathrm{y})=(\mathrm{\hat{y}}-\mathrm{y})^2"/>
 
 那么要如何最小化这个差距呢？
-
----
 
 ### 线性回归算法
 
@@ -1014,9 +984,12 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathrm{y}"/>。
 
+---
+
 ####### Issues TODO #######
 
 为什么说因为 _d_<sub>VC</sub> &geq; _d_+1 ，所以反矩阵通常都是存在的？
+
 这个 pseudo-inverse 是如何计算的？
 
 ---
@@ -1029,7 +1002,13 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 但是，<i>E</i><sub>in</sub> 肯定是很小的，如果 <i>E</i><sub>out</sub> 也很小，那么就可是算是 **学习** 到了。而且当计算这个 pseudo-inverse 的时候，其实也可以看做是不断改进的过程，<i>E</i><sub>in</sub> 也是在不断的变好的。
 
+---
+
 ####### Issues TODO #######
+
+这个 pseudo-inverse 是如何计算的？
+
+---
 
 那么这个方法的 <i>E</i><sub>out</sub> 是不是也会很小呢？
 
@@ -1039,7 +1018,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}\mathbf{X}^\dagger"/> 被称为 hat 矩阵 **H**，因为 y 乘以这个矩阵就变成了带 ^ 的 y 。
 
-那么这个 **H** 都做了什么？我们用几何的角度来说明。
+那么这个 **H** 都做了什么？我们用 **几何** 的角度来说明。
 
 - 首先，y 是一个 _N_ 维空间中的向量，我们用 X 乘以 w 作为预测，相当于用 X 的每一个列（也是一个 _N_ 维的向量）做 **线性组合**；因此，在这个空间中，预测值 y' 是落在 X 展开的空间中；
 - 我们的线性回归希望 |y'-y| 越小越好，我们希望 y'-y 要垂直于 X 的展开空间；
@@ -1049,9 +1028,13 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 矩阵的迹（主对角线和）trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 这个公式的物理意义是：自由度为 _N_ 的向量，投影到 _d_ + 1 维的空间时，剩下的自由度最多只有 _N_ - ( _d_ + 1 )。
 
+---
+
 ####### Issues TODO #######
 
 这个矩阵的迹是怎么算出来的？
+
+---
 
 下面看一下 <i>E</i><sub>in</sub> 的均值和这些的关系：
 
@@ -1059,6 +1042,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 - 我们也可以把 噪音 对这个平面的“投影 - 余数”的转换（**I** - **H**），也能够得到 y'-y
 
 所以有：
+
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||(\mathbf{I}-\mathbf{H})\textrm{noise}||^2\\&\,=\frac{1}{N}(N-(d+1))||\textrm{noise}||^2\end{align*}"/>
 
 ![](./Snapshot/Snap15.png)
@@ -1096,7 +1080,9 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 那么，能否把线性分类中的 +1 和 -1 看做线性回归中的实数空间呢？这样我们就可以用线性回归很容易算出来的解析解来解决线性分类的问题。
 
-我们先来看看这两个算法最大的差别：错误的衡量
+---
+
+我们先来看看这两个算法最大的差别：**错误的衡量**
 
 <img src="http://latex.codecogs.com/svg.latex?\textrm{err}_{0/1}=[\![\,\mathrm{sign}(\mathbf{w}^T\mathbf{x})\ne\mathrm{y}\,]\!];\quad\,\textrm{err}_\textrm{sqr}=(\mathbf{w}^T\mathbf{x}-\mathrm{y})^2;"/>
 
@@ -1112,7 +1098,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 在这里，我们用上限的上限限制住了 <i>E</i><sub>out</sub>，用一个宽松的限制来换取更高的计算效率。
 
-通常情况下，我们可以用线性回归得到的解来作为 PLA 的起始值来减少 PLA 的计算次数。
+通常情况下，我们可以用线性回归得到的解（**w**）来作为 PLA 的起始值来减少 PLA 的计算次数。
 
 ---
 ---
@@ -1120,7 +1106,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ## Lecture 10: Logistic Regression
 
-——
+—— 介绍逻辑回归的概念
 
 ### 逻辑回归
 
@@ -1136,34 +1122,34 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 在理想的情况中，对于每一个数据 x，我们希望数据 y （标记）是这个概率；
 
-但在现实世界中，我们无法知道这个概率，而只知道其结果（患病、没患病）。我们可以把这个结果看做概率加上一些噪音，得到了 0 和 1 。
+但在现实世界中，我们无法知道这个 **概率**，而只知道其 **结果**（患病、没患病）。我们可以把这个结果看做 **概率** 加上一些 **噪音**，得到了 0 和 1 。
 
 那么对于这个问题，类似于前面的解决方法，我们可以算一个加权的分数：
 
 <img src="http://latex.codecogs.com/svg.latex?s=\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i"/>
 
-不过我们还需要一个函数来把这个分数转化为一个概率，这个函数就叫做 Logistic function: <i>&theta;</i> 。
+不过我们还需要一个函数来把这个 **分数** 转化为一个 **概率**，这个函数就叫做 **Logistic function**: <i>&theta;</i> 。
 
 所以我们的 hypothesis 就是：<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
 
-其中：<img src="http://latex.codecogs.com/svg.latex?\theta\,(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}"/>
+其中：
+
+<img src="http://latex.codecogs.com/svg.latex?\theta\,(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}"/>
 
 这个函数叫做 sigmoid function 。
 
----
-
 ### 逻辑回归的错误衡量
 
-如何衡量逻辑回归的错误？
+那么如何衡量逻辑回归的错误？
 
 首先，我们的目标函数可以改写为：
 
-<img src="http://latex.codecogs.com/svg.latex?f(\mathbf{x})=P(+1|\mathbf{x})\,\Longleftrightarrow\,P(\textrm{y}|\mathbf{x})=\begin{cases}f(\mathbf{x})&\textrm{for\;y}=+1\\1-f(\mathbf{x})&\textrm{for\;y}=-1\end{cases}"/>
+<img src="http://latex.codecogs.com/svg.latex?f(\mathbf{x})=P(+1|\mathbf{x})\,\Longleftrightarrow\,P(\mathrm{y}|\mathbf{x})=\begin{cases}f(\mathbf{x})&\textrm{for\;y}=+1\\1-f(\mathbf{x})&\textrm{for\;y}=-1\end{cases}"/>
 
 那么，对于我们的数据：
 <img src="http://latex.codecogs.com/svg.latex?\mathcal{D}=\{(\mathbf{x}_1,+1),(\mathbf{x}_2,-1),\cdots,(\mathbf{x}_N,-1)\}"/>
 
-则产生这个数据的概率（Probability）是：
+产生这个数据的概率（Probability）是：
 
 <img src="http://latex.codecogs.com/svg.latex?\quad\,P(\mathbf{x}_1)P(+1|\mathbf{x}_1)\,\times\,P(\mathbf{x}_2)P(-1|\mathbf{x}_2)\,\times\,\cdots\,\times\,P(\mathbf{x}_N)P(-1|\mathbf{x}_1)"/>
 
@@ -1171,7 +1157,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 通常情况下，因为这些数据是真的产生了的，因此这个概率会很大。
 
-如果我们用 _h_ 来代替 _f_ ，这个 **概率** 就变成了我们的 hypothesis 也产生这些数据的 **可能性**（Likelihood）。当我们的 hypothesis 和目标函数很相似，这个可能性就会很大，所以我们只要选择这个 **可能性** 最大的 hypothesis 就行了。
+如果我们用 _h_ 来代替 _f_ ，这个 **概率** 就变成了我们的 hypothesis 也产生这些数据的 **可能性**（Likelihood）。如果我们的 hypothesis 和目标函数很相似，这个可能性就会很大，所以我们只要选择这个 **可能性** 最大的 hypothesis 就行了。
 
 对于逻辑回归：<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
 
@@ -1183,25 +1169,30 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 对于任意一个 _h_ ， _P_(x) 是不变的，所以：
 
-<img src="http://latex.codecogs.com/svg.latex?\textrm{likelihood}(h)\,\propto\,\prod_{n=1}^{N}(\textrm{y}_n\mathbf{x}_n)"/>
+<img src="http://latex.codecogs.com/svg.latex?\textrm{likelihood}(h)\,\propto\,\prod_{n=1}^{N}(\mathrm{y}_n\mathbf{x}_n)"/>
 
 下面我们就需要最大化这个乘积，先用 **w** 来代替 _h_：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{max}}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{max}}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)"/>
 
 连乘很难处理，而连加相对容易；
 类似的，最大化不好处理，而最小化相对容易；
 因此我们需要做一些转换：
-用取对数的方法把连乘换成连加，用取负的方法把最大化换成最小化；再除以 _N_ 做一个常数标准化；
+- 用取对数的方法把连乘换成连加
+- 用取负的方法把最大化换成最小化
+- 再除以 _N_ 做一个常数标准化
+
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)"/>
 
 把 <i>&theta;</i> 代入：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{in}(\mathbf{w})}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{in}(\mathbf{w})}"/>
 
 这个就是逻辑回归的错误衡量，叫做 **cross-entropy error** 。
+
+---
 
 ####### TODO #######
 
@@ -1213,22 +1204,22 @@ cross-entropy 的由来。
 
 可以证明逻辑回归的 <i>E</i><sub>in</sub> 是连续的、可微分的、凸的；所以可以用和线性回归类似的方法，算出它的梯度，从而找到最小值。
 
-利用微积分中逐项代换的方式（连锁）来求：
+利用微积分中逐项代换的方式（连锁）来求梯度：
 
-<img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\ln\left(\underbrace{1+\exp\overbrace{(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)}^{\bigcirc}}_{\square}\right)"/>
+<img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\ln\left(\underbrace{1+\exp\overbrace{(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}^{\bigcirc}}_{\square}\right)"/>
 
 对于每个维度上的梯度（偏微分）：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial\,E_{in}(\mathbf{w})}{\partial\mathbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_n)}{\partial\mathbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\textrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\textrm{y}_n\textrm{x}_{n,i})\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial\,E_{in}(\mathbf{w})}{\partial\mathbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}{\partial\mathbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\mathrm{y}_n\textrm{x}_{n,i})\end{align*}"/>
 
 整合每个维度（向量表示），并且我们希望这个梯度等于 0 ：
 
-<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\textrm{y}_n\mathbf{x}_{n})=0"/>
+<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0"/>
 
 这个公式可以看成被 <i>&theta;</i> 加权的数据（x,y）求和。
 
 - 如果所有的 <i>&theta;</i> 都是 0 的时候，这个梯度就是 0
-  - 这表示 <img src="http://latex.codecogs.com/svg.latex?\textrm{y}_n\mathbf{w}^T\mathbf{x}_{n}\,\gg\,0"/> ，也就是说这个数据是 **线性可分** 的；
+  - 这表示 <img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n}\,\gg\,0"/> ，也就是说这个数据是 **线性可分** 的；
 - 如果上述不成立（比如有噪音），我们就需要求解这个公式
   - 但是，和线性回归不同，这个方程式是 **非线性** 的，因此没有一个解析解；
 
@@ -1236,11 +1227,9 @@ cross-entropy 的由来。
 
 原先 PLA 只针对错误的点进行改进，在这里我们做了一些简化，任取一个点，因为正确的点中的前一项是 0 ，因此也是成立的：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\,\underbrace{1}_\eta\,\cdot\,\underbrace{[\![\,\textrm{sign}(\mathbf{w}_t^T\mathbf{x}_n)\ne\textrm{y}_n\,]\!],\cdot\,\mathrm{y}_n\mathbf{x}_n}_\mathbf{v}"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_t+\,\underbrace{1}_\eta\,\cdot\,\underbrace{[\![\,\textrm{sign}(\mathbf{w}_t^T\mathbf{x}_n)\ne\mathrm{y}_n\,]\!],\cdot\,\mathrm{y}_n\mathbf{x}_n}_\mathbf{v}"/>
 
 其中，**v** 是更新的方向，<i>&eta;</i> 是更新的距离。
-
----
 
 ### 梯度下降 (Gradient Descent)
 
@@ -1264,11 +1253,13 @@ cross-entropy 的由来。
 
 ---
 
-下一个问题就是选择 <i>&eta;</i>
-- 当 <i>&eta;</i> 很小时候，梯度下降的很慢，需要很长时间才得到最小值
+下一个问题就是选择 <i>&eta;</i> ：
+- 当 <i>&eta;</i> 较小时，梯度下降的很慢，需要很长时间才得到最小值
 - 当 <i>&eta;</i> 很大时，首先上面的公式（局部近似）会不准确，而且在接近最小值的时候会反复摇摆，达不到最小值，甚至会得到更差的结果
 
-一个很好的策略是：当梯度很大的时候，选择很大的 <i>&eta;</i>，来快速的优化；而当梯度很小的时候，选择比较小的 <i>&eta;</i>，达到准确的优化；
+一个很好的策略是：
+- 当梯度很大的时候，选择很大的 <i>&eta;</i>，来快速的优化；
+- 当梯度很小的时候，选择较小的 <i>&eta;</i>，达到准确的优化；
 
 因此有：<img src="http://latex.codecogs.com/svg.latex?\eta\propto||\nabla\,E_{in}(\mathbf{w}_t)||}"/>
 
@@ -1276,19 +1267,18 @@ cross-entropy 的由来。
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\mathbf{w}_t)}"/>
 
-总结一下：
+总结一下 **梯度下降**：
 
-初始化一个 **w**<sub>0</sub>
-
-在一个循环 *t* = 0,1,2,3,... 中：
+- 初始化一个 **w**<sub>0</sub>
+- 在一个循环 *t* = 0,1,2,3,... 中：
 >
 > - 计算梯度：
->> <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\textrm{y}_n\mathbf{x}_{n})=0"/>
+>> <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0"/>
 >
 > - 更新 **w**：
 >> <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\mathbf{w}_t)}"/>
 >
-> - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环
+> - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环，退出循环
 >
 
 这个算法和 口袋算法（Pocket Algorithm）的计算量是类似的。
