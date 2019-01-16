@@ -1244,8 +1244,59 @@ cross-entropy 的由来。
 
 ### 梯度下降 (Gradient Descent)
 
+利用上面的公式，现在的问题就是：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{||\textbf{v}||=1}\,E_{in}(\textbf{w}_T+\eta\textbf{v})"/>
+
+这个公式看起来也很难，但是我们可以利用局部的近似（在 <i>&eta;</i> 很小的情况下泰勒展开）来简化这个公式：
+
+<img src="http://latex.codecogs.com/svg.latex?E_{in}(\textbf{w}_T+\eta\textbf{v})\,\approx\,E_{in}(\textbf{w}_t)+\eta\,\textbf{v}^T\cdot\nabla\,E_{in}(\textbf{w}_t)"/>
+
+因此这个问题就变成：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\mathrm{min}}_\mathbf{||\textbf{v}||=1}\,\underbrace{E_{in}(\textbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\textbf{v}^T\cdot\underbrace{\nabla\,E_{in}(\textbf{w}_t)}_{\textrm{known}}"/>
+
+为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
+
+<img src="http://latex.codecogs.com/svg.latex?\textbf{v}=-\frac{\nabla\,E_{in}(\textbf{w}_t)}{||\nabla\,E_{in}(\textbf{w}_t)||}"/>
+
+这就是 **梯度下降** 。
+
+---
+
+下一个问题就是选择 <i>&eta;</i>
+- 当 <i>&eta;</i> 很小时候，梯度下降的很慢，需要很长时间才得到最小值
+- 当 <i>&eta;</i> 很大时，首先上面的公式（局部近似）会不准确，而且在接近最小值的时候会反复摇摆，达不到最小值，甚至会得到更差的结果
+
+一个很好的策略是：当梯度很大的时候，选择很大的 <i>&eta;</i>，来快速的优化；而当梯度很小的时候，选择比较小的 <i>&eta;</i>，达到准确的优化；
+
+因此有：<img src="http://latex.codecogs.com/svg.latex?\eta\propto||\nabla\,E_{in}(\textbf{w}_t)||}"/>
+
+所以将这个 <i>&eta;</i> 带入原先的公式，可以与分母的部分抵消，我们用一个新的 <i>&eta;</i> 来表示剩下的部分：
+
+<img src="http://latex.codecogs.com/svg.latex?\textbf{w}_{t+1}\gets\textbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\textbf{w}_t)}"/>
+
+总结一下：
+
+初始化一个 **w**<sub>0</sub>
+
+在一个循环 *t* = 0,1,2,3,... 中：
+>
+> - 计算梯度：
+>> <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\textrm{y}_n\textbf{w}^T\textbf{x}_{n})(-\textrm{y}_n\textbf{x}_{n})=0"/>
+>
+> - 更新 **w**：
+>> <img src="http://latex.codecogs.com/svg.latex?\textbf{w}_{t+1}\gets\textbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\textbf{w}_t)}"/>
+>
+> - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环
+>
+
+这个算法和 口袋算法（Pocket Algorithm）的计算量是类似的。
+
+---
 
 
+---
 
 
 
