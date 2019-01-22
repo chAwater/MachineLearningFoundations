@@ -1291,7 +1291,9 @@ cross-entropy 的由来。
 ## Lecture 11: Linear Models for Classification
 
 —— 总结已经学过的线性模型
+
 —— 介绍随机梯度下降
+
 —— 推广线性模型到多元分类问题
 
 ### 线性模型的二分类问题
@@ -1317,8 +1319,6 @@ cross-entropy 的由来。
 
 通常使用线性回归的解作为PLA、Pocket和逻辑回归的初始值，因为它最容易优化；通常也会使用逻辑回归来解决线性分类问题的。
 
----
-
 ### 随机的梯度下降 (Stochastic Gradient Descent, SGD)
 
 我们介绍过了 PLA 和逻辑回归和梯度下降，这两个方法都是逐步的（Iterative）优化 **w**；在PLA中，每次选出一个点来计算修正的方向；而在梯度下降中，每次需要计算所有数据，算出梯度，然后再优化。这样一来，梯度下降每一轮的计算量明显多了很多。
@@ -1342,8 +1342,6 @@ cross-entropy 的由来。
   - 相信只要进行足够多次优化之后就会得到很好的结果，因此停下来
 - <i>&eta;</i> 如何选择？
   - 通常经验值是 0.1
-
----
 
 ### 多类别分类（逻辑回归）
 
@@ -1389,9 +1387,46 @@ cross-entropy 的由来。
 - 由于是一对一的计算，占据更多空间 <i>O</i>(<i>K</i><sup>2</sup>)·<b>w</b>
 
 ---
+---
+---
 
+## Lecture 12: Nonlinear Transformation
 
+——
 
+### 二次曲线
+
+线性模型的 hypotheses 从几何的角度上是空间中的直线（平面），在从代数的角度上是权重向量和数据的乘积得分。
+
+这样的好处是这个模型被 <i>d</i><sub>VC</sub> 限制住，但坏处是有些问题无法解决，比如数据是真的线性不可分的（不是因为噪音，比如一个圆形的分类器）。
+
+对于一个圆形的分类器（某个圆形内部是 +1，外部是 -1），比如：
+
+<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(-\mathrm{x}_1^2-\mathrm{x}_2^2+0.6\right\)"/>
+
+那我们是不是还要再重新再套用一下上面我们对线性分类的所有操作？比如PLA，比如回归等等。
+
+太麻烦了！下面我们就用一种系统的方式来解决这个问题。
+
+以上面的圆形为例，我们可以换一种方式来看这个公式：
+
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&\,=\textrm{sign}\left(\underbrace{0.6}_{\widetilde{\mathrm{w}}_0}\,\cdot\,\underbrace{1}_{\mathrm{z}_0}+\underbrace{(-1)}_{\widetilde{\mathrm{w}}_1}\,\cdot\,\underbrace{\mathrm{x}_1^2}_{\mathrm{z}_1}+\underbrace{(-1)}_{\widetilde{\mathrm{w}}_2}\,\cdot\,\underbrace{\mathrm{x}_2^2}_{\mathrm{z}_2}\right)\\&\,=\textrm{sign}\left(\widetilde{\mathbf{w}}^T\mathbf{z}\right)\end{align*}"/>
+
+这样就相当于我们把每个 x 都转换到一个 z 的空间中（在这个例子中，这个 x 到 z 的操作就是取平方），然后在这个 z 的空间中这个数据就是线性分类器可以解决的了。
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{x}\in\mathcal{X}\stackrel{\boldsymbol\Phi}{\longmapsto}\mathbf{z}\in\mathcal{Z}"/>
+
+这就是 **特征转换**（Feature Transform）。
+
+---
+
+z 空间中的一条线，可能是 x 空间中的一个曲线，不过现在这个曲线是有限制的，如果想要所有的二次曲线，就需要补上其他的项：
+
+<img src="http://latex.codecogs.com/svg.latex?{\boldsymbol\Phi}_2(\mathbf{x})=(1,\mathrm{x}_1,\mathrm{x}_2,\mathrm{x}_1^2,\mathrm{x}_2^2)"/>
+
+这样的转换（二次曲线）其实是包含了之前所有的直线（线性分类器），这样我们就有了一个二次曲线的集合，下面我们就该讨论如何从中取出一个好的曲线分类器。
+
+###
 
 
 ---
