@@ -20,6 +20,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 （如果从理论角度出发，需要深入掌握各种机器学习理论，花费大量时间，却不实用；而如果从技术角度出发，虽然可以快速介绍多种机器学习方法，但无法清晰理解，难以帮助应用。）
 
+---
 
 ## Lecture 1: The Learning Problem
 
@@ -1284,9 +1285,45 @@ cross-entropy 的由来。
 这个算法和 口袋算法（Pocket Algorithm）的计算量是类似的。
 
 ---
+---
+---
 
+## Lecture 11: Linear Models for Classification
+
+——
+
+### 线性模型的二分类问题
+
+总结一下目前我们学过的三个 **线性模型**：
+- 线性分类器，Linear classification
+- 线性回归，Linear regression
+- 逻辑回归，Logistic regression
+
+![](./Snapshot/Snap18.png)
+
+那么能否借用简单的线性回归或者逻辑回归来代替难以解决的线性分类问题呢？
+
+首先来看一下三个模型的 **错误衡量**：
+
+![](./Snapshot/Snap19.png)
+
+从图像上可以看出，线性回归和逻辑回归的错误都是大于线性分类的：
+
+![](./Snapshot/Snap20.png)
+
+因此，用线性回归和逻辑回归，相当于用上限限制住了线性分类的错误上限，因此是可以用来解决线性分类问题的。
+
+通常使用线性回归的解作为PLA、Pocket和逻辑回归的初始值，因为它最容易优化；通常也会使用逻辑回归来解决二元分类问题的。
 
 ---
+
+
+
+
+
+
+
+
 
 
 
