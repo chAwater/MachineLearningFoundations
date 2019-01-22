@@ -1274,7 +1274,7 @@ cross-entropy 的由来。
 - 在一个循环 *t* = 0,1,2,3,... 中：
 >
 > - 计算梯度：
->> <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0"/>
+>> <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0"/>
 >
 > - 更新 **w**：
 >> <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\mathbf{w}_t)}"/>
@@ -1317,11 +1317,29 @@ cross-entropy 的由来。
 
 ---
 
+### 随机的梯度下降 (Stochastic Gradient Descent, SGD)
 
+我们介绍过了 PLA 和逻辑回归和梯度下降，这两个方法都是逐步的（Iterative）优化 **w**；在PLA中，每次选出一个点来计算修正的方向；而在梯度下降中，每次需要计算所有数据，算出梯度，然后再优化。这样一来，梯度下降每一轮的计算量明显多了很多。
 
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\eta\cdot\underbrace{\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(\mathrm{y}_n\mathbf{x}_{n})}_{-\nabla\,E_{in}(\mathbf{w})}"/>
 
+我们希望每次只要看一个数据点，就能找到类似于所有点的更新方向。
 
+上面公式中的 <img src="http://latex.codecogs.com/svg.latex?\textstyle{\frac{1}{N}\sum_{n=1}^N}"/> 可以看成是随机选取 _n (N)_ 个数据的期望（ <i>&epsilon;</i> ），这随机选取 _n_ 个数据得到的梯度就叫做 **Stochastic Gradient** 。可以看成是真正的梯度加上一个 **噪音** 。当梯度下降进行足够多次之后，随机的梯度的均值应该等于真正的梯度。当数据很多或者数据就是一个一个收集来的时候（online learning）这样做就很好。
 
+这样做的优势就是很简单，节约了计算成本；缺点是以为每一步的梯度是随机的，因此可能不太稳定。
+
+这就是 SGD：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\eta\cdot\theta(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(\mathrm{y}_n\mathbf{x}_{n})"/>
+
+这个公式和PLA非常像，区别就是 SGD的 <i>&theta;</i> 和 <i>&eta;</i> 和 PLA 的 sign 。
+
+但是还有两个小问题：
+- 这个算法什么时候停下来？（梯度下降需要梯度为0，但是SGD不计算这个梯度）
+  - 相信只要进行足够多次优化之后就会得到很好的结果，因此停下来
+- <i>&eta;</i> 如何选择？
+  - 通常经验值是 0.1
 
 
 
