@@ -1543,7 +1543,7 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 ---
 
-### Deterministic Noise
+### 内在的噪音
 
 下面我们就来仔细研究一下 `噪音` 和 `数据大小` 。
 
@@ -1574,6 +1574,23 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 - 对于某个确定的点，这个噪音是固定不变的
 
 在计算机科学中的 `伪随机数` 就是这么产生的。
+
+### 避免 Overfitting
+
+根据上面的学习，可以想到下面的几种方法来避免 overfitting：
+- 从简单的模型开始
+- 数据清洗 / 修剪（减少噪音）
+  - 清洗：修改数据
+  - 修剪：删除数据
+- 从已有数据中产生新的数据（Data hinting）
+  - 比如在图片分类问题中，将图片稍微平移、旋转
+- 正则化调控（Regularization）
+- 验证（Validation）
+
+---
+---
+---
+
 
 
 
