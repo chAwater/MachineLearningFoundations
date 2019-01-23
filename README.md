@@ -1541,14 +1541,39 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 对于第二个例子，在没有噪音的情况中为什么仍然会 Overfitting ？因为并不是真的没有`噪音`。在`目标函数`太复杂的情况下，`噪音`来自于这个复杂度，或者说来自于数据点的取样。
 
+---
 
+### Deterministic Noise
 
+下面我们就来仔细研究一下 `噪音` 和 `数据大小` 。
 
+假设我们的数据是来自于一个 _Q_ 次多项式和一定的高斯噪音：
 
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathrm{y}\,&\,=\,f(x)+\epsilon\,&\\\,&\,\sim\,{Gaussian}\bigg(\underbrace{\sum_{q=0}^{Q_f}\alpha_q\mathrm{x}^q}_{f(x)},\,\sigma^2\bigg)\end{align*}"/>
 
+我们想要研究不同的 _N_ , <i>&sigma;</i><sup>2</sup> , <i>Q<sub>f</sub></i> 对 overfit 有什么影响。
 
+那么要如何衡量 overfit 的程度呢？ <i>E</i><sub>out</sub> ( <i>g</i><sub>10</sub> ) - <i>E</i><sub>out</sub> ( <i>g</i><sub>2</sub> )
 
+结果如下：
 
+![](./Snapshot/Snap26.png)
+
+根据这个图就可以总结出 4 种出现 overfit 的情况：
+- 数据太少
+- 随机的噪音很大
+- 内在的噪音很大（`目标函数`复杂度很高）
+- `函数集合`复杂度过高
+
+![](./Snapshot/Snap27.png)
+
+内在的噪音是指当 `目标函数` 不在当前的 `函数集合` 时（`目标函数`复杂度很高），`函数集合` 中最好的那个 `假设函数` 和 `目标函数` 的差距。
+
+这个噪音很像随机的噪音，区别是：
+- 和函数集合有关
+- 对于某个确定的点，这个噪音是固定不变的
+
+在计算机科学中的 `伪随机数` 就是这么产生的。
 
 
 
