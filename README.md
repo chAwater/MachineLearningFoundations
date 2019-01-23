@@ -1496,6 +1496,45 @@ z 空间中的一条线，可能是 x 空间中的一个曲线，不过现在这
 
 ## Lecture 13: Hazard of Overfitting
 
+—— 介绍 **Overfit 过拟合** 的概念
+
+### 什么是 Overfitting
+
+想象我们的数据来自一个二次曲线上的点，加上一点点噪音，我们希望机器学习能够得到的模型是那条二次曲线；
+
+但是我们并不知道我们的数据来自二次曲线，因此我们可能会使用一个四次的多项式来做特征转换，然后做线性回归；这样一来，我们可能得到一条四次曲线，这条曲线的 <i>E</i><sub>in</sub> 很小，甚至是 0；但是这个曲线在我们没有看到的数据上的表现肯定很差，也就是说 <i>E</i><sub>out</sub> 会很大，这就是 **Bad Generalization** 的问题，无法举一反三。
+
+---
+
+在上面 Model Complexity 曲线中，可以看出来随着 Model Complexity 的增加，<i>E</i><sub>out</sub> 有一个先减少后增加的过程，但是 <i>E</i><sub>in</sub> 一直在减少。
+
+也就是说，通过增加 Model Complexity ，我们把 fitting 做得更好了，但是却做得越来越过头（over）了，导致 <i>E</i><sub>out</sub> 的增加，这就是 **Overfitting 过拟合** 。
+
+相对应的，很低的 Model Complexity 情况下，<i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 都很大，这就是 **Underfitting 欠拟合** 。
+
+---
+
+Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E</i><sub>in</sub> 很小但 <i>E</i><sub>out</sub> 很大；而 Overfitting 是指一个 <i>E</i><sub>in</sub> 变低但<i>E</i><sub>out</sub> 却变高的过程。
+
+---
+
+下面是一个日常生活中的比喻来解释 overfit 问题：
+
+![](./Snapshot/Snap22.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
