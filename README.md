@@ -838,11 +838,11 @@ VC Dimension 和下面这些都没有关系：
 
 #### VC Bound
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_{\mathcal{D}}[|E_{in}(g)-E_{out}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_{V\!C}}\,\exp\,(-\frac{1}{8}\epsilon^2N)"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbb{P}_{\mathcal{D}}[|E_{in}(g)-E_{out}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)"/>
 
 不等式左边是“坏事情”发生的概率，如果我们把不等式右边作为 &delta; ，那么“好事情”发生的概率就是 1-&delta;，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?\begin{align*}4\,(2N)^{d_{V\!C}}\,\exp\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\mathrm{ln}\left(\frac{4(2N)^{d_{V\!C}}}{x}\right)}&\end{align*}"/>
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\mathrm{ln}\left(\frac{4(2N)^{d_\textrm{VC}}}{x}\right)}&\end{align*}"/>
 
 等式右边的这个项叫做 (Penalty for) Model Complexity，<img src="http://latex.codecogs.com/svg.latex?\mathbf{\Omega}\,(N,\mathcal{H},\delta)"/>
 
@@ -1392,7 +1392,9 @@ cross-entropy 的由来。
 
 ## Lecture 12: Nonlinear Transformation
 
-——
+—— 介绍非线性变换（特征转换）的概念
+
+—— 介绍特征变换需要付出的代价
 
 ### 二次曲线
 
@@ -1470,9 +1472,34 @@ z 空间中的一条线，可能是 x 空间中的一个曲线，不过现在这
   - 如果我们仔细观察这个数据，可能会发现只需要所有的二次项不需要一次项就可以，这样 <i>d</i><sub>VC</sub> = 3；
   - 再“聪明”一点的人，可能可以直接看出来我们的曲线 <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(-\mathrm{x}_1^2-\mathrm{x}_2^2+0.6\right\)"/> 这样是不是 <i>d</i><sub>VC</sub> 就是 1 了 ？
 
-  不是的！实际上我们观察数据的过程，就相当于我们用自己的 **人脑** 进行了“学习”，尽管对于这个机器学习的 <i>d</i><sub>VC</sub> 很小，但是实际上已经在 **人脑** 中付出了一定的代价，而这个代价没有被算进来，因此会被低估！**人脑** 的 <i>d</i><sub>VC</sub> 应该是很大的！
+  不是的！实际上我们观察数据的过程，就相当于我们用自己的 **人脑** 进行了“学习”，尽管对于这个机器学习的 <i>d</i><sub>VC</sub> 很小，但是实际上已经在 **人脑** 中付出了一定的代价 <i>d</i><sub>VC</sub> ，而这个代价没有被算进来，因此 <i>d</i><sub>VC</sub> 会被低估！**人脑** 的 <i>d</i><sub>VC</sub> 应该是很大的！
 
   因此在机器学习的过程中要非常的小心，避免 **人脑** 把 **聪明的决策** 放入到机器学习中。
+
+### 函数集合的结构
+
+由于多项式的特征，高次的多项式变换是包含低次的多项式变换的，因此有：
+
+![](./Snapshot/Snap21.png)
+
+即：
+
+<img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathcal{H}_0\,&\,\subset\,&\,\mathcal{H}_1\,&\,\subset\,&\,\mathcal{H}_2\,&\,\subset\,&\,\mathcal{H}_3\,&\,\subset\,&\,\cdots\\d_\textrm{VC}(\mathcal{H}_0)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_1)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_2)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_3)\,&\,\leq\,&\,\cdots\\E_{in}(g_0)\,&\,\ge\,&\,E_{in}(g_1)\,&\,\ge\,&\,E_{in}(g_2)\,&\,\ge\,&\,E_{in}(g_3)\,&\,\ge\,&\,\cdots\end{align*}"/>
+
+这就是我们 Model Complexity 的曲线！（再次强调！）
+
+因此，通常我们会从 Model Complexity 很小的地方开始，用很简单的转换来尝试机器学习，如果得到满意的 <i>E</i><sub>in</sub> 那就万事大吉；如果结果不好，就一点点增加 Model Complexity 来一点点的做到更好。
+
+---
+---
+---
+
+## Lecture 13: Hazard of Overfitting
+
+
+
+
+
 
 
 
