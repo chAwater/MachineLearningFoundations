@@ -1496,7 +1496,9 @@ z 空间中的一条线，可能是 x 空间中的一个曲线，不过现在这
 
 ## Lecture 13: Hazard of Overfitting
 
-—— 介绍 **Overfit 过拟合** 的概念
+—— 介绍 **Overfit 过拟合** 的概念和发生的原因
+
+—— 简单介绍避免 Overfit 的方法
 
 ### 什么是 Overfitting
 
@@ -1590,6 +1592,82 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 ---
 ---
 ---
+
+## Lecture 14: Regularization
+
+—— 介绍正则化的概念
+
+——
+
+### 正则化的函数集合
+
+想象一个高次曲线，使用这个高次曲线会有 overfitting 的问题，但是因为高次曲线的函数集合是包含低次曲线的函数集合的，因此可以用一种方法把高次曲线转化为低次曲线，从而避免 overfitting 。
+
+一个很简答的办法就是让那些高次曲线中的高次项系数（**w**）为 0，就可以把高次曲线变成低次曲线，这相当于在原本的函数集合上加上了一个限制条件，这就是 **正则化（Regularization）** 。
+
+使用这个有限制条件的函数集合不仅比使用简单的低次曲线更灵活（函数集合更大），也比使用高次曲线更安全（不会overfit），但是求解却是个 NP-hard 问题，那么怎么办呢？
+
+很简单，我们把这个限制条件一点点的放宽松：
+- 某几个高次项系数为 0
+- 有 _n_ 个项的系数为 0
+- 所有项系数的平方和小于 _C_
+
+这样的好处是可以通过调整这个参数 _C_ 来调整这个函数集合，而且这些函数集合也是一层一层相互包含的。
+
+那么这个新的线性回归问题就变成了：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\,(\mathbf{w}^T\mathbf{z}_n-\mathrm{y}_n)^2\quad\,\textrm{s.t.}\,\sum_{q=0}^{Q}\,\mathrm{w}_q^2\leq\,C"/>
+
+向量表示：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{in}(\mathbf{w})=\frac{1}{N}(\mathrm{Z}\mathbf{w}-\mathbf{y})^T(\mathrm{Z}\mathbf{w}-\mathbf{y})\quad\,\textrm{s.t.}\,\mathbf{w}^T\mathbf{w}\leq\,C"/>
+
+几何意义：
+
+![](./Snapshot/Snap28.png)
+
+ 限制条件（圆形）限制住了梯度的方向，因此最好的解应该是梯度的反方向 -&nabla; <i>E</i><sub>in</sub>(<b>w</b><sub>REG</sub>) 与  <b>w</b><sub>REG</sub> 是平行的（如果不平行，就存在切向这个圆形的分量）。
+
+我们将这两个向量的比值设置为一个常数，因此有：
+
+<img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w}_\textrm{REG})+\frac{2\lambda}{N}\,\mathbf{w}_\textrm{REG}=\textbf{0}"/>
+
+其中的 &lambda; (>0)，叫做 **拉格朗日乘数 Lagrange Multiplier**，常用于解决有条件的最佳化问题。
+
+带入梯度：
+
+<img src="http://latex.codecogs.com/svg.latex?\frac{2}{N}\,(\mathbf{Z}^T\mathbf{Z}\mathbf{w}_\textrm{REG}-\mathbf{Z}^T\mathbf{y})+\frac{2\lambda}{N}\,\mathbf{w}_\textrm{REG}=\textbf{0}"/>
+
+解得：
+
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\textrm{REG}\gets(\mathbf{Z}^T\mathbf{Z}+\lambda\mathbf{I})^{-1}\mathbf{Z}^T\mathbf{y}"/>
+
+（只要 &lambda; >0，这个反矩阵是存在的）
+
+这个也叫做 **ridge regression** 。
+
+---
+
+这个问题也可以从微积分的角度看，相当于一个新的最小化问题（上面等于0的公式相当于这个公式的求导）：
+
+<img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}"/>
+
+这样我们就把限制条件添加到 <i>E</i><sub>in</sub> 里面去了，这个新的 <i>E</i><sub>in</sub> 叫做 augmented error，之前条件中的常数 C 也能够对应到某个 &lambda; ( &ge; 0 )。
+
+&lambda; 是个非常强大的限制，增加一点点就可以起到很大的作用，而且可以和任何变换-线性模型搭配。
+
+---
+
+这里有一个小细节：
+
+如果 -1 &le; x &le; 1，当我们的多项式转换次数很高时，这个 _Q_ 次的 x 值会变得很小很小，因此可能需要很大很大的 w<sub>q</sub>，所以其实它们是被过度的“惩罚”了。
+
+因此我们用到了“坐标转换”的技巧，我们可以把多项式函数看做一个向量，因为这些向量不是“垂直”的所以才出现了这个问题，因此我们使用相互“垂直”的多项式，就会有更好的效果。这种多项式叫做 Legendre Polynomial。
+
+（我完全没搞懂这个小细节 #\_# ）
+
+---
+
 
 
 
