@@ -290,12 +290,14 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - **分类** 问题：Binary Classification => Multiclass Classification
   - <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\left\{+1,-1\right\};\;\mathcal{Y}=\left\{1,2,3,\ldots,K\right\};"/>
+
     - 健康/病人诊断
     - 正常/垃圾邮件
     - 衣服大小
     - 硬币识别
 - **回归** 分析：Regression, bounded regression
   - <img src="http://latex.codecogs.com/svg.latex?\mathcal{Y}=\mathbb{R}\;\mathrm{or}\;\mathcal{Y}=[\mathrm{lower},\mathrm{upper}]\subset\mathbb{R}"/>
+
     - 股价、房价预测
     - 天气、温度预测
 - 结构 学习：Structured learning
@@ -752,7 +754,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <img src="http://latex.codecogs.com/svg.latex?2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)"/>
 
-#### VC bound
+#### VC Bound
 
 整理一下公式得到：
 
@@ -1597,7 +1599,7 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 —— 介绍正则化的概念
 
-——
+—— 介绍两种常用的正则化方法
 
 ### 正则化的函数集合
 
@@ -1652,7 +1654,7 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 <img src="http://latex.codecogs.com/svg.latex?E_{in}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}"/>
 
-这样我们就把限制条件添加到 <i>E</i><sub>in</sub> 里面去了，这个新的 <i>E</i><sub>in</sub> 叫做 augmented error，之前条件中的常数 C 也能够对应到某个 &lambda; ( &ge; 0 )。
+这样我们就把限制条件添加到 <i>E</i><sub>in</sub> 里面去了，这个新的 <i>E</i><sub>in</sub> 叫做 <i>E</i><sub>aug</sub> (Augmented error)，之前条件中的常数 C 也能够对应到某个 &lambda; ( &ge; 0 )。
 
 &lambda; 是个非常强大的限制，增加一点点就可以起到很大的作用，而且可以和任何变换-线性模型搭配。
 
@@ -1664,10 +1666,63 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 因此我们用到了“坐标转换”的技巧，我们可以把多项式函数看做一个向量，因为这些向量不是“垂直”的所以才出现了这个问题，因此我们使用相互“垂直”的多项式，就会有更好的效果。这种多项式叫做 Legendre Polynomial。
 
+![](./Snapshot/Snap29.png)
+
 （我完全没搞懂这个小细节 #\_# ）
 
 ---
 
+### 正则化和 VC 理论的关系
+
+总结比较一下：
+- Augmented error:
+> <img src="http://latex.codecogs.com/svg.latex?E_{aug}(\mathbf{w})\,=\,E_{in}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}"/>
+- VC Bound:
+> <img src="http://latex.codecogs.com/svg.latex?E_{out}(\mathbf{w})\,\le\,E_{in}(\mathbf{w})+\Omega(\mathcal{H})"/>
+
+在我们优化 <i>E</i><sub>aug</sub> 时，通过某个 &lambda; 对应到某个 C，从而对应到 VC Bound 中的某个 <img src="http://latex.codecogs.com/svg.latex?\Omega(\mathcal{H}(C))"/>，从而确保了 VC Bound 的限制关系。
+
+从另外的一个角度上看：
+- <i>E</i><sub>aug</sub> 中的 <b>w</b><sup><i>T</i></sup><b>w</b> 相当于 &Omega; (<b>w</b>)，表示了某一个 hypothesis 的复杂度；
+- VC Bound 中的 &Omega; 则表示了整个函数集合（hypothesis set）的复杂度；
+
+当 Regularizer 表现很好的时候，<i>E</i><sub>aug</sub> 相当于一个比 <i>E</i><sub>in</sub> 更好的表示 <i>E</i><sub>out</sub> 的 **代理** 。
+
+### Regularizer 的选择
+
+选择 Regularizer 通常基于以下三个角度：
+- 利用目标函数有关的特征
+  - 例如目标函数是对称的（偶函数），就使用对应偶函数的 Regularizer
+- 有道理的
+  - **平滑** 的函数（降低噪音）
+  - **简单** 、复杂度低的函数
+    - L1 (sparsity) regularizer: &sum; |w<sub>q</sub>|
+- 有利于优化的
+  - L2 weight-decay regularizer: &sum; w<sub>q</sub><sup>2</sup>
+
+这三个选择的角度和选择 **错误衡量** 的角度是一样的！！！
+
+那么如果 Regularizer 没有选好怎么办？
+
+没关系！只要保证 &lambda; = 0 的可能性存在，最差就相当于没有 Regularizer。
+
+---
+
+比较常用的 L1 和 L2 Regularizer：
+
+![](./Snapshot/Snap30.png)
+
+L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在某些稀疏（sparse）的情形中会很实用。
+
+---
+
+最后还剩下一个问题就是 &lambda; 的选择，显然在噪音越大的时候应该选择越大的  &lambda;，我们将会在后面详细介绍。
+
+---
+---
+---
+
+## 
 
 
 
