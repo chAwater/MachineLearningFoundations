@@ -384,7 +384,7 @@ Fun Time：嘲讽一下某些“智商测试”
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|\nu-\mu|>\epsilon]\,\leq\,2\,\exp\,(-2\epsilon^2N)"/>
 
 这个公式非常有用：
-- 不需要"知道"未知的 <i>&mu;</i>
+- 不需要“知道”未知的 <i>&mu;</i>
 - 对于任何 _N_ 和 <i>&epsilon;</i> 都是有效的
 - 在 _N_ 越大的时候偏差越小
 
@@ -1755,7 +1755,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 <i>E</i><sub>in</sub> :
 - 从`数据集合`中计算
 - 数据是可以得到的
-- 被`数据集合` "**污染**" ，因为被`机器学习算法`用于来选择 hypothesis
+- 被`数据集合` “**污染**” ，因为被`机器学习算法`用于来选择 hypothesis
 
 <i>E</i><sub>test</sub> :
 - 从测试数据中计算
@@ -1766,14 +1766,41 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 
 综合上面的两个，我们可以选出一个中间的衡量标准：
 
-先从`数据集合`拿出一部分数据"**藏起来**"，然后就像对待`测试数据`一样，只在最后用来做选择的根据。自己考自己，这是一种`合理的作弊`。
+先从`数据集合`拿出一部分数据“**藏起来**”，然后就像对待`测试数据`一样，只在最后用来做选择的根据。自己考自己，这是一种`合理的作弊`。
 
 <i>E</i><sub>val</sub> :
 - 从`数据集合`中的一部分数据计算
 - 数据是可以得到的
 - 不要让这部分数据被`机器学习算法`使用
 
-### 
+### 验证 Validation
+
+整理一下，现在我们的做模型选择的流程是：
+- 随机（独立同分布）拿出一部分（<i>K</i>）数据“**藏起来**”，它们叫做 **验证** 数据（并不是真正的“测试”）
+- 用剩下一部分的数据做`模型选择`，它们叫做 **训练** 数据
+- 得到`假设函数`，有
+> <img src="http://latex.codecogs.com/svg.latex?E_{out}(g_m^-)\,\leq\,E_{val}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)"/>
+- 用验证数据做`模型选择`
+>
+> <img src="http://latex.codecogs.com/svg.latex?m^*=\mathop{\textrm{argmin}}_{1\le{m}\le{M}}(E_m=E_{val}(\mathcal{A}_m(\mathcal{D}_{train})))"/>
+>
+> 这里的 _g_ 有个 - 号，是因为它是用一部分数据得到的；但是理论上如果用全部的数据应该会得到更好的结果，就是没有减号的 _g_ ；所以当我们找到最好的 _m_ 时，通常会再用全部数据重新跑一次，得到做好的 _g_ 。
+- 用全部数据得到 _g_
+> <img src="http://latex.codecogs.com/svg.latex?E_{out}(g_{m^*})\,\leq\,E_{out}(g_{m^*}^-)\,\leq\,E_{val}(g_{m^*}^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)"/>
+
+一张图概括一下：
+
+![](./Snapshot/Snap31.png)
+
+这里有两个近似：
+
+<img src="http://latex.codecogs.com/svg.latex?E_{out}(g)\,\underbrace{\approx}_{(\textrm{Small}\,K)}\,E_{out}(g^-)\,\underbrace{\approx}_{(\textrm{Large}\,K)}\,E_{val}(g^-)"/>
+
+经验上，多数情况下，用 **10~20%** 的数据作为验证数据会有比较好的结果。
+
+---
+
+
 
 
 
