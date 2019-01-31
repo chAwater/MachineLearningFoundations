@@ -1798,7 +1798,28 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 
 经验上，多数情况下，用 **10~20%** 的数据作为验证数据会有比较好的结果。
 
----
+### Leave-One-Out Cross Validation
+
+考虑一种极端情况，用 **1** 个数据（n）作为`验证数据`，那么得到的 `验证错误` 就是在这个数据点上的错误 <i>e</i><sub>n</sub>；
+
+不过这个错误肯定不准，那么如果平均每个数据算出的`验证错误`，不就可以更准了嘛！这就是 **Leave-One-Out Cross Validation**。
+
+其中，**Cross Validation**，交叉验证，是指这些数据有时候做`训练`有时候错`验证`。
+
+<img src="http://latex.codecogs.com/svg.latex?E_{loocv}(\mathcal{H},\mathcal{A})=\frac{1}{N}\sum^{N}_{n=1}e_n=\frac{1}{N}\sum^{N}_{n=1}\textrm{err}(g_n^-(\mathbf{x}_n),\mathrm{y}_n))"/>
+
+
+我们希望这个错误和 <i>E</i><sub>out</sub> 很接近，下面是证明：
+
+![](./Snapshot/Snap32.png)
+
+（其中的 **期望** 是证明的关键！）
+
+
+
+
+
+
 
 
 
