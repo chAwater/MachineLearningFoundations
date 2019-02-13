@@ -1922,9 +1922,39 @@ If the data is sampled in a biased way, learning will produce a similarly biased
 
 ### Data Snooping
 
+还记得我们曾经说过 “有一个‘超级聪明的人’，能一眼看出我们的曲线应该是 <img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\textrm{sign}\left\(-\mathrm{x}_1^2-\mathrm{x}_2^2+0.6\right\)"/>，这样 <i>d</i><sub>VC</sub> 就是 1 了” 的这个故事吗？我们聪明脑袋中的 VC Dimension 会进入模型中。造成模型 <i>d</i><sub>VC</sub> 的低估，这是很危险的！
 
+这个告诉我们：不要用眼睛、脑袋“偷看数据”。
 
+其实还有其他的偷看数据的方式，任何使用数据的过程都是间接的“偷看数据”。
 
+```
+If a data set has affected any step in the learning process, its ability to assess the outcome has been compromised.
+```
+
+第一个例子是 **数据标准化** 的问题，假设我们有8年的汇率数据，我们用前6年做训练，后2年做测试来预测汇率的变化。但是在我们训练模型之前需要把数据做一个`标准化`的过程。
+
+我们用8年的数据做标准化和用前6年的数据做标准化相比，结果会好很多！但是我们能不能这样做？不行，这也是一种 **偷看数据** ，间接的获得了`未来`数据的统计特征！！！
+
+---
+
+第二个例子是在科研中常常遇到的 **数据重用** ，第1个人发表论文说 模型1 在 数据1 中表现很好；第2个人也来接着研究，发表论文说 模型2 在 数据1 中表现更好（只用表现更好才会发表结果，不好的结果不会发表）！然后第3个、第4个人也来发表研究，把好的结果发表论文...
+
+这相当于什么？我们在讨论`模型选择`时说过，这相当于把 模型1、2、3、4 一起选择（甚至还包含那些没有发表的不好的模型），找出最好的！<i>d</i><sub>VC</sub> 很大！而且后面的人在研究时候看过前面人的结果，间接偷看到这个数据的特征！这也是一种 **偷看数据** ！
+
+```
+If you torture the data long enough, it will confess.
+```
+
+---
+
+偷看数据非常难以避免，一个折中的例子就是使用 **验证** 。
+
+同时要避免用数据来做决定/选择，不要看完数据再做决定/选择，但是可以先决定/选择再看数据。
+
+永远保持怀疑。
+
+### Power of Three
 
 
 
