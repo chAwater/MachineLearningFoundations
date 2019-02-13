@@ -1724,7 +1724,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 
 ## Lecture 15: Validation
 
-——
+—— 介绍验证的概念，介绍训练-验证-测试三步法
 
 ### 模型选择 Model Selection
 
@@ -1844,6 +1844,51 @@ Leave-One-Out 有一个很严重的问题，那就是 **计算量** 太大了！
 ---
 ---
 ---
+
+## Lecture 16: Three Learning Principles
+
+——
+
+### 奥卡姆剃刀 Occam's Razor
+
+```
+An explanation of the data should be made as simple as possible, but not simpler.
+
+The simplest model that fits the data is also the most plausible.
+
+Entities must not be multiplied beyond necessary. -- William of Occam
+```
+越简单越好，不要过分解释！
+
+那么：
+- 什么叫做简单的模型呢？
+- 为什么越简单越好呢？
+
+#### 简单的模型
+- 简单的假设函数 _h_
+  - 参数很少
+- 简单的模型 <img src="http://latex.codecogs.com/svg.latex?\mathcal{H}"/>
+  - 模型中的假设函数很少
+
+#### 越简单越好
+- 简单的模型
+- `成长函数`很小
+- 多数情况这个模型无法区分`数据`
+- 如果这个`模型`能够分开，那么这个`数据`就很有可能存在这个规律（显著性）
+- 相反，过度复杂的模型可以分开任意数据，因此就无法判断了
+
+```
+永远优先使用线性模型
+
+永远思考模型对于数据是否过于复杂了
+```
+
+###
+
+
+
+
+
 
 
 
