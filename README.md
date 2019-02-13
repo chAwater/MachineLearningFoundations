@@ -3,14 +3,40 @@ Notebooks for Machine Learning Foundations by @hsuantien
 
 ---
 
-## Coursera Links
+### 目录
+
+<!-- TOC depthFrom:1 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [MachineLearningFoundations](#machinelearningfoundations)
+	- [Lecture 1: The Learning Problem](#lecture-1-the-learning-problem)
+	- [Lecture 2: Learning Answer Yes/No](#lecture-2-learning-answer-yesno)
+	- [Lecture 3: Types of Learning](#lecture-3-types-of-learning)
+	- [Lecture 4: Feasibility of Learning](#lecture-4-feasibility-of-learning)
+	- [Lecture 5: Training versus Testing](#lecture-5-training-versus-testing)
+	- [Lecture 6: Theory of Generalization](#lecture-6-theory-of-generalization)
+	- [Lecture 7: VC Dimension](#lecture-7-vc-dimension)
+	- [Lecture 8: Noise and Error](#lecture-8-noise-and-error)
+	- [Lecture 9: Linear Regression](#lecture-9-linear-regression)
+	- [Lecture 10: Logistic Regression](#lecture-10-logistic-regression)
+	- [Lecture 11: Linear Models for Classification](#lecture-11-linear-models-for-classification)
+	- [Lecture 12: Nonlinear Transformation](#lecture-12-nonlinear-transformation)
+	- [Lecture 13: Hazard of Overfitting](#lecture-13-hazard-of-overfitting)
+	- [Lecture 14: Regularization](#lecture-14-regularization)
+	- [Lecture 15: Validation](#lecture-15-validation)
+	- [Lecture 16: Three Learning Principles](#lecture-16-three-learning-principles)
+
+<!-- /TOC -->
+
+---
+
+### Coursera Links
 
 - [机器学习基石上 (Machine Learning Foundations)-Mathematical Foundations](https://www.coursera.org/learn/ntumlone-mathematicalfoundations)
 - [机器学习基石下 (Machine Learning Foundations)-Algorithmic Foundations](https://www.coursera.org/learn/ntumlone-algorithmicfoundations)
 
 by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
-## 前言介绍
+### 前言介绍
 
 《机器学习基石》是国立台湾大学资讯工程系的 **林轩田** 老师开设的课程（**中文授课**）。
 
@@ -19,6 +45,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 从基础角度出发，既能保证学生能够了解机器学习的基本概念，同时对学生基础的要求最少，也能够保证课程不会太枯燥。
 
 （如果从理论角度出发，需要深入掌握各种机器学习理论，花费大量时间，却不实用；而如果从技术角度出发，虽然可以快速介绍多种机器学习方法，但无法清晰理解，难以帮助应用。）
+
+### 其他支持
+
+- [<img class="emoji" title=":atom:" alt=":atom:" src="https://github.githubassets.com/images/icons/emoji/atom.png" height="20" width="20" align="absmiddle"> Atom](https://atom.io)
+- [CodeCogs (LaTeX Editor API)](http://latex.codecogs.com)
+- [Grip](https://github.com/joeyespo/grip)
+- [Markdown Toc](https://github.com/nok/markdown-toc)
+
+
 
 ---
 
@@ -794,9 +829,9 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 ---
 
-我们给最大的、非 Break Point 的 输入叫做 **VC Dimension**，，标注为 _d_<sub>VC</sub> = _k_-1，它是一个`函数集合`的性质。
+我们给最大的、非 Break Point 的 输入叫做 **VC Dimension**，，标注为 <i>d</i><sub>VC</sub> = _k_-1，它是一个`函数集合`的性质。
 
-如果 _N_(_k_) >  _d_<sub>VC</sub> ，则 _N_(_k_) 就是 Break Point。
+如果 _N_(_k_) >  <i>d</i><sub>VC</sub> ，则 _N_(_k_) 就是 Break Point。
 
 VC Dimension 和下面这些都没有关系：
 - 机器学习算法
@@ -805,15 +840,15 @@ VC Dimension 和下面这些都没有关系：
 
 因此，在 VC Dimension 是有限的时候，我们无论如何都可以确保 <i>E</i><sub>in</sub> 和 <i>E</i><sub>out</sub> 是接近的。
 
-### _d_<sub>VC</sub> for Perceptrons
+### <i>d</i><sub>VC</sub> for Perceptrons
 
-我们上一章讨论的 2D Perceptrons 因为 _d_<sub>VC</sub> = 3 (Break Point _k_ = 4 )，所以可以学习。那么在更高维度的 Perceptrons 时怎么办呢？
+我们上一章讨论的 2D Perceptrons 因为 <i>d</i><sub>VC</sub> = 3 (Break Point _k_ = 4 )，所以可以学习。那么在更高维度的 Perceptrons 时怎么办呢？
 
-我们通过观察 1D 和 2D Perceptrons 发现 对于 _d_-D Perceptrons 有可能 _d_<sub>VC</sub> = _d_+1
+我们通过观察 1D 和 2D Perceptrons 发现 对于 _d_-D Perceptrons 有可能 <i>d</i><sub>VC</sub> = _d_+1
 
 下面我们就从两个角度来证明：
-1. _d_<sub>VC</sub> &geq; _d_+1
-2. _d_<sub>VC</sub> &leq; _d_+1
+1. <i>d</i><sub>VC</sub> &geq; _d_+1
+2. <i>d</i><sub>VC</sub> &leq; _d_+1
 
 - 为了证明 1，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter：
 
@@ -825,7 +860,7 @@ VC Dimension 和下面这些都没有关系：
 
 ---
 
-### _d_<sub>VC</sub> 的 `物理意义`
+### <i>d</i><sub>VC</sub> 的 `物理意义`
 
 那么 VC Dimension 为什么要叫 "Dimension" 呢？
 
@@ -833,10 +868,10 @@ VC Dimension 和下面这些都没有关系：
 
 类似的，VC Dimension 就表示了这个`函数集合`的**自由度**，衡量这个`函数集合`能够产生多少 Dichotomies 。
 
-- 如果 _d_<sub>VC</sub> 很小，那么“坏事情”发生的概率很小，但是函数集合可能只有很少的选择；
-- 如果 _d_<sub>VC</sub> 很小，“坏事情”发生的概率会变大，但是函数集合中有很多的选择；
+- 如果 <i>d</i><sub>VC</sub> 很小，那么“坏事情”发生的概率很小，但是函数集合可能只有很少的选择；
+- 如果 <i>d</i><sub>VC</sub> 很小，“坏事情”发生的概率会变大，但是函数集合中有很多的选择；
 
-### _d_<sub>VC</sub> 对于`机器学习`的意义
+### <i>d</i><sub>VC</sub> 对于`机器学习`的意义
 
 #### VC Bound
 
@@ -858,11 +893,11 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
 
 #### Sample Complexity
 
-类似的，VC Bound 的这个公式将 <i>&epsilon;</i> , <i>&delta;</i> , _d_<sub>VC</sub> 和 _N_ 联系起来，因此，对于一个机器学习问题，我们就可以根据我们对其准确度的要求（ <i>&epsilon;</i> , <i>&delta;</i> ）和模型的复杂度（ _d_<sub>VC</sub> ）计算出我们对数据集大小的要求（ _N_ ）。
+类似的，VC Bound 的这个公式将 <i>&epsilon;</i> , <i>&delta;</i> , <i>d</i><sub>VC</sub> 和 _N_ 联系起来，因此，对于一个机器学习问题，我们就可以根据我们对其准确度的要求（ <i>&epsilon;</i> , <i>&delta;</i> ）和模型的复杂度（ <i>d</i><sub>VC</sub> ）计算出我们对数据集大小的要求（ _N_ ）。
 
-通常情况下，理论上需要的 _N_ &asymp; 10,000 _d_<sub>VC</sub>
+通常情况下，理论上需要的 _N_ &asymp; 10,000 <i>d</i><sub>VC</sub>
 
-不过实际上一般只需要 _N_ &asymp; 10 _d_<sub>VC</sub>
+不过实际上一般只需要 _N_ &asymp; 10 <i>d</i><sub>VC</sub>
 
 这是因为我们在 VC Bound 推导的过程中使用了很多非常“宽松”的替换：
 - Hoeffding for <i>E</i><sub>out</sub>
@@ -872,7 +907,7 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
   - 任何数据都符合
 - 使用`上限函数`
   - 上限的上限，非常宽松
-  - 只需要考虑 _d_<sub>VC</sub> 而不需要考虑`函数集合`的其他细节
+  - 只需要考虑 <i>d</i><sub>VC</sub> 而不需要考虑`函数集合`的其他细节
 - 使用 `Union Bound`
   - 考虑了最坏的情况（可能重叠发生事件的概率被独立发生的概率累加）
   - 机器学习算法可以随意选择
@@ -983,7 +1018,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathrm{y}"/>
 
-通常情况下反矩阵都是存在的，因为 _d_<sub>VC</sub> &geq; _d_+1 。
+通常情况下反矩阵都是存在的，因为 <i>d</i><sub>VC</sub> &geq; _d_+1 。
 
 如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathrm{y}"/>。
 
@@ -991,7 +1026,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ####### Issues TODO #######
 
-为什么说因为 _d_<sub>VC</sub> &geq; _d_+1 ，所以反矩阵通常都是存在的？
+为什么说因为 <i>d</i><sub>VC</sub> &geq; _d_+1 ，所以反矩阵通常都是存在的？
 
 这个 pseudo-inverse 是如何计算的？
 
@@ -1847,7 +1882,9 @@ Leave-One-Out 有一个很严重的问题，那就是 **计算量** 太大了！
 
 ## Lecture 16: Three Learning Principles
 
-——
+—— 介绍机器学习的三个原则
+
+—— 总结
 
 ### 奥卡姆剃刀 Occam's Razor
 
@@ -1902,7 +1939,8 @@ Entities must not be multiplied beyond necessary. -- William of Occam
 这就是抽样偏差！
 
 ```
-If the data is sampled in a biased way, learning will produce a similarly biased outcome.
+If the data is sampled in a biased way,
+learning will produce a similarly biased outcome.
 ```
 
 抽样有偏差，学习就有偏差！
@@ -1929,7 +1967,8 @@ If the data is sampled in a biased way, learning will produce a similarly biased
 其实还有其他的偷看数据的方式，任何使用数据的过程都是间接的“偷看数据”。
 
 ```
-If a data set has affected any step in the learning process, its ability to assess the outcome has been compromised.
+If a data set has affected any step in the learning process,
+its ability to assess the outcome has been compromised.
 ```
 
 第一个例子是 **数据标准化** 的问题，假设我们有8年的汇率数据，我们用前6年做训练，后2年做测试来预测汇率的变化。但是在我们训练模型之前需要把数据做一个`标准化`的过程。
@@ -1943,7 +1982,8 @@ If a data set has affected any step in the learning process, its ability to asse
 这相当于什么？我们在讨论`模型选择`时说过，这相当于把 模型1、2、3、4 一起选择（甚至还包含那些没有发表的不好的模型），找出最好的！<i>d</i><sub>VC</sub> 很大！而且后面的人在研究时候看过前面人的结果，间接偷看到这个数据的特征！这也是一种 **偷看数据** ！
 
 ```
-If you torture the data long enough, it will confess.
+If you torture the data long enough,
+it will confess.
 ```
 
 ---
