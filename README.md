@@ -1954,12 +1954,56 @@ If you torture the data long enough, it will confess.
 
 永远保持怀疑。
 
+---
+
 ### Power of Three
 
+最后我们来总结一下
 
+三个机器学习相关的领域：
+- Data Mining
+- Artificial Intelligence
+- Statistics
 
+三个理论保证：
+- Hoeffding
+  - One hypothesis
+  - Useful for testing
+- Multi-Bin Hoeffding
+  - _M_ hypotheses
+  - Useful for validation
+- VC
+  - All hypotheses
+  - Useful for training
 
+三个模型：
+- PLA/Pocket
+  - err = 0/1
+  - Minimize specially
+- Linear regression
+  - err = squared
+  - Minimize analytically
+- Logistic regression
+ - err = Cross-entropy
+ - Minimize iteratively
 
+三个工具：
+- Feature Transform
+- Regularization
+- Validation
 
+三个原则：
+- Occam's Razor
+- Sampling Bias
+- Data Snooping
+
+三个未来方向：
+- More Transform
+- More Regularization
+- Less Label
+
+那么我们的机器学习基石课程就到这里啦~
+
+大家在未来的学习中，应该会看到/用到很多这个课程中的内容，希望到时候还能记得~
 
 ---
