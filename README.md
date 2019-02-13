@@ -53,8 +53,6 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 - [Grip](https://github.com/joeyespo/grip)
 - [Markdown Toc](https://github.com/nok/markdown-toc)
 
-
-
 ---
 
 ## Lecture 1: The Learning Problem
@@ -231,7 +229,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - 那么，什么情况下PLA的循环会停止？
 
-数据是线性可分的（Linear Separable）
+> 数据是线性可分的（Linear Separable）
 
 - 当数据是线性可分的时候，PLA的循环就一定会停止吗？
 
@@ -239,7 +237,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\,\geq\,\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0"/>
 
-（任意一个数据点的向量表示与分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角cos值的乘积）
+（任意一个数据点的向量表示 与 分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角cos值的乘积）
 
 我们使用 **向量内积** 的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
@@ -249,7 +247,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\;(\mathbf{w}_0=\mathbf{0})"/>
 
-对于**分子**部分，有：
+对于 **分子** 部分，有：
 
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,=\mathbf{w}^T_f(\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})\\&\,\geq\,\mathbf{w}^T_f\mathbf{w}_{T-1}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
 
@@ -257,7 +255,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,\geq\,\mathbf{w}^T_f\mathbf{w}_0+T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\\&\,\geq\,T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}"/>
 
-对于**分母**部分，有：
+对于 **分母** 部分，有：
 
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}||\mathbf{w}_T||^2&\,=||\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\,=||\mathbf{w}_{T-1}||^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\end{align*}"/>
 
@@ -288,7 +286,9 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 因此，在数据 **线性可分** 时，PLA的循环 **最终会停下来**，找到一个很好的分割线。
 
+```
 ####### 怎么样！有没有感受到数学的NB之处！！ #######
+```
 
 ### Non-Separable Data & Pocket Algorithm
 
@@ -482,7 +482,9 @@ Fun Time：嘲讽一下某些“智商测试”
 
 思考： 通常 _M_ 都是无限大的，怎么办呢？我们将在后面进行分析
 
+```
 ####### 再次感受数学的力量吧！！！ #######
+```
 
 ---
 ---
@@ -531,7 +533,7 @@ _M_ 在个过程中起到什么作用呢？
 
 不过，这个 **Union bound** 的使用其实是太过宽松了（公式右边远大于左边）：
 
-考虑两个非常相似的 _h_<sub>1</sub> 和 _h_<sub>2</sub>，因为它们非常相似，因此它们的表现也是非常相似的；
+考虑两个非常相似的 <i>h</i><sub>1</sub> 和 <i>h</i><sub>2</sub>，因为它们非常相似，因此它们的表现也是非常相似的；
 
 所以让它们犯错误的数据（“不好的”数据）也是非常相似的；
 
@@ -545,23 +547,28 @@ _M_ 在个过程中起到什么作用呢？
 
 下面我们考虑一个平面的直线（线性分类器）：
 - 总共（`函数集合`中）有多少条线（_M_）？
-**无数条**！
+> **无数条**！
+
 - 根据 1 个数据点 **x**<sub>1</sub>，可能把这些直线分成多少种？
-**2种**，产生判断 **x**<sub>1</sub> = -1 的直线和产生判断 **x**<sub>1</sub> = +1 的直线；
+> **2种**，产生判断 **x**<sub>1</sub> = -1 的直线和产生判断 **x**<sub>1</sub> = +1 的直线；
+
 - 根据 2 个数据点 **x**<sub>1</sub>, **x**<sub>2</sub>，可能把这些直线分成多少种？
-**4种**，可以分别用这些线对 **x**<sub>1</sub>, **x**<sub>2</sub> 的判断值表示：(0,0)，(0,1)，(1,0)，(1,1)；
+> **4种**，可以分别用这些线对 **x**<sub>1</sub>, **x**<sub>2</sub> 的判断值表示：(0,0)，(0,1)，(1,0)，(1,1)；
+
 - 根据 3 个数据点，可能把这些直线分成多少种？
-**最多8种**！因为在三点共线的情况下，有些判断值不可能出现！比如(0,1,0) 和 (1,0,1)；
+> **最多8种**！因为在三点共线的情况下，有些判断值不可能出现！比如 (0,1,0) 和 (1,0,1)；
+
 - 根据 4 个数据点，可能把这些直线分成多少种？
-**最多** ***14*** **种**！在任意的情况下都会有一些判断值的组合不可能出现！（比如产生这样判断值的直线在这个平面上是不存在的 <img src="http://latex.codecogs.com/svg.latex?\begin{smallmatrix}0&1\\1&0\end{smallmatrix}"/> ）
+> **最多** ***14*** **种**！在任意的情况下都会有一些判断值的组合不可能出现！（比如产生这样判断值的直线在这个平面上是不存在的 <img src="http://latex.codecogs.com/svg.latex?\begin{smallmatrix}0&1\\1&0\end{smallmatrix}"/> ）
+
 - 根据 ***N*** 个数据点，可能把这些直线分成多少种？
-**最多 2<sup><i>N</i></sup>** 种！不过当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>_N_</sup> ！
+> **最多 2<sup><i>N</i></sup>** 种！不过当 _N_ 超过某个值之后这个值 effective(_N_) < 2<sup>_N_</sup> ！
 
 因此，**(1) 如果** 能够使用这个值替换掉 _M_ ，就有
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{ef\/fective}(N)\cdot\exp\,(-2\epsilon^2N)"/>
 
-那么，**(2) 如果** effective(_N_) << 2<sup>_N_</sup> ，则 **机器学习就是可能的**！
+那么，**(2) 如果** effective(_N_) << 2<sup><i>N</i></sup> ，则 **机器学习就是可能的**！
 
 ### Effective Number of Hypothesis
 
