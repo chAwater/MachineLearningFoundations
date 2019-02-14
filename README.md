@@ -622,7 +622,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 上面我们提到，如果
 1. 使用 effective(_N_) 替换掉 _M_
-2. 且 effective(_N_) << 2<sup>_N_</sup>
+2. 且 effective(_N_) << 2<sup><i>N</i></sup>
 
 那么机器学习就是可能的：
 
@@ -630,7 +630,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 因此，我们希望决定 effective(_N_) 大小的这个 **成长函数** 是比较小的，希望它是多项式形式的而不是指数形式的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
 
-上面我们还提到了 Shatter 的概念，很明显，Shatter 对于我们来说是不好的，因为 Shatter 的时候成长函数是 2<sup>_N_</sup>。
+上面我们还提到了 Shatter 的概念，很明显，Shatter 对于我们来说是不好的，因为 Shatter 的时候成长函数是 2<sup><i>N</i></sup>。
 
 ---
 
@@ -814,7 +814,9 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 思考：对于其他的机器学习问题，如何使用 Break Point？
 
+```
 ####### 数学证明二维空间中的线性分类器是可以通过机器学习完成的！！ #######
+```
 
 ---
 ---
@@ -851,19 +853,57 @@ VC Dimension 和下面这些都没有关系：
 
 我们上一章讨论的 2D Perceptrons 因为 <i>d</i><sub>VC</sub> = 3 (Break Point _k_ = 4 )，所以可以学习。那么在更高维度的 Perceptrons 时怎么办呢？
 
-我们通过观察 1D 和 2D Perceptrons 发现 对于 _d_-D Perceptrons 有可能 <i>d</i><sub>VC</sub> = _d_+1
+我们通过观察 1D 和 2D Perceptrons 发现 对于 _d_-D Perceptrons 有可能 <i>d</i><sub>VC</sub> = <i>d</i>+1
 
 下面我们就从两个角度来证明：
-1. <i>d</i><sub>VC</sub> &geq; _d_+1
-2. <i>d</i><sub>VC</sub> &leq; _d_+1
+1. <i>d</i><sub>VC</sub> &geq; <i>d</i>+1
+2. <i>d</i><sub>VC</sub> &leq; <i>d</i>+1
+
+这里有点儿复杂（我囫囵吞枣了）：
 
 - 为了证明 1，我们需要找到一组数据，有 _d_+1 个输入，并且能够 Shatter：
 
+> 有这样一个矩阵 X，它是可逆的；
+>
+> 那么对于任意的 **y** ，我们需要找到一个 **w** 使：
+>
+> sign(X<b>w</b>) = **y**；
+>
+> 这个在 X<b>w</b> = **y** 上也成立；
+>
+> 因此有 <b>w</b> = X<sup>-1</sup><b>y</b>
+
+所以我们能够找到这些 **w** 。
+
 ![](./Snapshot/Snap09.png)
 
-- 为了证明 2，我们需要证明任何 _d_+2 个输入，都不能 Shatter：
+- 为了证明 2，我们需要证明 **任何** _d_+2 个输入，都不能 Shatter：
+
+> 对于这种矩阵 X，其 **行数多于列数**，因此存在 **线性相关** 关系；
+>
+> 因此有（线性组合）：
+>
+> x<sub>d+2</sub> = a<sub>1</sub>x<sub>1</sub> + a<sub>2</sub>x<sub>2</sub> + ... + a<sub>d+1</sub>x<sub>d+1</sub>
+>
+> 且 a 不全为 0；
+>
+> 因此，当 **w** 乘入等式两遍时，
+>
+> 假如 <b>w<sup>T</sup>x</b> 和a的符号相同，右边必定大于 0，
+>
+> 所以无法产生 <b>w<sup>T</sup>x<sub>d+2</sub></b> < 0 的情形；
+>
+> 所以不能 shatter。
 
 ![](./Snapshot/Snap10.png)
+
+---
+
+没有学过线性代数的“文科生”表示一脸懵逼：
+
+为什么对于矩阵 X，因为其 **行数多于列数**，所以存在 **线性相关** 关系？
+
+请在 [Issues #2](https://github.com/chAwater/MachineLearningFoundations/issues/2) 中回答。
 
 ---
 
@@ -896,7 +936,9 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
 
 ![](./Snapshot/Snap11.png)
 
+```
 ####### 从未想过这个图其实是可以数学推导得来的... #######
+```
 
 #### Sample Complexity
 
@@ -961,8 +1003,12 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 - False Reject: 应该是 +1 的数据，被我们的函数当成了 -1
 
 对于 0/1 error，这两种错误是一样的，但是考虑下面两个情形：
-1. 超市判断顾客，并给老顾客打折：对于 False Reject，老顾客会很不开心，影响很不好；对于 False Accept，超市只是损失了一点儿利润，影响很小；
-2. CIA 判断员工，员工的可以查看机密资料：对于 False Accept，机密文件可能被泄露，影响非常不好；对于 False Reject，员工会很不方便、不开心，但是没有什么损失；
+1. 超市判断顾客，并给老顾客打折：
+  - 对于 False Reject，老顾客会很不开心，影响很不好；
+  - 对于 False Accept，超市只是损失了一点儿利润，影响很小；
+2. CIA 判断员工，员工的可以查看机密资料：
+  - 对于 False Accept，机密文件可能被泄露，影响非常不好；
+  - 对于 False Reject，员工会很不方便、不开心，但是没有什么损失；
 
 因此，不同的应用也会用一些不同的错误衡量方式，但是通常这些错误衡量的细节、程度很难用数学来表示（很难数字化），所以通常会用一些有意义的错误衡量方式来替代，比如口袋算法中的 0/1 error，或者最小化 **高斯噪音** 的 Squared error。除此以外，还有一些其他的错误衡量方式，这些方式对机器学习算法来说比较简单、容易设计。
 
@@ -973,6 +1019,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 我们可以把`权重`看出是数据的复制，权重是 1000 就复制 1000 次，这样一来原有的算法（比如口袋算法）和 VC Bound 都仍然成立。
 
 思考一个问题：在 CIA 的例子中，如果数据集中员工（+1）的数据有 10 万个，而非员工（-1）的数据只有 10 个，即使使用 1000 作为权重，结果永远输出 +1 的函数仍然有很好的表现。如何解决这种数据极其不平衡（比如异常检查等）的例子？
+> 调整权重，或者使用其他的错误衡量方法
 
 ---
 ---
@@ -1021,19 +1068,19 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 <img src="http://latex.codecogs.com/svg.latex?\nabla\,E_{in}(\mathbf{w})=\frac{2}{N}\,(\mathbf{X}^T\mathbf{X}\mathbf{w}-\mathbf{X}^T\mathrm{y})=0"/>
 
-和二项式类似，当 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}^T\mathbf{X}"/> 的反矩阵存在时（invertible），这个解就是：
+和二项式类似，当 <img src="http://latex.codecogs.com/svg.latex?\mathbf{X}^T\mathbf{X}"/> 的逆矩阵存在时（invertible），这个解就是：
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathrm{y}"/>
 
-通常情况下反矩阵都是存在的，因为 <i>d</i><sub>VC</sub> &geq; _d_+1 。
+通常情况下逆矩阵都是存在的，因为 <i>d</i><sub>VC</sub> &geq; <i>d</i>+1 。
 
-如果反矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathrm{y}"/>。
+如果逆矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathrm{y}"/>。
 
 ---
 
 ####### Issues TODO #######
 
-为什么说因为 <i>d</i><sub>VC</sub> &geq; _d_+1 ，所以反矩阵通常都是存在的？
+为什么说因为 <i>d</i><sub>VC</sub> &geq; <i>d</i>+1 ，所以逆矩阵通常都是存在的？
 
 这个 pseudo-inverse 是如何计算的？
 
@@ -1686,7 +1733,7 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_\textrm{REG}\gets(\mathbf{Z}^T\mathbf{Z}+\lambda\mathbf{I})^{-1}\mathbf{Z}^T\mathbf{y}"/>
 
-（只要 &lambda; >0，这个反矩阵是存在的）
+（只要 &lambda; >0，这个逆矩阵是存在的）
 
 这个也叫做 **ridge regression** 。
 
