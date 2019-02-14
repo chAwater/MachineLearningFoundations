@@ -53,6 +53,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 - [Grip -- GitHub Readme Instant Preview](https://github.com/joeyespo/grip)
 - [Markdown Toc](https://github.com/nok/markdown-toc)
 
+### [Issues 欢迎一切纠错、优化、改进意见](https://github.com/chAwater/MachineLearningFoundations/issues)
+
 ---
 
 ## Lecture 1: The Learning Problem
@@ -1234,6 +1236,8 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 <img src="http://latex.codecogs.com/svg.latex?f(\mathbf{x})=\textrm{sign}\left(P(+1|\mathbf{x})-\frac{1}{2}\right)\in\left\{-1,\,+1\right\}"/>
 
+---
+
 下面思考一个类似的问题：判断一个人患某种疾病的风险（患病的概率）。
 
 这个问题和分类问题类似，也叫 soft （软的）分类问题，我们最关心的是这个`概率`：
@@ -1245,6 +1249,8 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 但在现实世界中，我们无法知道这个 **概率**，而只知道其 **结果**（患病、没患病）。
 
 因此，我们可以把这个结果看做 **概率** 加上一些 **噪音**，得到了 0 和 1 。
+
+---
 
 那么对于这个问题，类似于前面的解决方法，我们可以算一个加权的分数：
 
@@ -1279,7 +1285,9 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 通常情况下，因为这些数据是真的产生/出现了的，因此这个概率会很大。
 
-如果我们用 _h_ 来代替 _f_ ，这个 **概率** 就变成了我们的 hypothesis （`假设函数`） 也能产生这些数据的 **可能性**（Likelihood）。如果我们的 hypothesis 和目标函数很相似，这个可能性就会很大，所以我们只要选择这个 **可能性** 最大的 hypothesis 就行了。
+如果我们用 _h_ 来代替 _f_ ，这个 **概率** 就变成了我们的 hypothesis （`假设函数`） 也能产生这些数据的 **可能性**（Likelihood）；
+
+如果我们的 hypothesis 和目标函数很相似，这个可能性就会很大，所以我们只要选择这个 **可能性** 最大的 hypothesis 就行了。
 
 对于逻辑回归：<img src="http://latex.codecogs.com/svg.latex?h(\mathbf{x})=\theta\,(\mathbf{w}^T\mathbf{x})"/>
 
@@ -1442,15 +1450,21 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 ### 随机的梯度下降 (Stochastic Gradient Descent, SGD)
 
-我们介绍过了 PLA 和逻辑回归和梯度下降，这两个方法都是逐步的（Iterative）优化 **w**；在PLA中，每次选出一个点来计算修正的方向；而在梯度下降中，每次需要计算所有数据，算出梯度，然后再优化。这样一来，梯度下降每一轮的计算量明显多了很多。
+我们介绍过了 PLA 和逻辑回归和梯度下降，这两个方法都是逐步的（Iterative）优化 **w**：
+- 在PLA中，每次选出一个点来计算修正的方向；
+- 而在梯度下降中，每次需要计算所有数据，算出梯度，然后再优化；
+
+这样一来，梯度下降每一轮的计算量明显多了很多。
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\eta\cdot\underbrace{\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(\mathrm{y}_n\mathbf{x}_{n})}_{-\nabla\,E_{in}(\mathbf{w})}"/>
 
 我们希望每次只要看一个数据点，就能找到类似于所有点的更新方向。
 
-上面公式中的 <img src="http://latex.codecogs.com/svg.latex?\textstyle{\frac{1}{N}\sum_{n=1}^N}"/> 可以看成是随机选取 _n (N)_ 个数据的期望（ <i>&epsilon;</i> ），这随机选取 _n_ 个数据得到的梯度就叫做 **Stochastic Gradient** 。可以看成是真正的梯度加上一个 **噪音** 。当梯度下降进行足够多次之后，随机的梯度的均值应该等于真正的梯度。当数据很多或者数据就是一个一个收集来的时候（online learning）这样做就很好。
+上面公式中的 <img src="http://latex.codecogs.com/svg.latex?\textstyle{\frac{1}{N}\sum_{n=1}^N}"/> 可以看成是随机选取 _n (N)_ 个数据的期望（ <i>&epsilon;</i> ），这随机选取 _n_ 个数据得到的梯度就叫做 **Stochastic Gradient** ，可以看成是真正的梯度加上一个 **噪音** 。
 
-这样做的优势就是很简单，节约了计算成本；缺点是以为每一步的梯度是随机的，因此可能不太稳定。
+当梯度下降进行足够多次之后，随机的梯度的均值应该等于真正的梯度。当数据很多或者数据就是一个一个收集来的时候（online learning）就很适合这样做。
+
+这样做的优势就是很简单，节约了计算成本；缺点是因为每一步的梯度是随机的，因此可能不太稳定。
 
 这就是 SGD：
 
@@ -1458,17 +1472,22 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 这个公式和PLA非常像，区别就是 SGD的 <i>&theta;</i> 和 <i>&eta;</i> 和 PLA 的 sign 。
 
+---
+
 但是还有两个小问题：
 - 这个算法什么时候停下来？（梯度下降需要梯度为0，但是SGD不计算这个梯度）
-  - 相信只要进行足够多次优化之后就会得到很好的结果，因此停下来
+> 相信只要进行足够多次优化之后就会得到很好的结果，因此停下来
+
 - <i>&eta;</i> 如何选择？
-  - 通常经验值是 0.1
+> 通常经验值是 0.1
 
 ### 多类别分类（逻辑回归）
 
-通常的问题都是多类别的分类，而不是线性分类；因此我们想要把我们已经熟悉的线性分类问题延伸到多类别分类问题中。
+通常的问题都是多类别的分类，而不是线性分类（二分类）；因此我们想要把我们已经熟悉的线性分类问题延伸到多类别分类问题中。
 
-一个简单的想法是：先把其中这些类别中的一个类别先分出来，把其他的类别当做另外一个类别，这样就把这个问题转换成一个线性分类问题；然后再选择另外一个类别，进行类似的操作；
+一个简单的想法是：
+- 先把其中这些类别中的一个类别先分出来，把其他的类别当做另外一个类别，这样就把这个问题转换成一个线性分类问题；
+- 然后再选择另外一个类别，进行类似的操作；
 
 但是这样做有一些问题：
 - 有些数据被多个线性分类器判断为某个分类
