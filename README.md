@@ -911,7 +911,7 @@ VC Dimension 和下面这些都没有关系：
 
 那么 VC Dimension 为什么要叫 "Dimension" 呢？
 
-上面我们已经证明了，VC Dimension 和 Perceptrons 的维度有很密切的关系，可以把 Perceptrons 的 **w** 就当成是这个（假设）函数集合的自由度。
+上面我们已经证明了，VC Dimension 和 Perceptrons 的维度有很密切的关系，可以把 Perceptrons 的 **w** 就当成是这个函数（假设函数）集合的自由度。
 
 类似的，VC Dimension 就表示了这个`函数集合`的**自由度**，衡量这个`函数集合`能够产生多少 Dichotomies 。
 
@@ -942,7 +942,9 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
 
 #### Sample Complexity
 
-类似的，VC Bound 的这个公式将 <i>&epsilon;</i> , <i>&delta;</i> , <i>d</i><sub>VC</sub> 和 _N_ 联系起来，因此，对于一个机器学习问题，我们就可以根据我们对其准确度的要求（ <i>&epsilon;</i> , <i>&delta;</i> ）和模型的复杂度（ <i>d</i><sub>VC</sub> ）计算出我们对数据集大小的要求（ _N_ ）。
+类似的，VC Bound 的这个公式将 <i>&epsilon;</i> , <i>&delta;</i> , <i>d</i><sub>VC</sub> 和 _N_ 联系起来；
+
+因此，对于一个机器学习问题，我们就可以根据我们对其准确度的要求（ <i>&epsilon;</i> , <i>&delta;</i> ）和模型的复杂度（ <i>d</i><sub>VC</sub> ）计算出我们对数据集大小的要求（ _N_ ）。
 
 通常情况下，理论上需要的 _N_ &asymp; 10,000 <i>d</i><sub>VC</sub>
 
@@ -986,9 +988,18 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 ### 错误的衡量
 
 之前我们一直在使用 <i>E</i><sub>out</sub> 来衡量我们得到的函数（ _g_ ）和目标函数（ _f_ ）的差距（Error Measure），它有三个特点：
-- Out-of-sample: 来自于我们没有看过的数据
-- Pointwise: 针对每一个 **x** 都可以衡量（ Pointwise error measure: **err**，我们主要使用这种方式来衡量，但是还有一些其他的衡量方式，本课程不涉及）
-- Classification: 只考虑对/错，0/1
+- Out-of-sample
+> 来自于我们没有看过的数据
+
+- Pointwise
+> 针对每一个 x 都可以衡量
+>
+> Pointwise error measure，我们主要使用这种方式来衡量；
+>
+> 还有一些其他的衡量方式，本课程不涉及
+
+- Classification
+> 只考虑对/错，0/1
 
 通常有两种比较常用的 Pointwise error measures：
 - 0/1 error, for classification
@@ -999,8 +1010,10 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 ### 不同错误衡量方式的选择
 
 对于分类问题，有两种错误类型：
-- False Accept: 应该是 -1 的数据，被我们的函数当成了 +1
-- False Reject: 应该是 +1 的数据，被我们的函数当成了 -1
+- False Accept
+  - 应该是 -1 的数据，被我们的函数当成了 +1
+- False Reject
+  - 应该是 +1 的数据，被我们的函数当成了 -1
 
 对于 0/1 error，这两种错误是一样的，但是考虑下面两个情形：
 1. 超市判断顾客，并给老顾客打折：
@@ -1010,7 +1023,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
   - 对于 False Accept，机密文件可能被泄露，影响非常不好；
   - 对于 False Reject，员工会很不方便、不开心，但是没有什么损失；
 
-因此，不同的应用也会用一些不同的错误衡量方式，但是通常这些错误衡量的细节、程度很难用数学来表示（很难数字化），所以通常会用一些有意义的错误衡量方式来替代，比如口袋算法中的 0/1 error，或者最小化 **高斯噪音** 的 Squared error。除此以外，还有一些其他的错误衡量方式，这些方式对机器学习算法来说比较简单、容易设计。
+因此，不同的应用也会用一些不同的错误衡量方式，但是通常这些错误衡量的细节、程度很难用数学来表示（很难数字化），所以通常会用一些有意义的错误衡量方式来替代。比如口袋算法中的 0/1 error，或者最小化 **高斯噪音** 的 Squared error；除此以外，还有一些其他的错误衡量方式，这些方式对机器学习算法来说比较简单、容易设计。
 
 ### 权重
 
@@ -1078,11 +1091,9 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ---
 
-####### Issues TODO #######
-
 为什么说因为 <i>d</i><sub>VC</sub> &geq; <i>d</i>+1 ，所以逆矩阵通常都是存在的？
 
-这个 pseudo-inverse 是如何计算的？
+请在 [Issues #3](https://github.com/chAwater/MachineLearningFoundations/issues/3) 中回答。
 
 ---
 
@@ -1096,9 +1107,9 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ---
 
-####### Issues TODO #######
-
 这个 pseudo-inverse 是如何计算的？
+
+请在 [Issues #4](https://github.com/chAwater/MachineLearningFoundations/issues/4) 中回答。
 
 ---
 
