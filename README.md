@@ -1,5 +1,5 @@
 # MachineLearningFoundations
-Notebooks for Machine Learning Foundations by @hsuantien
+My Notebooks for Machine Learning Foundations (by @hsuantien)
 
 ---
 
@@ -297,11 +297,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 不过，PLA仍然有一些问题：
 
 - 需要数据是线性可分的，但是我们并不知道数据是否线性可分
-- 数据是线性可分的假设过于强了，很多时候数据不是线性可分的（比如数据有噪声）
+- 数据是线性可分的假设过于强了，很多时候数据不是线性可分的（比如数据有噪音）
 - 尽管当线性是可分的时候，PLA会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_f"/> ）
 
 
-为了解决这些问题，我们首先应该假设**噪声**应该很小，多数的数据都是线性可分的；
+为了解决这些问题，我们首先应该假设 **噪音** 应该很小，多数的数据都是线性可分的；
 
 因此我们可以找到一条线，使它在这个数据集中出现的错误最少：
 
@@ -1470,7 +1470,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\eta\cdot\theta(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(\mathrm{y}_n\mathbf{x}_{n})"/>
 
-这个公式和PLA非常像，区别就是 SGD的 <i>&theta;</i> 和 <i>&eta;</i> 和 PLA 的 sign 。
+这个公式和 PLA 非常像，区别就是 SGD 的 <i>&theta;</i> 和 <i>&eta;</i> 和 PLA 的 sign 。
 
 ---
 
@@ -1554,7 +1554,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 <img src="http://latex.codecogs.com/svg.latex?\begin{align*}h(\mathbf{x})&\,=\textrm{sign}\left(\underbrace{0.6}_{\widetilde{\mathrm{w}}_0}\,\cdot\,\underbrace{1}_{\mathrm{z}_0}+\underbrace{(-1)}_{\widetilde{\mathrm{w}}_1}\,\cdot\,\underbrace{\mathrm{x}_1^2}_{\mathrm{z}_1}+\underbrace{(-1)}_{\widetilde{\mathrm{w}}_2}\,\cdot\,\underbrace{\mathrm{x}_2^2}_{\mathrm{z}_2}\right)\\&\,=\textrm{sign}\left(\widetilde{\mathbf{w}}^T\mathbf{z}\right)\end{align*}"/>
 
-这样就相当于我们把每个 x 都转换到一个 z 的空间中（在这个例子中，这个 x 到 z 的操作就是取平方），然后在这个 z 的空间中这个数据就是线性分类器可以解决的了。
+这样就相当于我们把每个 **x** 都转换到一个 **z** 的空间中（在这个例子中，这个 **x** 到 **z** 的操作就是取平方），然后在这个 **z** 的空间中这个数据就是线性分类器可以解决的了。
 
 <img src="http://latex.codecogs.com/svg.latex?\mathbf{x}\in\mathcal{X}\stackrel{\boldsymbol\Phi}{\longmapsto}\mathbf{z}\in\mathcal{Z}"/>
 
@@ -1562,7 +1562,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 ---
 
-z 空间中的一条线，可能是 x 空间中的一个曲线，不过现在这个曲线是有限制的，如果想要所有的二次曲线，就需要补上其他的项：
+**z** 空间中的一条线，可能是 **x** 空间中的一个曲线，不过现在这个曲线是有限制的，如果想要所有的二次曲线，就需要补上其他的项：
 
 <img src="http://latex.codecogs.com/svg.latex?{\boldsymbol\Phi}_2(\mathbf{x})=(1,\mathrm{x}_1,\mathrm{x}_2,\mathrm{x}_1^2,\mathrm{x}_2^2)"/>
 
@@ -1577,7 +1577,7 @@ z 空间中的一条线，可能是 x 空间中的一个曲线，不过现在这
 
 目前 1 和 2 都是很简单的，但是 3 中的反运算是不一定存在的。所以实际上是把我们需要检验的点进行 <b>&Phi;</b> 操作，然后在 z 空间中做出判断，并不涉及到这个反运算。
 
-上面我们通过二次曲线的转换来介绍了这个特征转换的过程，但实际上可以做任意（非线性）的转换，这样我们就像是打开了“潘多拉魔盒”，我们可以做无穷无尽的转换，然后把之前的线性模型全部在转换后的空间中进行。有了这个强大无比的 **特征转换** ，我们就能做很多很多事情。
+上面我们通过二次曲线的转换来介绍了这个特征转换的过程，但实际上可以做任意（非线性）的转换，这样我们就像是打开了“潘多拉魔盒”，我们可以做无穷无尽的转换，然后把之前的线性模型全部在转换后的空间中进行。有了这个强大无比的 **特征转换**，我们就能做很多很多事情。
 
 其实之前就讲过这个概念，比如 `特征工程`，把原始的数据（像素）做一些操作（比如找出对称性、密度等）得到一些具有物理意义的特征，其实这就是一种特征转换。
 
@@ -1920,7 +1920,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 <i>E</i><sub>test</sub> :
 - 从测试数据中计算
 - 数据是 **无法** 得到的
-- 没有被 **污染** ，因为没有被使用过
+- 没有被 **污染**，因为没有被使用过
 
 ---
 
@@ -2107,7 +2107,7 @@ its ability to assess the outcome has been compromised.
 
 我们用8年的数据做标准化和只用前6年的数据做标准化相比，结果会好很多！但是我们能不能这样做？
 
-不行！这也是一种 **偷看数据** ，间接的获得了`未来`数据的统计特征！！！
+不行！这也是一种 **偷看数据**，间接的获得了`未来`数据的统计特征！！！
 
 ---
 
