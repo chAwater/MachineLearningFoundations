@@ -584,7 +584,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 这个函数叫做 **成长函数**（Growth Function）：
 
-<img src="http://latex.codecogs.com/svg.latex?{m_{\mathcal{H}}(N)=\mathop{\max}_{\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N\in\mathcal{X}}|\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N)|\,\leq\,2^N}"/>
+<img src="http://latex.codecogs.com/svg.latex?{m_{\mathcal{H}}(N)=\max_{\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N\in\mathcal{X}}|\mathcal{H}(\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_N)|\,\leq\,2^N}"/>
 
 ---
 
@@ -1073,7 +1073,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ![](./Snapshot/Snap13.png)
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{w}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathrm{y}||^2}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{w}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathrm{y}||^2}"/>
 
 这个函数是`连续的`（continuus）、`可微分的`（differentiable）、`凸函数`（convex），所以对于这个函数的最小值，任意一个方向上的斜率 / 梯度（偏微分）都是 0。
 
@@ -1303,7 +1303,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 下面我们就需要最大化这个乘积，先用 **w** 来代替 _h_：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{max}}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\max}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
 
 连乘很难处理，而连加相对容易；
 类似的，最大化不好处理，而最小化相对容易；
@@ -1314,11 +1314,11 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
 
 把 <i>&theta;</i> 代入：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{\textrm{in}}(\mathbf{w})}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{\textrm{in}}(\mathbf{w})}}"/>
 
 这个就是逻辑回归的错误衡量，叫做 **cross-entropy error** 。
 
@@ -1340,7 +1340,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 对于每个维度上的梯度（偏微分）：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\partial\,E_{\textrm{in}}(\mathbf{w})}{\partial\mathbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}{\partial\mathbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\mathrm{y}_n\textrm{x}_{n,i})\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\partial\,E_{\textrm{in}}(\mathbf{w})}{\partial\mathbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}{\partial\mathbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\mathrm{y}_n\mathrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\mathrm{y}_n\mathrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\mathrm{y}_n\mathrm{x}_{n,i})\end{align*}}"/>
 
 整合每个维度（向量表示），并且我们希望这个梯度等于 0 ：
 
@@ -1365,7 +1365,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 利用上面的公式，现在的问题就是：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{||\mathbf{v}||=1}\,E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})}"/>
 
 这个公式看起来也很难，但是我们可以利用局部的近似（在 <i>&eta;</i> 很小的情况下泰勒展开）来简化这个公式：
 
@@ -1373,7 +1373,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此这个问题就变成：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
 
 为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
 
