@@ -237,7 +237,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 当数据线性可分时，存在一条线（ <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_f}"/> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\,\geq\,\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\,\geq\,\min_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0}"/>
 
 （任意一个数据点的向量表示 与 分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角cos值的乘积）
 
@@ -251,11 +251,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 对于 **分子** 部分，有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,=\mathbf{w}^T_f(\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})\\&\,\geq\,\mathbf{w}^T_f\mathbf{w}_{T-1}+\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,=\mathbf{w}^T_f(\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)})\\&\,\geq\,\mathbf{w}^T_f\mathbf{w}_{T-1}+\min_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}}"/>
 
 迭代后有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,\geq\,\mathbf{w}^T_f\mathbf{w}_0+T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\\&\,\geq\,T\mathop{\min}_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\mathbf{w}^T_f\mathbf{w}_T&\,\geq\,\mathbf{w}^T_f\mathbf{w}_0+T\min_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\\&\,\geq\,T\min_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n\end{align*}}"/>
 
 对于 **分母** 部分，有：
 
@@ -267,19 +267,19 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 所以，上面的公式可以简化为：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_{T-1}||^2+0+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\,\leq\,||\mathbf{w}_{T-1}||^2+\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_{T-1}||^2+0+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\,\leq\,||\mathbf{w}_{T-1}||^2+\max_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}}"/>
 
 迭代后有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_0||^2+T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\\&\,\leq\,T\mathop{\max}_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_0||^2+T\max_n\,||\mathrm{y}_n\mathbf{x}_n||^2\\&\,\leq\,T\max_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}}"/>
 
 综上，
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\,\geq\,\frac{T\mathop{\min}\limits_n\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\mathop{\max}\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\,\geq\,\frac{T\min\limits_n\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\max\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}}"/>
 
 其中，
 
-<img src="http://latex.codecogs.com/svg.latex?{C=\frac{\mathop{\min}\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\mathop{\max}\limits_n||\mathbf{x}_n||^2}}>0}"/>
+<img src="http://latex.codecogs.com/svg.latex?{C=\frac{\min\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\max\limits_n||\mathbf{x}_n||^2}}>0}"/>
 
 
 可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越 **接近** 的；
@@ -977,7 +977,7 @@ VC Bound 就告诉我们，有很大的概率 <i>E</i><sub>out</sub> &leq; <i>E<
 
 思考：当数据引入了噪音之后，之前我们推导的这些东西（ VC Bound ）还满足吗？
 
-VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“类比”，在有噪音的情况下，这些小球就变成了“变色龙”，但是“变色龙”小球的颜色仍然符合一个分布，因此有：
+VC Bound 的推导中最核心的部分就是“从罐子里拿小球”的“类比”，在有噪音的情况下，这些小球就变成了“变色龙”，但是“变色龙”小球的颜色仍然符合一个分布，因此有：
 
 ![](./Snapshot/Snap12.png)
 
@@ -1303,7 +1303,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 下面我们就需要最大化这个乘积，先用 **w** 来代替 _h_：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\max}_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\max_\mathbf{w}\,\prod_{n=1}^{N}\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
 
 连乘很难处理，而连加相对容易；
 类似的，最大化不好处理，而最小化相对容易；
@@ -1314,11 +1314,11 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{w}\,\frac{1}{N}\sum_{n=1}^{N}-\ln\,\theta\,(\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}"/>
 
 把 <i>&theta;</i> 代入：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{\textrm{in}}(\mathbf{w})}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{\textrm{in}}(\mathbf{w})}}"/>
 
 这个就是逻辑回归的错误衡量，叫做 **cross-entropy error** 。
 
@@ -1365,7 +1365,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 利用上面的公式，现在的问题就是：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{||\mathbf{v}||=1}\,E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{||\mathbf{v}||=1}\,E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})}"/>
 
 这个公式看起来也很难，但是我们可以利用局部的近似（在 <i>&eta;</i> 很小的情况下泰勒展开）来简化这个公式：
 
@@ -1373,7 +1373,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此这个问题就变成：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
 
 为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
 
@@ -1778,11 +1778,11 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 那么这个新的线性回归问题就变成了：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\,(\mathbf{w}^T\mathbf{z}_n-\mathrm{y}_n)^2\quad\,\textrm{s.t.}\,\sum_{q=0}^{Q}\,\mathrm{w}_q^2\leq\,C}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\,(\mathbf{w}^T\mathbf{z}_n-\mathrm{y}_n)^2\quad\,\textrm{s.t.}\,\sum_{q=0}^{Q}\,\mathrm{w}_q^2\leq\,C}"/>
 
 向量表示：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}(\mathrm{Z}\mathbf{w}-\mathbf{y})^T(\mathrm{Z}\mathbf{w}-\mathbf{y})\quad\,\textrm{s.t.}\,\mathbf{w}^T\mathbf{w}\leq\,C}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}(\mathrm{Z}\mathbf{w}-\mathbf{y})^T(\mathrm{Z}\mathbf{w}-\mathbf{y})\quad\,\textrm{s.t.}\,\mathbf{w}^T\mathbf{w}\leq\,C}"/>
 
 几何意义：
 
