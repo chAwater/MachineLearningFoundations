@@ -354,7 +354,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 - **半监督学习**：略
 - **增强学习**：Reinforcement Learning
   - 最难的，但是是最自然的学习方法，比如训练宠物
-  - 有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?{(\mathbf{x},\mathrm{\tilde{y}},\mathrm{goodness})}"/>
+  - 有输入，有一个“不受控制”控制的输出，还有一个对这个输出的评价 <img src="http://latex.codecogs.com/svg.latex?{(\mathbf{x},\mathrm{\tilde{y}},\textrm{goodness})}"/>
 
 ### 不同的流程
 
@@ -436,7 +436,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 当 _N_ 很大时，且这个数据集是独立同分布（i.i.d.）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\exp\,(-2\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\exp\,(-2\epsilon^2N)}"/>
 
 ---
 
@@ -500,7 +500,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ### 总结概括前面学到的内容
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{matrix}E_{out}(g)\underbrace{\approx}_\mathrm{test}{E}_{in}(g)\underbrace{\approx}_\mathrm{train}0\end{matrix}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{matrix}E_{\textrm{out}}(g)\underbrace{\approx}_\mathrm{test}{E}_{in}(g)\underbrace{\approx}_\mathrm{train}0\end{matrix}}"/>
 
 经过前面的学习，我们知道机器学习问题可以被分为两个部分：
 1. 确保 <i>E</i><sub>in</sub> (<i>g</i>) 和 <i>E</i><sub>out</sub> (<i>g</i>) 是相近的
@@ -510,7 +510,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 _M_ 在个过程中起到什么作用呢？
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2M\,\exp\,(-2\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2M\,\exp\,(-2\epsilon^2N)}"/>
 
 - 如果 _M_ 很小，那么 1 是可以实现的，但是 2 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
 - 如果 _M_ 很大，那么 1 “不好的”事情发生的概率会变大，但是 2 更有可能实现
@@ -568,7 +568,7 @@ _M_ 在个过程中起到什么作用呢？
 
 因此，**(1) 如果** 能够使用这个值替换掉 _M_ ，就有
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{ef\/fective}(N)\cdot\exp\,(-2\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{ef\/fective}(N)\cdot\exp\,(-2\epsilon^2N)}"/>
 
 那么，**(2) 如果** effective(_N_) << 2<sup><i>N</i></sup> ，则 **机器学习就是可能的**！
 
@@ -628,7 +628,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 那么机器学习就是可能的：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\exp\,(-2\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\cdot\,m_{\mathcal{H}}(N)\cdot\exp\,(-2\epsilon^2N)}"/>
 
 因此，我们希望决定 effective(_N_) 大小的这个 **成长函数** 是比较小的，希望它是多项式形式的而不是指数形式的，这样才能够保证（在 _N_ 足够大的时候）可以进行机器学习。
 
@@ -764,7 +764,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 答案是可以的，不过需要在之前的 Hoeffding 不等式会增加一些“无所谓”的常数项：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
 对于不等式 **左边** 是在`函数集合`中存在一个 _h_ 使得 <i>E</i><sub>in</sub> (<i>h</i>) 和 <i>E</i><sub>out</sub> (<i>h</i>) 的差距很大的概率，我们希望这个概率很小，这样就可以机器学习。
 
@@ -780,7 +780,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 这个描述，就把无限的 <i>E</i><sub>out</sub> 转换成了有限的、类似于 <i>E</i><sub>in</sub> 的 <i>E</i><sub>in</sub><sup><i>'</i></sup> 。不过其概率和“差距”的量会稍有些变化：
 
-<img src="http://latex.codecogs.com/svg.latex?{\small{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\small{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
 
 这里，假设发生的验证（Verification）所用到的数据叫做“Ghost data”。
 
@@ -788,21 +788,21 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2 _N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?{m_{\mathcal{H}}(2N)}"/> 种 _h_，所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
 
 #### 运用 Hoeffding (without replacement)
 
 想象有一个罐子里面有 2 _N_ 个小球，抓出 _N_ 个，考虑这 _N_ 个小球和所有小球的差别，这就可以使用 Hoeffding 。
 
-<img src="http://latex.codecogs.com/svg.latex?{|E_{in}-E_{in}^{'}|>\frac{\epsilon}{2}\iff|E_{in}-\frac{E_{in}+E_{in}^{'}}{2}|>\frac{\epsilon}{4}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{|E_{\textrm{in}}-E_{\textrm{in}}^{'}|>\frac{\epsilon}{2}\iff|E_{\textrm{in}}-\frac{E_{\textrm{in}}+E_{\textrm{in}}^{'}}{2}|>\frac{\epsilon}{4}}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{in}(h)-E_{in}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
 
 #### VC Bound
 
 整理一下公式得到：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{in}(h)-E_{out}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
 - 通过 `Verification` 替换无限的 <i>E</i><sub>out</sub>
 - 通过 `上限函数` 替换无限的`函数集合`
@@ -924,7 +924,7 @@ VC Dimension 和下面这些都没有关系：
 
 #### VC Bound
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_{\mathcal{D}}[|E_{in}(g)-E_{out}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_{\mathcal{D}}[|E_{\textrm{in}}(g)-E_{\textrm{out}}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
 不等式左边是“坏事情”发生的概率，如果我们把不等式右边作为 &delta; ，那么“好事情”发生的概率就是 1-&delta;，因此有：
 
@@ -1073,7 +1073,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ![](./Snapshot/Snap13.png)
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{w}\,E_{in}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathrm{y}||^2}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_\mathbf{w}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathrm{y}||^2}"/>
 
 这个函数是`连续的`（continuus）、`可微分的`（differentiable）、`凸函数`（convex），所以对于这个函数的最小值，任意一个方向上的斜率 / 梯度（偏微分）都是 0。
 
@@ -1081,7 +1081,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 ![](./Snapshot/Snap14.png)
 
-<img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{in}(\mathbf{w})=\frac{2}{N}\,(\mathbf{X}^T\mathbf{X}\mathbf{w}-\mathbf{X}^T\mathrm{y})=0}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{\textrm{in}}(\mathbf{w})=\frac{2}{N}\,(\mathbf{X}^T\mathbf{X}\mathbf{w}-\mathbf{X}^T\mathrm{y})=0}"/>
 
 和二项式类似，当 <img src="http://latex.codecogs.com/svg.latex?{\mathbf{X}^T\mathbf{X}}"/> 的逆矩阵存在时（invertible），这个解就是：
 
@@ -1121,7 +1121,7 @@ VC Bound 的推导中最核心的部分就是“从管子里拿小球”的“�
 
 我们先来看看 <i>E</i><sub>in</sub> 的均值：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{Identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{Identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}||^2\end{align*}}"/>
 
 这个 <img src="http://latex.codecogs.com/svg.latex?{\mathbf{X}\mathbf{X}^\dagger}"/> 被称为 hat 矩阵 **H**，因为 y 乘以这个矩阵就变成了带 ^ 的 y 。
 
@@ -1147,7 +1147,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{in}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||(\mathbf{I}-\mathbf{H})\textrm{noise}||^2\\&\,=\frac{1}{N}(N-(d+1))||\textrm{noise}||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||(\mathbf{I}-\mathbf{H})\textrm{noise}||^2\\&\,=\frac{1}{N}(N-(d+1))||\textrm{noise}||^2\end{align*}}"/>
 
 ![](./Snapshot/Snap15.png)
 
@@ -1165,11 +1165,11 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此：
 
-<img src="http://latex.codecogs.com/svg.latex?{\overline{E_{in}}=\textrm{noise\;level}\,\cdot\,(1-\frac{d+1}{N})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\overline{E_{\textrm{in}}}=\textrm{noise\;level}\,\cdot\,(1-\frac{d+1}{N})}"/>
 
 类似的有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\overline{E_{out}}=\textrm{noise\;level}\,\cdot\,(1+\frac{d+1}{N})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\overline{E_{\textrm{out}}}=\textrm{noise\;level}\,\cdot\,(1+\frac{d+1}{N})}"/>
 
 哲学上来说，对于 <i>E</i><sub>in</sub>，看到的数据对于 noise 来说是反方向的，会让 <i>E</i><sub>in</sub> 小一些；而对于 <i>E</i><sub>out</sub>，因为有新的数据，因此新的 noise 有可能和以前的方向是反的，因此会让 <i>E</i><sub>out</sub> 大一些。
 
@@ -1318,7 +1318,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 把 <i>&theta;</i> 代入：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{in}(\mathbf{w})}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{w}\,\frac{1}{N}\underbrace{\sum_{n=1}^{N}\ln\left(1+\exp(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)\right)}_{E_{\textrm{in}}(\mathbf{w})}}"/>
 
 这个就是逻辑回归的错误衡量，叫做 **cross-entropy error** 。
 
@@ -1336,15 +1336,15 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 利用微积分中逐项代换的方式（连锁）来求梯度：
 
-<img src="http://latex.codecogs.com/svg.latex?{E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\ln\left(\underbrace{1+\exp\overbrace{(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}^{\bigcirc}}_{\square}\right)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\ln\left(\underbrace{1+\exp\overbrace{(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}^{\bigcirc}}_{\square}\right)}"/>
 
 对于每个维度上的梯度（偏微分）：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\partial\,E_{in}(\mathbf{w})}{\partial\mathbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}{\partial\mathbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\mathrm{y}_n\textrm{x}_{n,i})\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\partial\,E_{\textrm{in}}(\mathbf{w})}{\partial\mathbf{w}_i}&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\partial\ln(\square)}{\partial(\square)}\right)\left(\frac{\partial(1+\exp(\bigcirc))}{\partial(\bigcirc)}\right)\left(\frac{\partial(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_n)}{\partial\mathbf{w}_i}\right)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{1}{\square}\right)\bigg(\exp(\bigcirc)\bigg)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)\\&=\frac{1}{N}\sum_{n=1}^{N}\left(\frac{\exp(\bigcirc)}{1+\exp(\bigcirc)}\right)\bigg(-\mathrm{y}_n\textrm{x}_{n,i}\bigg)=\frac{1}{N}\sum_{n=1}^{N}\theta(\bigcirc)(-\mathrm{y}_n\textrm{x}_{n,i})\end{align*}}"/>
 
 整合每个维度（向量表示），并且我们希望这个梯度等于 0 ：
 
-<img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0}"/>
 
 这个公式可以看成被 <i>&theta;</i> 加权的数据（x,y）求和。
 
@@ -1365,19 +1365,19 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 利用上面的公式，现在的问题就是：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,E_{in}(\mathbf{w}_T+\eta\mathbf{v})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})}"/>
 
 这个公式看起来也很难，但是我们可以利用局部的近似（在 <i>&eta;</i> 很小的情况下泰勒展开）来简化这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?{E_{in}(\mathbf{w}_T+\eta\mathbf{v})\,\approx\,E_{in}(\mathbf{w}_t)+\eta\,\mathbf{v}^T\cdot\nabla\,E_{in}(\mathbf{w}_t)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})\,\approx\,E_{\textrm{in}}(\mathbf{w}_t)+\eta\,\mathbf{v}^T\cdot\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}"/>
 
 因此这个问题就变成：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{in}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{in}(\mathbf{w}_t)}_{\textrm{known}}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\mathrm{min}}_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
 
 为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbf{v}=-\frac{\nabla\,E_{in}(\mathbf{w}_t)}{||\nabla\,E_{in}(\mathbf{w}_t)||}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbf{v}=-\frac{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}{||\nabla\,E_{\textrm{in}}(\mathbf{w}_t)||}}"/>
 
 这就是 **梯度下降** 。
 
@@ -1391,11 +1391,11 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 - 当梯度很大的时候，选择很大的 <i>&eta;</i>，来快速的优化；
 - 当梯度很小的时候，选择较小的 <i>&eta;</i>，达到准确的优化；
 
-因此有：<img src="http://latex.codecogs.com/svg.latex?{\eta\propto||\nabla\,E_{in}(\mathbf{w}_t)||}}"/>
+因此有：<img src="http://latex.codecogs.com/svg.latex?{\eta\propto||\nabla\,E_{\textrm{in}}(\mathbf{w}_t)||}}"/>
 
 所以将这个 <i>&eta;</i> 带入原先的公式，可以与分母的部分抵消，我们用一个新的 <i>&eta;</i> 来表示剩下的部分：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\mathbf{w}_t)}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}}"/>
 
 总结一下 **梯度下降**：
 
@@ -1403,10 +1403,10 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 - 在一个循环 *t* = 0,1,2,3,... 中：
 >
 > - 计算梯度：
->> <img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0}"/>
+>> <img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0}"/>
 >
 > - 更新 **w**：
->> <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{in}(\mathbf{w}_t)}}"/>
+>> <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}}"/>
 >
 > - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环，退出循环
 >
@@ -1456,7 +1456,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 这样一来，梯度下降每一轮的计算量明显多了很多。
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\eta\cdot\underbrace{\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(\mathrm{y}_n\mathbf{x}_{n})}_{-\nabla\,E_{in}(\mathbf{w})}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}+\eta\cdot\underbrace{\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(\mathrm{y}_n\mathbf{x}_{n})}_{-\nabla\,E_{\textrm{in}}(\mathbf{w})}}"/>
 
 我们希望每次只要看一个数据点，就能找到类似于所有点的更新方向。
 
@@ -1626,7 +1626,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 即：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\mathcal{H}_0\,&\,\subset\,&\,\mathcal{H}_1\,&\,\subset\,&\,\mathcal{H}_2\,&\,\subset\,&\,\mathcal{H}_3\,&\,\subset\,&\,\cdots\\d_\textrm{VC}(\mathcal{H}_0)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_1)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_2)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_3)\,&\,\leq\,&\,\cdots\\E_{in}(g_0)\,&\,\ge\,&\,E_{in}(g_1)\,&\,\ge\,&\,E_{in}(g_2)\,&\,\ge\,&\,E_{in}(g_3)\,&\,\ge\,&\,\cdots\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\mathcal{H}_0\,&\,\subset\,&\,\mathcal{H}_1\,&\,\subset\,&\,\mathcal{H}_2\,&\,\subset\,&\,\mathcal{H}_3\,&\,\subset\,&\,\cdots\\d_\textrm{VC}(\mathcal{H}_0)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_1)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_2)\,&\,\leq\,&\,d_\textrm{VC}(\mathcal{H}_3)\,&\,\leq\,&\,\cdots\\E_{\textrm{in}}(g_0)\,&\,\ge\,&\,E_{\textrm{in}}(g_1)\,&\,\ge\,&\,E_{\textrm{in}}(g_2)\,&\,\ge\,&\,E_{\textrm{in}}(g_3)\,&\,\ge\,&\,\cdots\end{align*}}"/>
 
 这就是我们 `Model Complexity` 的曲线！（再次强调！）
 
@@ -1778,11 +1778,11 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 那么这个新的线性回归问题就变成了：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{in}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\,(\mathbf{w}^T\mathbf{z}_n-\mathrm{y}_n)^2\quad\,\textrm{s.t.}\,\sum_{q=0}^{Q}\,\mathrm{w}_q^2\leq\,C}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\,(\mathbf{w}^T\mathbf{z}_n-\mathrm{y}_n)^2\quad\,\textrm{s.t.}\,\sum_{q=0}^{Q}\,\mathrm{w}_q^2\leq\,C}"/>
 
 向量表示：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{in}(\mathbf{w})=\frac{1}{N}(\mathrm{Z}\mathbf{w}-\mathbf{y})^T(\mathrm{Z}\mathbf{w}-\mathbf{y})\quad\,\textrm{s.t.}\,\mathbf{w}^T\mathbf{w}\leq\,C}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathop{\min}_{\mathbf{w}\in\mathbb{R}^{Q+1}}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}(\mathrm{Z}\mathbf{w}-\mathbf{y})^T(\mathrm{Z}\mathbf{w}-\mathbf{y})\quad\,\textrm{s.t.}\,\mathbf{w}^T\mathbf{w}\leq\,C}"/>
 
 几何意义：
 
@@ -1792,7 +1792,7 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 我们将这两个向量的比值设置为一个常数，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{in}(\mathbf{w}_\textrm{REG})+\frac{2\lambda}{N}\,\mathbf{w}_\textrm{REG}=\textbf{0}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{\textrm{in}}(\mathbf{w}_\textrm{REG})+\frac{2\lambda}{N}\,\mathbf{w}_\textrm{REG}=\textbf{0}}"/>
 
 其中的 &lambda; (>0)，叫做 **拉格朗日乘数 Lagrange Multiplier**，常用于解决有条件的最佳化问题。
 
@@ -1812,7 +1812,7 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 这个问题也可以从微积分的角度看，相当于一个新的最小化问题（上面等于0的公式相当于这个公式的求导）：
 
-<img src="http://latex.codecogs.com/svg.latex?{E_{in}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{in}}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}}"/>
 
 这样我们就把限制条件添加到 <i>E</i><sub>in</sub> 里面去了，这个新的 <i>E</i><sub>in</sub> 叫做 <i>E</i><sub>aug</sub> (Augmented error)，之前条件中的常数 C 也能够对应到某个 &lambda; ( &ge; 0 )。
 
@@ -1836,9 +1836,9 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 总结比较一下：
 - Augmented error:
-> <img src="http://latex.codecogs.com/svg.latex?{E_{aug}(\mathbf{w})\,=\,E_{in}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{E_{aug}(\mathbf{w})\,=\,E_{\textrm{in}}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}}"/>
 - VC Bound:
-> <img src="http://latex.codecogs.com/svg.latex?{E_{out}(\mathbf{w})\,\le\,E_{in}(\mathbf{w})+\Omega(\mathcal{H})}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(\mathbf{w})\,\le\,E_{\textrm{in}}(\mathbf{w})+\Omega(\mathcal{H})}"/>
 
 在我们优化 <i>E</i><sub>aug</sub> 时，通过某个 &lambda; 对应到某个 C，从而对应到 VC Bound 中的某个 <img src="http://latex.codecogs.com/svg.latex?{\Omega(\mathcal{H}(C))}"/>，从而确保了 VC Bound 的限制关系。
 
@@ -1904,7 +1904,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 - 用最小的 <i>E</i><sub>test</sub> 吧！
   - 找出一组`测试数据`，然后看这些模型在这个测试数据中的表现！
   - 因为有限空间中的 Hoeffding（在我们讨论 VC 的时候讲过类似的），有:
-  <img src="http://latex.codecogs.com/svg.latex?{E_{out}\,\leq\,E_{test}+O\bigg(\sqrt\frac{\log{M}}{N_{text}}\bigg)}"/>
+  <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}\,\leq\,E_{test}+O\bigg(\sqrt\frac{\log{M}}{N_{text}}\bigg)}"/>
 
 看起来很好！那么如何找到这个测试数据呢？
 
@@ -1939,14 +1939,14 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 - 随机（独立同分布）拿出一部分（<i>K</i>）数据“**藏起来**”，它们叫做 **验证** 数据（并不是真正的“测试”）
 - 用剩下一部分的数据做`模型选择`，它们叫做 **训练** 数据
 - 得到`假设函数`，有
-> <img src="http://latex.codecogs.com/svg.latex?{E_{out}(g_m^-)\,\leq\,E_{val}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_m^-)\,\leq\,E_{val}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
 - 用验证数据做`模型选择`
 >
 > <img src="http://latex.codecogs.com/svg.latex?{m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{val}(\mathcal{A}_m(\mathcal{D}_{train})))}"/>
 >
 > 这里的 _g_ 有个 - 号，是因为它是用一部分数据得到的；但是理论上如果用全部的数据应该会得到更好的结果，就是没有减号的 _g_ ；所以当我们找到最好的 _m_ 时，通常会再用全部数据重新跑一次，得到做好的 _g_ 。
 - 用全部数据得到 _g_
-> <img src="http://latex.codecogs.com/svg.latex?{E_{out}(g_{m^*})\,\leq\,E_{out}(g_{m^*}^-)\,\leq\,E_{val}(g_{m^*}^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_{m^*})\,\leq\,E_{\textrm{out}}(g_{m^*}^-)\,\leq\,E_{val}(g_{m^*}^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
 
 一张图概括一下：
 
@@ -1954,7 +1954,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 
 这里有两个近似：
 
-<img src="http://latex.codecogs.com/svg.latex?{E_{out}(g)\,\underbrace{\approx}_{(\textrm{Small}\,K)}\,E_{out}(g^-)\,\underbrace{\approx}_{(\textrm{Large}\,K)}\,E_{val}(g^-)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g)\,\underbrace{\approx}_{(\textrm{Small}\,K)}\,E_{\textrm{out}}(g^-)\,\underbrace{\approx}_{(\textrm{Large}\,K)}\,E_{val}(g^-)}"/>
 
 经验上，多数情况下，用 **10~20%** 的数据作为验证数据会有比较好的结果。
 
