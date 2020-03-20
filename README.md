@@ -305,7 +305,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 因此我们可以找到一条线，使它在这个数据集中出现的错误最少：
 
-<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_g\gets\mathop{\mathrm{argmin}}_\mathbf{w}\sum_{n=1}^N[\![\,\mathrm{y}_n\ne\mathrm{sign}(\mathbf{w}^T\mathbf{x}_n)\,]\!]"/>
+<img src="http://latex.codecogs.com/svg.latex?\mathbf{w}_g\gets\mathop{\arg\min}}_\mathbf{w}\sum_{n=1}^N[\![\,\mathrm{y}_n\ne\mathrm{sign}(\mathbf{w}^T\mathbf{x}_n)\,]\!]"/>
 
 但是这是一个 **NP-hard 问题**。
 
@@ -1495,7 +1495,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 下面一个解决的思路就是用 soft 线性分类，算出每个点属于某个类别的可能性。这样最后每个数据选择可能性最大的那个分类就能够解决上面的两个问题。因为 soft 线性分类（逻辑回归）中的 <i>&theta;</i> 是单调的，因此可以直接比较取 <i>&theta;</i> 之前的值，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?g(\mathbf{x})=\textrm{argmax}_{k\in\mathcal{Y}}(\mathbf{w}_{[k]}^T\mathbf{x})"/>
+<img src="http://latex.codecogs.com/svg.latex?g(\mathbf{x})=\arg\max_{k\in\mathcal{Y}}(\mathbf{w}_{[k]}^T\mathbf{x})"/>
 
 这就是 **One-Versus-All (OVA) Decomposition** 。
 
@@ -1942,7 +1942,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 > <img src="http://latex.codecogs.com/svg.latex?E_{out}(g_m^-)\,\leq\,E_{val}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)"/>
 - 用验证数据做`模型选择`
 >
-> <img src="http://latex.codecogs.com/svg.latex?m^*=\mathop{\textrm{argmin}}_{1\le{m}\le{M}}(E_m=E_{val}(\mathcal{A}_m(\mathcal{D}_{train})))"/>
+> <img src="http://latex.codecogs.com/svg.latex?m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{val}(\mathcal{A}_m(\mathcal{D}_{train})))"/>
 >
 > 这里的 _g_ 有个 - 号，是因为它是用一部分数据得到的；但是理论上如果用全部的数据应该会得到更好的结果，就是没有减号的 _g_ ；所以当我们找到最好的 _m_ 时，通常会再用全部数据重新跑一次，得到做好的 _g_ 。
 - 用全部数据得到 _g_
