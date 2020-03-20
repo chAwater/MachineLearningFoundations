@@ -1836,7 +1836,7 @@ Bad Generalization 是指在 Model Complexity 曲线中一个点的状态，<i>E
 
 总结比较一下：
 - Augmented error:
-> <img src="http://latex.codecogs.com/svg.latex?{E_{aug}(\mathbf{w})\,=\,E_{\textrm{in}}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{aug}}(\mathbf{w})\,=\,E_{\textrm{in}}(\mathbf{w})+\frac{\lambda}{N}\,\mathbf{w}^T\mathbf{w}}"/>
 - VC Bound:
 > <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(\mathbf{w})\,\le\,E_{\textrm{in}}(\mathbf{w})+\Omega(\mathcal{H})}"/>
 
@@ -1904,7 +1904,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 - 用最小的 <i>E</i><sub>test</sub> 吧！
   - 找出一组`测试数据`，然后看这些模型在这个测试数据中的表现！
   - 因为有限空间中的 Hoeffding（在我们讨论 VC 的时候讲过类似的），有:
-  <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}\,\leq\,E_{test}+O\bigg(\sqrt\frac{\log{M}}{N_{text}}\bigg)}"/>
+  <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}\,\leq\,E_{\textrm{test}}+O\bigg(\sqrt\frac{\log{M}}{N_{text}}\bigg)}"/>
 
 看起来很好！那么如何找到这个测试数据呢？
 
@@ -1939,14 +1939,14 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 - 随机（独立同分布）拿出一部分（<i>K</i>）数据“**藏起来**”，它们叫做 **验证** 数据（并不是真正的“测试”）
 - 用剩下一部分的数据做`模型选择`，它们叫做 **训练** 数据
 - 得到`假设函数`，有
-> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_m^-)\,\leq\,E_{val}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_m^-)\,\leq\,E_{\textrm{val}}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
 - 用验证数据做`模型选择`
 >
-> <img src="http://latex.codecogs.com/svg.latex?{m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{val}(\mathcal{A}_m(\mathcal{D}_{train})))}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{\textrm{val}}(\mathcal{A}_m(\mathcal{D}_{train})))}"/>
 >
 > 这里的 _g_ 有个 - 号，是因为它是用一部分数据得到的；但是理论上如果用全部的数据应该会得到更好的结果，就是没有减号的 _g_ ；所以当我们找到最好的 _m_ 时，通常会再用全部数据重新跑一次，得到做好的 _g_ 。
 - 用全部数据得到 _g_
-> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_{m^*})\,\leq\,E_{\textrm{out}}(g_{m^*}^-)\,\leq\,E_{val}(g_{m^*}^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_{m^*})\,\leq\,E_{\textrm{out}}(g_{m^*}^-)\,\leq\,E_{\textrm{val}}(g_{m^*}^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
 
 一张图概括一下：
 
@@ -1954,7 +1954,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 
 这里有两个近似：
 
-<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g)\,\underbrace{\approx}_{(\textrm{Small}\,K)}\,E_{\textrm{out}}(g^-)\,\underbrace{\approx}_{(\textrm{Large}\,K)}\,E_{val}(g^-)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g)\,\underbrace{\approx}_{(\textrm{Small}\,K)}\,E_{\textrm{out}}(g^-)\,\underbrace{\approx}_{(\textrm{Large}\,K)}\,E_{\textrm{val}}(g^-)}"/>
 
 经验上，多数情况下，用 **10~20%** 的数据作为验证数据会有比较好的结果。
 
@@ -1966,7 +1966,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 
 其中，**Cross Validation**，交叉验证，是指这些数据有时候做`训练`有时候错`验证`。
 
-<img src="http://latex.codecogs.com/svg.latex?{E_{loocv}(\mathcal{H},\mathcal{A})=\frac{1}{N}\sum^{N}_{n=1}e_n=\frac{1}{N}\sum^{N}_{n=1}\textrm{err}(g_n^-(\mathbf{x}_n),\mathrm{y}_n))}"/>
+<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{loocv}}(\mathcal{H},\mathcal{A})=\frac{1}{N}\sum^{N}_{n=1}e_n=\frac{1}{N}\sum^{N}_{n=1}\textrm{err}(g_n^-(\mathbf{x}_n),\mathrm{y}_n))}"/>
 
 我们希望这个错误和 <i>E</i><sub>out</sub> 很接近，下面是证明：
 
@@ -1988,7 +1988,7 @@ Leave-One-Out 有一个很严重的问题，那就是 **计算量** 太大了！
 
 一个简单的想法就是，每次不是只拿出 **一个** 数据了，而是拿出 **一份** 数据（一共 _V_ 份），这样不仅减少了计算量，也用平均来平滑了结果。
 
-<img src="http://latex.codecogs.com/svg.latex?{E_{cv}(\mathcal{H},\mathcal{A})=\frac{1}{V}\sum^{V}_{\textrm{v}=1}E_{val}^{(\textrm{v})}(g_\textrm{v}^-)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{cv}}(\mathcal{H},\mathcal{A})=\frac{1}{V}\sum^{V}_{\textrm{v}=1}E_{\textrm{val}}^{(\textrm{v})}(g_\textrm{v}^-)}"/>
 
 经验：
 - `多次`验证一般比`一次`验证结果要好（稳定）
