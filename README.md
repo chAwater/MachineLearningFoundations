@@ -180,7 +180,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 如果客户的得分高于某个分数（threshold），则办理信用卡；若低于某个分数，则不办理信用卡。因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\mathrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)}"/>
 
 这就是**感知机**。
 
@@ -188,7 +188,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 简化一下这个公式：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}h(\mathbf{x})&\,=\mathrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\mathrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&\,=\mathrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&\,=\mathrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}h(\mathbf{x})&\,=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\mathrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&\,=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&\,=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}}"/>
 
 每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?{h}"/>（Hypothesis）。
 
@@ -214,7 +214,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
-> - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?{\mathrm{sign}(\mathbf{w}_t^T\mathbf{x}_{n(t)})\ne\mathrm{y}_{n(t)}}"/>
+> - 找到当前函数判断错误的数据： <img src="http://latex.codecogs.com/svg.latex?{\textrm{sign}(\mathbf{w}_t^T\mathbf{x}_{n(t)})\ne\mathrm{y}_{n(t)}}"/>
 >
 >
 > - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_t+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}}"/>
@@ -305,7 +305,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 因此我们可以找到一条线，使它在这个数据集中出现的错误最少：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_g\gets\mathop{\arg\min}}_\mathbf{w}\sum_{n=1}^N[\![\,\mathrm{y}_n\ne\mathrm{sign}(\mathbf{w}^T\mathbf{x}_n)\,]\!]}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_g\gets\mathop{\arg\min}_\mathbf{w}\sum_{n=1}^N[\![\,\mathrm{y}_n\ne\textrm{sign}(\mathbf{w}^T\mathbf{x}_n)\,]\!]}"/>
 
 但是这是一个 **NP-hard 问题**。
 
@@ -333,7 +333,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
     - 衣服大小
     - 硬币识别
 - **回归** 分析：Regression, bounded regression
-  - <img src="http://latex.codecogs.com/svg.latex?{\mathcal{Y}=\mathbb{R}\;\mathrm{or}\;\mathcal{Y}=[\mathrm{lower},\mathrm{upper}]\subset\mathbb{R}}"/>
+  - <img src="http://latex.codecogs.com/svg.latex?{\mathcal{Y}=\mathbb{R}\;\textrm{or}\;\mathcal{Y}=[\textrm{lower},\textrm{upper}]\subset\mathbb{R}}"/>
 
     - 股价、房价预测
     - 天气、温度预测
@@ -464,11 +464,11 @@ Fun Time：嘲讽一下某些“智商测试”
 
 对于任意一个数据，如果它对于这 _M_ 个函数中的某一个函数来说是“不好的”，我们就认为这是个不好的数据。因此，对于整个`函数集合`，不好的（BAD）数据出现的概率有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]=\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_1\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_2\,\textbf{or}\,\cdots\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_M]}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]=\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2\,\textbf{or}\,\cdots\,\textbf{or}\,\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]}"/>
 
 使用 Union bound：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\,\leq\,\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\mathrm{for}\,h_M]}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}]\,\leq\,\mathbb{P}_\mathcal{D}[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_1]+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_2]+\cdots+[\textbf{BAD}\,\mathcal{D}\,\textrm{for}\,h_M]}"/>
 
 使用 Hoeffding：
 
@@ -500,7 +500,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 ### 总结概括前面学到的内容
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{matrix}E_{\textrm{out}}(g)\underbrace{\approx}_\mathrm{test}{E}_{in}(g)\underbrace{\approx}_\mathrm{train}0\end{matrix}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{matrix}E_{\textrm{out}}(g)\underbrace{\approx}_\textrm{test}{E}_{in}(g)\underbrace{\approx}_\textrm{train}0\end{matrix}}"/>
 
 经过前面的学习，我们知道机器学习问题可以被分为两个部分：
 1. 确保 <i>E</i><sub>in</sub> (<i>g</i>) 和 <i>E</i><sub>out</sub> (<i>g</i>) 是相近的
@@ -525,7 +525,7 @@ _M_ 在个过程中起到什么作用呢？
 
 是在我们使用 **Union bound** 将“不好的”数据出现的概率拆成对每个 _h_ “不好的”概率之和：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\mathrm{or}\,\textbf{B}_2\,\mathrm{or}\,\ldots\,\textbf{B}_M]\,\leq\,\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_\mathcal{D}[\textbf{B}_1\,\textrm{or}\,\textbf{B}_2\,\textrm{or}\,\ldots\,\textbf{B}_M]\,\leq\,\mathbb{P}[\textbf{B}_1]+\mathbb{P}[\textbf{B}_2]+\cdots+\mathbb{P}[\textbf{B}_M]}"/>
 
 当 _M_ 无限大的时候，我们就加和了无限多个项，这导致了我们面临问题。
 
@@ -568,7 +568,7 @@ _M_ 在个过程中起到什么作用呢？
 
 因此，**(1) 如果** 能够使用这个值替换掉 _M_ ，就有
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\cdot\,\mathrm{ef\/fective}(N)\cdot\exp\,(-2\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\cdot\,\textrm{ef\/fective}(N)\cdot\exp\,(-2\epsilon^2N)}"/>
 
 那么，**(2) 如果** effective(_N_) << 2<sup><i>N</i></sup> ，则 **机器学习就是可能的**！
 
@@ -788,7 +788,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2 _N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?{m_{\mathcal{H}}(2N)}"/> 种 _h_，所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
 
 #### 运用 Hoeffding (without replacement)
 
@@ -796,7 +796,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <img src="http://latex.codecogs.com/svg.latex?{|E_{\textrm{in}}-E_{\textrm{in}}^{'}|>\frac{\epsilon}{2}\iff|E_{\textrm{in}}-\frac{E_{\textrm{in}}+E_{\textrm{in}}^{'}}{2}|>\frac{\epsilon}{4}}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\mathbb{P}[\mathrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
 
 #### VC Bound
 
@@ -928,7 +928,7 @@ VC Dimension 和下面这些都没有关系：
 
 不等式左边是“坏事情”发生的概率，如果我们把不等式右边作为 &delta; ，那么“好事情”发生的概率就是 1-&delta;，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\mathrm{ln}\left(\frac{4(2N)^{d_\textrm{VC}}}{x}\right)}&\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\ln\left(\frac{4(2N)^{d_\textrm{VC}}}{x}\right)}&\end{align*}}"/>
 
 等式右边的这个项叫做 (Penalty for) Model Complexity，<img src="http://latex.codecogs.com/svg.latex?{\mathbf{\Omega}\,(N,\mathcal{H},\delta)}"/>
 
@@ -1185,7 +1185,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 - 线性分类
   -  <img src="http://latex.codecogs.com/svg.latex?{\mathcal{Y}=\left\{+1,-1\right\}}"/>
-  - <img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\mathrm{sign}(\mathbf{w}^T\mathbf{x})}"/>
+  - <img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\textrm{sign}(\mathbf{w}^T\mathbf{x})}"/>
   - <img src="http://latex.codecogs.com/svg.latex?{\textrm{err}(\mathrm{\hat{y}},\mathrm{y})=[\![\,\mathrm{\hat{y}}\ne\mathrm{y}\,]\!]}"/>
   - NP-hard 问题
 - 线性回归
@@ -1202,7 +1202,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 我们先来看看这两个算法最大的差别：**错误的衡量**
 
-<img src="http://latex.codecogs.com/svg.latex?{\textrm{err}_{0/1}=[\![\,\mathrm{sign}(\mathbf{w}^T\mathbf{x})\ne\mathrm{y}\,]\!];\quad\,\textrm{err}_\textrm{sqr}=(\mathbf{w}^T\mathbf{x}-\mathrm{y})^2;}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\textrm{err}_{0/1}=[\![\,\textrm{sign}(\mathbf{w}^T\mathbf{x})\ne\mathrm{y}\,]\!];\quad\,\textrm{err}_\textrm{sqr}=(\mathbf{w}^T\mathbf{x}-\mathrm{y})^2;}"/>
 
 画出这两个函数的图像，我们可以看出来，err<sub>0/1</sub> &le; err<sub>sqr</sub>
 
@@ -1495,7 +1495,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 下面一个解决的思路就是用 soft 线性分类，算出每个点属于某个类别的可能性。这样最后每个数据选择可能性最大的那个分类就能够解决上面的两个问题。因为 soft 线性分类（逻辑回归）中的 <i>&theta;</i> 是单调的，因此可以直接比较取 <i>&theta;</i> 之前的值，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{g(\mathbf{x})=\arg\max_{k\in\mathcal{Y}}(\mathbf{w}_{[k]}^T\mathbf{x})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{g(\mathbf{x})=\mathop{\arg\max}_{k\in\mathcal{Y}}(\mathbf{w}_{[k]}^T\mathbf{x})}"/>
 
 这就是 **One-Versus-All (OVA) Decomposition** 。
 
