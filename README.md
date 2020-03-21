@@ -247,7 +247,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 所以，以下公式可以衡量这两个向量的相似程度：
 
-<img src="http://latex.codecogs.com/svg.latex?{\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}\;(\mathbf{w}_0=\mathbf{0})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\frac{\mathbf{w}^T_f}{\|\mathbf{w}_f\|}\,\frac{\mathbf{w}_T}{\|\mathbf{w}_T\|}\;(\mathbf{w}_0=\mathbf{0})}"/>
 
 对于 **分子** 部分，有：
 
@@ -259,7 +259,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 对于 **分母** 部分，有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}||\mathbf{w}_T||^2&\,=||\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\,=||\mathbf{w}_{T-1}||^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\|\mathbf{w}_T\|^2&\,=\|\mathbf{w}_{T-1}+\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}\|^2\\&\,=\|\mathbf{w}_{T-1}\|^2+2\,\mathrm{y}_{n(T-1)}\mathbf{w}_{T-1}\mathbf{x}_{n(T-1)}+\|\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}\|^2\end{align*}}"/>
 
 因为只有在某个数据出现错误时，才会使用这个数据更新向量，所以有：
 
@@ -267,19 +267,19 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 所以，上面的公式可以简化为：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_{T-1}||^2+0+||\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}||^2\\&\,\leq\,||\mathbf{w}_{T-1}||^2+\max_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\|\mathbf{w}_T\|^2&\,\leq\,\|\mathbf{w}_{T-1}\|^2+0+\|\mathrm{y}_{n(T-1)}\mathbf{x}_{n(T-1)}\|^2\\&\,\leq\,\|\mathbf{w}_{T-1}\|^2+\max_n\,\|\mathrm{y}_n\mathbf{x}_n\|^2\end{align*}}"/>
 
 迭代后有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}||\mathbf{w}_T||^2&\,\leq\,||\mathbf{w}_0||^2+T\max_n\,||\mathrm{y}_n\mathbf{x}_n||^2\\&\,\leq\,T\max_n\,||\mathrm{y}_n\mathbf{x}_n||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\|\mathbf{w}_T\|^2&\,\leq\,\|\mathbf{w}_0\|^2+T\max_n\,\|\mathrm{y}_n\mathbf{x}_n\|^2\\&\,\leq\,T\max_n\,\|\mathrm{y}_n\mathbf{x}_n\|^2\end{align*}}"/>
 
 综上，
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\,\frac{\mathbf{w}_T}{||\mathbf{w}_T||}&\,\geq\,\frac{T\min\limits_n\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{||\mathbf{w}_f||\sqrt{T\max\limits_n||\mathrm{y}_n\mathbf{x}_n||^2}}\;(||\mathrm{y}_n||=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}\frac{\mathbf{w}^T_f}{\|\mathbf{w}_f\|}\,\frac{\mathbf{w}_T}{\|\mathbf{w}_T\|}&\,\geq\,\frac{T\min\limits_n\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n}{\|\mathbf{w}_f\|\sqrt{T\max\limits_n\|\mathrm{y}_n\mathbf{x}_n\|^2}}\;(\|\mathrm{y}_n\|=1)\\&\\&\,\geq\,\sqrt{T}\cdot{C}\end{align*}}"/>
 
 其中，
 
-<img src="http://latex.codecogs.com/svg.latex?{C=\frac{\min\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{||\mathbf{w}_f||}\mathbf{x}_n}{\sqrt{\max\limits_n||\mathbf{x}_n||^2}}>0}"/>
+<img src="http://latex.codecogs.com/svg.latex?{C=\frac{\min\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{\|\mathbf{w}_f\|}\mathbf{x}_n}{\sqrt{\max\limits_n\|\mathbf{x}_n\|^2}}>0}"/>
 
 
 可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越 **接近** 的；
@@ -1073,7 +1073,7 @@ VC Bound 的推导中最核心的部分就是“从罐子里拿小球”的“�
 
 ![](./Snapshot/Snap13.png)
 
-<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{w}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\,||\mathbf{X}\mathbf{w}-\mathrm{y}||^2}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{w}\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\,\|\mathbf{X}\mathbf{w}-\mathrm{y}\|^2}"/>
 
 这个函数是`连续的`（continuus）、`可微分的`（differentiable）、`凸函数`（convex），所以对于这个函数的最小值，任意一个方向上的斜率 / 梯度（偏微分）都是 0。
 
@@ -1121,7 +1121,7 @@ VC Bound 的推导中最核心的部分就是“从罐子里拿小球”的“�
 
 我们先来看看 <i>E</i><sub>in</sub> 的均值：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}||^2\\&\,=\frac{1}{N}||&(\underbrace{\mathbf{I}}_{\textrm{Identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}\|\mathrm{y}-\mathrm{\hat{y}}\|^2&\,=\frac{1}{N}\|& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}\|^2\\&\,=\frac{1}{N}\|&(\underbrace{\mathbf{I}}_{\textrm{Identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}\|^2\end{align*}}"/>
 
 这个 <img src="http://latex.codecogs.com/svg.latex?{\mathbf{X}\mathbf{X}^\dagger}"/> 被称为 hat 矩阵 **H**，因为 y 乘以这个矩阵就变成了带 ^ 的 y 。
 
@@ -1147,7 +1147,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}||\mathrm{y}-\mathrm{\hat{y}}||^2&\,=\frac{1}{N}||(\mathbf{I}-\mathbf{H})\textrm{noise}||^2\\&\,=\frac{1}{N}(N-(d+1))||\textrm{noise}||^2\end{align*}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}\|\mathrm{y}-\mathrm{\hat{y}}\|^2&\,=\frac{1}{N}\|(\mathbf{I}-\mathbf{H})\textrm{noise}\|^2\\&\,=\frac{1}{N}(N-(d+1))\|\textrm{noise}\|^2\end{align*}}"/>
 
 ![](./Snapshot/Snap15.png)
 
@@ -1365,7 +1365,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 利用上面的公式，现在的问题就是：
 
-<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{||\mathbf{v}||=1}\,E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{\|\mathbf{v}\|=1}\,E_{\textrm{in}}(\mathbf{w}_T+\eta\mathbf{v})}"/>
 
 这个公式看起来也很难，但是我们可以利用局部的近似（在 <i>&eta;</i> 很小的情况下泰勒展开）来简化这个公式：
 
@@ -1373,11 +1373,11 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此这个问题就变成：
 
-<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{||\mathbf{v}||=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{\|\mathbf{v}\|=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
 
 为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbf{v}=-\frac{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}{||\nabla\,E_{\textrm{in}}(\mathbf{w}_t)||}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbf{v}=-\frac{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}{\|\nabla\,E_{\textrm{in}}(\mathbf{w}_t)\|}}"/>
 
 这就是 **梯度下降** 。
 
@@ -1391,7 +1391,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 - 当梯度很大的时候，选择很大的 <i>&eta;</i>，来快速的优化；
 - 当梯度很小的时候，选择较小的 <i>&eta;</i>，达到准确的优化；
 
-因此有：<img src="http://latex.codecogs.com/svg.latex?{\eta\propto||\nabla\,E_{\textrm{in}}(\mathbf{w}_t)||}}"/>
+因此有：<img src="http://latex.codecogs.com/svg.latex?{\eta\propto\|\nabla\,E_{\textrm{in}}(\mathbf{w}_t)\|}}"/>
 
 所以将这个 <i>&eta;</i> 带入原先的公式，可以与分母的部分抵消，我们用一个新的 <i>&eta;</i> 来表示剩下的部分：
 
