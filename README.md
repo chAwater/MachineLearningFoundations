@@ -190,9 +190,9 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?{\begin{align*}h(\mathbf{x})&\,=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\mathrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&\,=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&\,=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}}"/>
 
-每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?{h}"/>（Hypothesis）。
+每一种`权重`向量（ **w** ）就是一个假设函数 <i>h</i>（Hypothesis）。
 
-在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?{\mathbb{R}^2}"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?{h}"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫 **线性分类器（Linear/binary classifiers）** 。
+在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?{\mathbb{R}^2}"/> ），每一种 <i>h</i> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫 **线性分类器（Linear/binary classifiers）** 。
 
 ### Perceptron Learning Algorithm (PLA)
 
@@ -201,15 +201,15 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 那么，如何选出最好的`假设函数`呢？
 
 我们希望得到的`假设函数`近似等于`目标函数`：
-<img src="http://latex.codecogs.com/svg.latex?{g\approx{f}}"/>
+<i>g</i> &approx; <i>f</i>
 
 我们并不知道`目标函数`，但我们有符合`目标函数`的`数据`，因此，至少在这些数据中，这两个函数应该是近似的：
 
-<img src="http://latex.codecogs.com/svg.latex?{g\approx{f}\;\mathrm{on}\;\mathcal{D}\;\Rightarrow\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx{}\mathrm{y}_n}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{g\approx{f}\;\textrm{on}\;\mathcal{D}\;\Rightarrow\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx\mathrm{y}_n}}"/>
 
 不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?{\mathcal{H}\;(g\in\mathcal{H})}"/> 可以是无限大的，从中找到我们想要的`目标函数`非常难。
 
-因此，可以先从`函数集合`中随意拿出一个函数 <img src="http://latex.codecogs.com/svg.latex?{g_0}"/>（可以用权重的向量 <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_0}"/> 表示），
+因此，可以先从`函数集合`中随意拿出一个函数 <i>g</i><sub>0</sub>（可以用权重的向量 <b>w</b><sub>0</sub> 表示），
 然后，在数据中优化这个函数的表现，这就是PLA (Cyclic PLA) 的思路。
 
 在一个循环 *t* = 0,1,2,3,... 中：
@@ -220,7 +220,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 > - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_t+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}}"/>
 >
 >
-> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{\mathrm{PLA}}\;\mathrm{as}\;g}"/>
+> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g}"/>
 >
 
 但是，这个算法还有一些问题：
@@ -235,11 +235,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - 当数据是线性可分的时候，PLA的循环就一定会停止吗？
 
-当数据线性可分时，存在一条线（ <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_f}"/> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
+当数据线性可分时，存在一条线（ <b>w</b><sub>f</sub> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
 
 <img src="http://latex.codecogs.com/svg.latex?{\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\,\geq\,\min_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0}"/>
 
-（任意一个数据点的向量表示 与 分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角cos值的乘积）
+（任意一个数据点的向量表示 与 分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角 cos 值的乘积）
 
 我们使用 **向量内积** 的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
@@ -282,7 +282,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 <img src="http://latex.codecogs.com/svg.latex?{C=\frac{\min\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{\|\mathbf{w}_f\|}\mathbf{x}_n}{\sqrt{\max\limits_n\|\mathbf{x}_n\|^2}}>0}"/>
 
 
-可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越 **接近** 的；
+可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着 PLA 的不断循环、更新，两个向量是越来越 **接近** 的；
 
 同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加；
 
@@ -294,12 +294,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ### Non-Separable Data & Pocket Algorithm
 
-不过，PLA仍然有一些问题：
+不过，PLA 仍然有一些问题：
 
 - 需要数据是线性可分的，但是我们并不知道数据是否线性可分
 - 数据是线性可分的假设过于强了，很多时候数据不是线性可分的（比如数据有噪音）
-- 尽管当线性是可分的时候，PLA会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_f}"/> ）
-
+- 尽管当线性是可分的时候，PLA 会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <b>w</b><sub>f</sub> ）
 
 为了解决这些问题，我们首先应该假设 **噪音** 应该很小，多数的数据都是线性可分的；
 
@@ -309,9 +308,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 但是这是一个 **NP-hard 问题**。
 
-因此，我们修改了一下PLA的算法。
-
-这个新算法的思路是在PLA的循环中，当每次找到一个新的分类器（线）时，检查这个分类器在所有数据中的表现。如果这个新的分类器比以前（口袋里）分类器的表现好，那么就留下这个新的分类器，否则，还保留旧的分类器。
+因此，我们修改了一下 PLA 的算法。这个新算法的思路是在 PLA 的循环中，当每次找到一个新的分类器（线）时，检查这个分类器在所有数据中的表现。如果这个新的分类器比以前（口袋里）分类器的表现好，那么就留下这个新的分类器，否则，还保留旧的分类器。
 
 这个算法叫就做 **口袋算法（Pocket Algorithm）**。
 
