@@ -182,7 +182,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)}"/>
 
-这就是**感知机**。
+这就是 **感知机**。
 
 ---
 
@@ -210,7 +210,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?{\mathcal{H}\;(g\in\mathcal{H})}"/> 可以是无限大的，从中找到我们想要的`目标函数`非常难。
 
 因此，可以先从`函数集合`中随意拿出一个函数 <i>g</i><sub>0</sub>（可以用权重的向量 <b>w</b><sub>0</sub> 表示），
-然后，在数据中优化这个函数的表现，这就是PLA (Cyclic PLA) 的思路。
+然后，在数据中优化这个函数的表现，这就是 PLA (Cyclic PLA) 的思路。
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
@@ -235,7 +235,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - 当数据是线性可分的时候，PLA的循环就一定会停止吗？
 
-当数据线性可分时，存在一条线（ <b>w</b><sub>f</sub> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
+当数据线性可分时，存在一条线（ <b>w</b><sub><i>f</i></sub> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
 
 <img src="http://latex.codecogs.com/svg.latex?{\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\,\geq\,\min_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0}"/>
 
@@ -281,7 +281,6 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?{C=\frac{\min\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{\|\mathbf{w}_f\|}\mathbf{x}_n}{\sqrt{\max\limits_n\|\mathbf{x}_n\|^2}}>0}"/>
 
-
 可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着 PLA 的不断循环、更新，两个向量是越来越 **接近** 的；
 
 同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加；
@@ -298,7 +297,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - 需要数据是线性可分的，但是我们并不知道数据是否线性可分
 - 数据是线性可分的假设过于强了，很多时候数据不是线性可分的（比如数据有噪音）
-- 尽管当线性是可分的时候，PLA 会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <b>w</b><sub>f</sub> ）
+- 尽管当线性是可分的时候，PLA 会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <b>w</b><sub><i>f</i></sub> ）
 
 为了解决这些问题，我们首先应该假设 **噪音** 应该很小，多数的数据都是线性可分的；
 
@@ -335,14 +334,14 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
     - 股价、房价预测
     - 天气、温度预测
 - 结构 学习：Structured learning
-  - Structure <img src="http://latex.codecogs.com/svg.latex?{\equiv}"/> Hyperclass, without class definition
+  - Structure &equiv; Hyperclass, without class definition
     - 自然语言处理，句子形式判断
     - 蛋白质折叠预测
 
 ### 不同的输出标注
 
 - **监督学习**：Supervised Learning
-  - 有数据标注，每个数据都有相应的标注 <img src="http://latex.codecogs.com/svg.latex?{(\mathbf{x}_n,\mathrm{y}_n)}"/>
+  - 有数据标注，每个数据都有相应的标注 <b>x</b><sub>n</sub>, y<sub>n</sub>
 - **无监督学习**：Unsupervised Learning
   - 无数据标注，目标也比较分散
     - 数据分群（~ unsupervised multiclass classification）
@@ -409,7 +408,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 当然有！我们可以随机拿出 ***N*** 个球（Sample），看着这几个球中有多少比例的球是橘色的。
 
-假设在罐子中橘色球的比例是 <i>&mu;</i>（未知的），而在我们Sample中橘色球的比例是 <i>&nu;</i>（已知的），那这个Sample内的比例可以说明Sample外的比例吗？
+假设在罐子中橘色球的比例是 <i>&mu;</i>（未知的），而在我们 Sample 中橘色球的比例是 <i>&nu;</i>（已知的），那这个 Sample 内的比例可以说明 Sample 外的比例吗？
 
 **有可能** 不能说明，但 **很有可能** 能够说明！
 
@@ -431,7 +430,7 @@ Fun Time：嘲讽一下某些“智商测试”
 - 球的颜色 **相当于** 某个`假设函数`在这个数据集（Sample）上的表现的好与不好
 - 要估计的罐子中球的颜色 **相当于** 估计这个`假设函数`在整个数据空间上的表现好与不好
 
-当 _N_ 很大时，且这个数据集是独立同分布（i.i.d.）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
+当 _N_ 很大时，且这个数据集是独立同分布（ **i.i.d.** ）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
 
 <img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\exp\,(-2\epsilon^2N)}"/>
 
@@ -607,7 +606,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 考虑将这 _N_ 个点随机放在一个圆上，任意一种分类结果（判断值）都可以通过选取所有判断值为+1的点作为顶点，绘出一个多边形。
 
-因此`成长函数`是 2<sup>_N_</sup>。
+因此`成长函数`是 2<sup><i>N<i></sup>。
 
 <div align=center><img width="70%" src="./Snapshot/Snap07.png"/></br></br></div>
 
