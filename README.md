@@ -760,7 +760,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 答案是可以的，不过需要在之前的 Hoeffding 不等式会增加一些“无所谓”的常数项：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
 对于不等式 **左边** 是在`函数集合`中存在一个 _h_ 使得 <i>E</i><sub>in</sub> (<i>h</i>) 和 <i>E</i><sub>out</sub> (<i>h</i>) 的差距很大的概率，我们希望这个概率很小，这样就可以机器学习。
 
@@ -776,7 +776,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 这个描述，就把无限的 <i>E</i><sub>out</sub> 转换成了有限的、类似于 <i>E</i><sub>in</sub> 的 <i>E</i><sub>in</sub><sup><i>'</i></sup> 。不过其概率和“差距”的量会稍有些变化：
 
-<img src="http://latex.codecogs.com/svg.latex?{\small{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\small{\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
 
 这里，假设发生的验证（Verification）所用到的数据叫做“Ghost data”。
 
@@ -784,7 +784,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2 _N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?{m_{\mathcal{H}}(2N)}"/> 种 _h_，所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\textrm{fixed}\,h\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
 
 #### 运用 Hoeffding (without replacement)
 
@@ -792,13 +792,13 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <img src="http://latex.codecogs.com/svg.latex?{|E_{\textrm{in}}-E_{\textrm{in}}^{'}|>\frac{\epsilon}{2}\iff|E_{\textrm{in}}-\frac{E_{\textrm{in}}+E_{\textrm{in}}^{'}}{2}|>\frac{\epsilon}{4}}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\textrm{fixed}\,h\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
 
 #### VC Bound
 
 整理一下公式得到：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
 - 通过 `Verification` 替换无限的 <i>E</i><sub>out</sub>
 - 通过 `上限函数` 替换无限的`函数集合`
