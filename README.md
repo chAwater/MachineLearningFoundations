@@ -182,7 +182,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)-\mathrm{threshold}\right)}"/>
 
-这就是**感知机**。
+这就是 **感知机**。
 
 ---
 
@@ -190,9 +190,9 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?{\begin{align*}h(\mathbf{x})&\,=\textrm{sign}\left(\left(\sum_{i=1}^d\mathrm{w}_i\mathrm{x}_i\right)+\begin{matrix}\underbrace{-\mathrm{threshold}}\\\mathrm{w}_0\end{matrix}\cdot\begin{matrix}\underbrace{+1}\\\mathrm{x}_0\end{matrix}\right)\\&\\&\,=\textrm{sign}\left(\sum_{i=0}^d\mathrm{w}_i\mathrm{x}_i\right)\\&\\&\,=\textrm{sign}(\mathbf{w}^T\mathbf{x})\end{align*}}"/>
 
-每一种`权重`向量（ <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}}"/> ）就是一个假设函数 <img src="http://latex.codecogs.com/svg.latex?{h}"/>（Hypothesis）。
+每一种`权重`向量（ **w** ）就是一个假设函数 <i>h</i>（Hypothesis）。
 
-在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?{\mathbb{R}^2}"/> ），每一种 <img src="http://latex.codecogs.com/svg.latex?{h}"/> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫 **线性分类器（Linear/binary classifiers）** 。
+在二维空间中（ <img src="http://latex.codecogs.com/svg.latex?{\mathbb{R}^2}"/> ），每一种 <i>h</i> 可以用一条直线表示，在这个直线上的值为0，直线将平面分为 +1 和 -1 两个部分。因此，感知机也叫 **线性分类器（Linear/binary classifiers）** 。
 
 ### Perceptron Learning Algorithm (PLA)
 
@@ -201,16 +201,16 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 那么，如何选出最好的`假设函数`呢？
 
 我们希望得到的`假设函数`近似等于`目标函数`：
-<img src="http://latex.codecogs.com/svg.latex?{g\approx{f}}"/>
+<i>g</i> &approx; <i>f</i>
 
 我们并不知道`目标函数`，但我们有符合`目标函数`的`数据`，因此，至少在这些数据中，这两个函数应该是近似的：
 
-<img src="http://latex.codecogs.com/svg.latex?{g\approx{f}\;\mathrm{on}\;\mathcal{D}\;\Rightarrow\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx{}\mathrm{y}_n}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{g\approx{f}\;\textrm{on}\;\mathcal{D}\;\Rightarrow\;g(\mathbf{x}_n)\approx{f(\mathbf{x}_n)\approx\mathrm{y}_n}}"/>
 
 不过，因为`目标函数`所属的`函数集合` <img src="http://latex.codecogs.com/svg.latex?{\mathcal{H}\;(g\in\mathcal{H})}"/> 可以是无限大的，从中找到我们想要的`目标函数`非常难。
 
-因此，可以先从`函数集合`中随意拿出一个函数 <img src="http://latex.codecogs.com/svg.latex?{g_0}"/>（可以用权重的向量 <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_0}"/> 表示），
-然后，在数据中优化这个函数的表现，这就是PLA (Cyclic PLA) 的思路。
+因此，可以先从`函数集合`中随意拿出一个函数 <i>g</i><sub>0</sub>（可以用权重的向量 <b>w</b><sub>0</sub> 表示），
+然后，在数据中优化这个函数的表现，这就是 PLA (Cyclic PLA) 的思路。
 
 在一个循环 *t* = 0,1,2,3,... 中：
 >
@@ -220,7 +220,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 > - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_t+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}}"/>
 >
 >
-> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{\mathrm{PLA}}\;\mathrm{as}\;g}"/>
+> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g}"/>
 >
 
 但是，这个算法还有一些问题：
@@ -235,11 +235,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - 当数据是线性可分的时候，PLA的循环就一定会停止吗？
 
-当数据线性可分时，存在一条线（ <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_f}"/> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
+当数据线性可分时，存在一条线（ <b>w</b><sub><i>f</i></sub> ）可以完美区分这个数据集，每一个数据都可以被这条线区分在正确的部分，因此有：
 
 <img src="http://latex.codecogs.com/svg.latex?{\mathrm{y}_{n(t)}\mathbf{w}^T_f\mathbf{x}_{n(t)}\,\geq\,\min_n\,\mathrm{y}_n\mathbf{w}^T_f\mathbf{x}_n>0}"/>
 
-（任意一个数据点的向量表示 与 分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角cos值的乘积）
+（任意一个数据点的向量表示 与 分割线法向量的夹角小于90&deg;，向量内积等于向量的长度与夹角 cos 值的乘积）
 
 我们使用 **向量内积** 的方式来查看这个完美的分割线和我们 _T_ 循环中分割线的相似程度。
 
@@ -281,8 +281,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 <img src="http://latex.codecogs.com/svg.latex?{C=\frac{\min\limits_n\mathrm{y}_n\frac{\mathbf{w}^T_f}{\|\mathbf{w}_f\|}\mathbf{x}_n}{\sqrt{\max\limits_n\|\mathbf{x}_n\|^2}}>0}"/>
 
-
-可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着PLA的不断循环、更新，两个向量是越来越 **接近** 的；
+可见两个单位向量的內积会随着 _T_ 的增加而增加，这说明随着 PLA 的不断循环、更新，两个向量是越来越 **接近** 的；
 
 同时，因为两个单位向量內积的最大值为 **1**，所以 _T_ 不可能无限增加；
 
@@ -294,12 +293,11 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 ### Non-Separable Data & Pocket Algorithm
 
-不过，PLA仍然有一些问题：
+不过，PLA 仍然有一些问题：
 
 - 需要数据是线性可分的，但是我们并不知道数据是否线性可分
 - 数据是线性可分的假设过于强了，很多时候数据不是线性可分的（比如数据有噪音）
-- 尽管当线性是可分的时候，PLA会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_f}"/> ）
-
+- 尽管当线性是可分的时候，PLA 会停下来，但是我们并不知道需要多少个循环才能停下（参数中含有未知的 <b>w</b><sub><i>f</i></sub> ）
 
 为了解决这些问题，我们首先应该假设 **噪音** 应该很小，多数的数据都是线性可分的；
 
@@ -309,9 +307,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 但是这是一个 **NP-hard 问题**。
 
-因此，我们修改了一下PLA的算法。
-
-这个新算法的思路是在PLA的循环中，当每次找到一个新的分类器（线）时，检查这个分类器在所有数据中的表现。如果这个新的分类器比以前（口袋里）分类器的表现好，那么就留下这个新的分类器，否则，还保留旧的分类器。
+因此，我们修改了一下 PLA 的算法。这个新算法的思路是在 PLA 的循环中，当每次找到一个新的分类器（线）时，检查这个分类器在所有数据中的表现。如果这个新的分类器比以前（口袋里）分类器的表现好，那么就留下这个新的分类器，否则，还保留旧的分类器。
 
 这个算法叫就做 **口袋算法（Pocket Algorithm）**。
 
@@ -338,14 +334,14 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
     - 股价、房价预测
     - 天气、温度预测
 - 结构 学习：Structured learning
-  - Structure <img src="http://latex.codecogs.com/svg.latex?{\equiv}"/> Hyperclass, without class definition
+  - Structure &equiv; Hyperclass, without class definition
     - 自然语言处理，句子形式判断
     - 蛋白质折叠预测
 
 ### 不同的输出标注
 
 - **监督学习**：Supervised Learning
-  - 有数据标注，每个数据都有相应的标注 <img src="http://latex.codecogs.com/svg.latex?{(\mathbf{x}_n,\mathrm{y}_n)}"/>
+  - 有数据标注，每个数据都有相应的标注 <b>x</b><sub>n</sub>, y<sub>n</sub>
 - **无监督学习**：Unsupervised Learning
   - 无数据标注，目标也比较分散
     - 数据分群（~ unsupervised multiclass classification）
@@ -412,7 +408,7 @@ Fun Time：嘲讽一下某些“智商测试”
 
 当然有！我们可以随机拿出 ***N*** 个球（Sample），看着这几个球中有多少比例的球是橘色的。
 
-假设在罐子中橘色球的比例是 <i>&mu;</i>（未知的），而在我们Sample中橘色球的比例是 <i>&nu;</i>（已知的），那这个Sample内的比例可以说明Sample外的比例吗？
+假设在罐子中橘色球的比例是 <i>&mu;</i>（未知的），而在我们 Sample 中橘色球的比例是 <i>&nu;</i>（已知的），那这个 Sample 内的比例可以说明 Sample 外的比例吗？
 
 **有可能** 不能说明，但 **很有可能** 能够说明！
 
@@ -434,7 +430,7 @@ Fun Time：嘲讽一下某些“智商测试”
 - 球的颜色 **相当于** 某个`假设函数`在这个数据集（Sample）上的表现的好与不好
 - 要估计的罐子中球的颜色 **相当于** 估计这个`假设函数`在整个数据空间上的表现好与不好
 
-当 _N_ 很大时，且这个数据集是独立同分布（i.i.d.）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
+当 _N_ 很大时，且这个数据集是独立同分布（ **i.i.d.** ）的来自于整个输入数据空间中，我们就可以通过在数据集中`假设函数`的表现来评估`假设函数`在整个输入数据空间中的表现：
 
 <img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\exp\,(-2\epsilon^2N)}"/>
 
@@ -610,7 +606,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 考虑将这 _N_ 个点随机放在一个圆上，任意一种分类结果（判断值）都可以通过选取所有判断值为+1的点作为顶点，绘出一个多边形。
 
-因此`成长函数`是 2<sup>_N_</sup>。
+因此`成长函数`是 2<sup><i>N<i></sup>。
 
 <div align=center><img width="70%" src="./Snapshot/Snap07.png"/></br></br></div>
 
@@ -764,7 +760,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 答案是可以的，不过需要在之前的 Hoeffding 不等式会增加一些“无所谓”的常数项：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
 对于不等式 **左边** 是在`函数集合`中存在一个 _h_ 使得 <i>E</i><sub>in</sub> (<i>h</i>) 和 <i>E</i><sub>out</sub> (<i>h</i>) 的差距很大的概率，我们希望这个概率很小，这样就可以机器学习。
 
@@ -780,7 +776,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 这个描述，就把无限的 <i>E</i><sub>out</sub> 转换成了有限的、类似于 <i>E</i><sub>in</sub> 的 <i>E</i><sub>in</sub><sup><i>'</i></sup> 。不过其概率和“差距”的量会稍有些变化：
 
-<img src="http://latex.codecogs.com/svg.latex?{\small{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\small{\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
 
 这里，假设发生的验证（Verification）所用到的数据叫做“Ghost data”。
 
@@ -788,7 +784,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 另外一个无限多的项是`函数集合`中的 _h_，不过，现在我们公式中的 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 都是发生在有限多的数据上了，因此，可以用 Effective Number 来代替无限多的 _h_。这就是我们引入 **Dichotomy**、`成长函数` 和 `上限函数`的时候！对于 <i>E</i><sub>in</sub> 和 <i>E</i><sub>in</sub><sup><i>'</i></sup> 总共有 2 _N_ 个数据，因此最多有 <img src="http://latex.codecogs.com/svg.latex?{m_{\mathcal{H}}(2N)}"/> 种 _h_，所以有：
 
-<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\small{2\,\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]\,\leq\,2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\textrm{fixed}\,h\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)|>\frac{\epsilon}{2}]}}"/>
 
 #### 运用 Hoeffding (without replacement)
 
@@ -796,13 +792,13 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 <img src="http://latex.codecogs.com/svg.latex?{|E_{\textrm{in}}-E_{\textrm{in}}^{'}|>\frac{\epsilon}{2}\iff|E_{\textrm{in}}-\frac{E_{\textrm{in}}+E_{\textrm{in}}^{'}}{2}|>\frac{\epsilon}{4}}"/>
 
-<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\mathbb{P}[\textrm{fixed}\,h\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{2m_{\mathcal{H}}(2N)\,\cdot\,\mathbb{P}[\textrm{fixed}\,h\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{in}}^{'}(h)>\frac{\epsilon}{2}|]\leq2m_{\mathcal{H}}(2N)\,\cdot\,2\,\exp\left(-2\left(\frac{\epsilon}{4}\right)^2N\right)}"/>
 
 #### VC Bound
 
 整理一下公式得到：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,s.t.\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[\exists\,h\in\mathcal{H}\,\textrm{s.t.}\,|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,4\,m_{\mathcal{H}}(2N)\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
 - 通过 `Verification` 替换无限的 <i>E</i><sub>out</sub>
 - 通过 `上限函数` 替换无限的`函数集合`
@@ -1349,7 +1345,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 这个公式可以看成被 <i>&theta;</i> 加权的数据（x,y）求和。
 
 - 如果所有的 <i>&theta;</i> 都是 0 的时候，这个梯度就是 0
-  - 这表示 <img src="http://latex.codecogs.com/svg.latex?{\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n}\,\gg\,0}"/> ，也就是说这个数据是 **线性可分** 的；
+  - 这表示 y<sub>n</sub><b>w</b><sup><i>T</i></sup><b>x</b><sub>n</sub> &gg; 0，也就是说这个数据是 **线性可分** 的；
 - 如果上述不成立（比如有噪音），我们就需要求解这个公式
   - 但是，和线性回归不同，这个方程式是 **非线性** 的，因此没有一个解析解；
 
@@ -1373,7 +1369,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此这个问题就变成：
 
-<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{\|\mathbf{v}\|=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{\|\mathbf{v}\|=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
 
 为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
 
@@ -1411,7 +1407,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 > - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环，退出循环
 >
 
-这个算法和 口袋算法（Pocket Algorithm）的计算量是类似的。
+这个算法和口袋算法（Pocket Algorithm）的计算量是类似的。
 
 ---
 ---
@@ -1451,7 +1447,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 ### 随机的梯度下降 (Stochastic Gradient Descent, SGD)
 
 我们介绍过了 PLA 和逻辑回归和梯度下降，这两个方法都是逐步的（Iterative）优化 **w**：
-- 在PLA中，每次选出一个点来计算修正的方向；
+- 在 PLA 中，每次选出一个点来计算修正的方向；
 - 而在梯度下降中，每次需要计算所有数据，算出梯度，然后再优化；
 
 这样一来，梯度下降每一轮的计算量明显多了很多。
@@ -1475,7 +1471,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 ---
 
 但是还有两个小问题：
-- 这个算法什么时候停下来？（梯度下降需要梯度为0，但是SGD不计算这个梯度）
+- 这个算法什么时候停下来？（梯度下降需要梯度为 0，但是 SGD 不计算这个梯度）
 > 相信只要进行足够多次优化之后就会得到很好的结果，因此停下来
 
 - <i>&eta;</i> 如何选择？
@@ -1546,7 +1542,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 <img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\textrm{sign}\left\(-\mathrm{x}_1^2-\mathrm{x}_2^2+0.6\right\)}"/>
 
-那我们是不是还要再重新再套用一下上面我们对线性分类的所有操作？比如PLA，比如回归等等。
+那我们是不是还要再重新再套用一下上面我们对线性分类的所有操作？比如 PLA，比如回归等等。
 
 太麻烦了！下面我们就用一种系统的方式来解决这个问题。
 
@@ -1942,7 +1938,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 > <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_m^-)\,\leq\,E_{\textrm{val}}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
 - 用验证数据做`模型选择`
 >
-> <img src="http://latex.codecogs.com/svg.latex?{m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{\textrm{val}}(\mathcal{A}_m(\mathcal{D}_{train})))}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{\textrm{val}}(\mathcal{A}_m(\mathcal{D}_\textrm{train})))}"/>
 >
 > 这里的 _g_ 有个 - 号，是因为它是用一部分数据得到的；但是理论上如果用全部的数据应该会得到更好的结果，就是没有减号的 _g_ ；所以当我们找到最好的 _m_ 时，通常会再用全部数据重新跑一次，得到做好的 _g_ 。
 - 用全部数据得到 _g_
@@ -2149,26 +2145,26 @@ it will confess.
 - Statistics
 
 三个理论保证：
-- Hoeffding
+- **Hoeffding**
   - One hypothesis
   - Useful for testing
-- Multi-Bin Hoeffding
+- **Multi-Bin Hoeffding**
   - _M_ hypotheses
   - Useful for validation
-- VC
+- **VC**
   - All hypotheses
   - Useful for training
 
 三个模型：
-- PLA/Pocket
-  - err = 0/1
-  - Minimize specially
-- Linear regression
-  - err = squared
-  - Minimize analytically
-- Logistic regression
- - err = Cross-entropy
- - Minimize iteratively
+- **PLA/Pocket**
+	- err = 0/1
+	- Minimize specially
+- **Linear regression**
+	- err = squared
+	- Minimize analytically
+- **Logistic regression**
+	- err = Cross-entropy
+	- Minimize iteratively
 
 三个工具：
 - Feature Transform
