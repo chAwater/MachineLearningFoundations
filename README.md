@@ -1345,7 +1345,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 这个公式可以看成被 <i>&theta;</i> 加权的数据（x,y）求和。
 
 - 如果所有的 <i>&theta;</i> 都是 0 的时候，这个梯度就是 0
-  - 这表示 <img src="http://latex.codecogs.com/svg.latex?{\mathrm{y}_n\mathbf{w}^T\mathbf{x}_{n}\,\gg\,0}"/> ，也就是说这个数据是 **线性可分** 的；
+  - 这表示 y<sub>n</sub><b>w</b><sup><i>T</i></sup><b>x</b><sub>n</sub> &gg; 0，也就是说这个数据是 **线性可分** 的；
 - 如果上述不成立（比如有噪音），我们就需要求解这个公式
   - 但是，和线性回归不同，这个方程式是 **非线性** 的，因此没有一个解析解；
 
@@ -1369,7 +1369,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 因此这个问题就变成：
 
-<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{\|\mathbf{v}\|=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{given positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\min_\mathbf{\|\mathbf{v}\|=1}\,\underbrace{E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}+\underbrace{\eta}_{\textrm{positive}}\,\mathbf{v}^T\cdot\underbrace{\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}_{\textrm{known}}}"/>
 
 为了最小化上面这个公式，就是让 **v** 和它后面的这一项的向量积最小，因此有：
 
@@ -1407,7 +1407,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 > - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环，退出循环
 >
 
-这个算法和 口袋算法（Pocket Algorithm）的计算量是类似的。
+这个算法和口袋算法（Pocket Algorithm）的计算量是类似的。
 
 ---
 ---
@@ -1447,7 +1447,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 ### 随机的梯度下降 (Stochastic Gradient Descent, SGD)
 
 我们介绍过了 PLA 和逻辑回归和梯度下降，这两个方法都是逐步的（Iterative）优化 **w**：
-- 在PLA中，每次选出一个点来计算修正的方向；
+- 在 PLA 中，每次选出一个点来计算修正的方向；
 - 而在梯度下降中，每次需要计算所有数据，算出梯度，然后再优化；
 
 这样一来，梯度下降每一轮的计算量明显多了很多。
@@ -1471,7 +1471,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 ---
 
 但是还有两个小问题：
-- 这个算法什么时候停下来？（梯度下降需要梯度为0，但是SGD不计算这个梯度）
+- 这个算法什么时候停下来？（梯度下降需要梯度为 0，但是 SGD 不计算这个梯度）
 > 相信只要进行足够多次优化之后就会得到很好的结果，因此停下来
 
 - <i>&eta;</i> 如何选择？
@@ -1542,7 +1542,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 
 <img src="http://latex.codecogs.com/svg.latex?{h(\mathbf{x})=\textrm{sign}\left\(-\mathrm{x}_1^2-\mathrm{x}_2^2+0.6\right\)}"/>
 
-那我们是不是还要再重新再套用一下上面我们对线性分类的所有操作？比如PLA，比如回归等等。
+那我们是不是还要再重新再套用一下上面我们对线性分类的所有操作？比如 PLA，比如回归等等。
 
 太麻烦了！下面我们就用一种系统的方式来解决这个问题。
 
@@ -1938,7 +1938,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 > <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}(g_m^-)\,\leq\,E_{\textrm{val}}(g_m^-)+O\bigg(\sqrt\frac{\log{M}}{K}\bigg)}"/>
 - 用验证数据做`模型选择`
 >
-> <img src="http://latex.codecogs.com/svg.latex?{m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{\textrm{val}}(\mathcal{A}_m(\mathcal{D}_{train})))}"/>
+> <img src="http://latex.codecogs.com/svg.latex?{m^*=\mathop{\arg\min}_{1\le{m}\le{M}}(E_m=E_{\textrm{val}}(\mathcal{A}_m(\mathcal{D}_\textrm{train})))}"/>
 >
 > 这里的 _g_ 有个 - 号，是因为它是用一部分数据得到的；但是理论上如果用全部的数据应该会得到更好的结果，就是没有减号的 _g_ ；所以当我们找到最好的 _m_ 时，通常会再用全部数据重新跑一次，得到做好的 _g_ 。
 - 用全部数据得到 _g_
@@ -2145,26 +2145,26 @@ it will confess.
 - Statistics
 
 三个理论保证：
-- Hoeffding
+- **Hoeffding**
   - One hypothesis
   - Useful for testing
-- Multi-Bin Hoeffding
+- **Multi-Bin Hoeffding**
   - _M_ hypotheses
   - Useful for validation
-- VC
+- **VC**
   - All hypotheses
   - Useful for training
 
 三个模型：
-- PLA/Pocket
-  - err = 0/1
-  - Minimize specially
-- Linear regression
-  - err = squared
-  - Minimize analytically
-- Logistic regression
- - err = Cross-entropy
- - Minimize iteratively
+- **PLA/Pocket**
+	- err = 0/1
+	- Minimize specially
+- **Linear regression**
+	- err = squared
+	- Minimize analytically
+- **Logistic regression**
+	- err = Cross-entropy
+	- Minimize iteratively
 
 三个工具：
 - Feature Transform
