@@ -606,7 +606,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 考虑将这 _N_ 个点随机放在一个圆上，任意一种分类结果（判断值）都可以通过选取所有判断值为+1的点作为顶点，绘出一个多边形。
 
-因此`成长函数`是 2<sup><i>N<i></sup>。
+因此`成长函数`是 2<sup><i>N</i></sup>。
 
 <div align=center><img width="70%" src="./Snapshot/Snap07.png"/></br></br></div>
 
