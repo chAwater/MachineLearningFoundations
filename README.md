@@ -220,7 +220,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 > - 使用这个数据修正函数（向量求和）： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_t+\mathrm{y}_{n(t)}\mathbf{x}_{n(t)}}"/>
 >
 >
-> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{\textrm{PLA}}\;\textrm{as}\;g}"/>
+> - 直到每个数据都不出现错误时，循环停止，得到权重向量： <b>w</b><sub>PLA</sub> as <i>g</i>
 >
 
 但是，这个算法还有一些问题：
@@ -408,6 +408,8 @@ Fun Time：嘲讽一下某些“智商测试”
 
 当然有！我们可以随机拿出 ***N*** 个球（Sample），看着这几个球中有多少比例的球是橘色的。
 
+---
+
 假设在罐子中橘色球的比例是 <i>&mu;</i>（未知的），而在我们 Sample 中橘色球的比例是 <i>&nu;</i>（已知的），那这个 Sample 内的比例可以说明 Sample 外的比例吗？
 
 **有可能** 不能说明，但 **很有可能** 能够说明！
@@ -509,7 +511,7 @@ _M_ 在个过程中起到什么作用呢？
 <img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}[|E_{\textrm{in}}(h)-E_{\textrm{out}}(h)|>\epsilon]\,\leq\,2M\,\exp\,(-2\epsilon^2N)}"/>
 
 - 如果 _M_ 很小，那么 1 是可以实现的，但是 2 不能（因为选择空间小，不一定能够选到让 <i>E</i><sub>in</sub> (<i>g</i>) 很小的 <i>g</i> ）
-- 如果 _M_ 很大，那么 1 “不好的”事情发生的概率会变大，但是 2 更有可能实现
+- 如果 _M_ 很大，那么 1 中“不好的”事情发生的概率会变大，但是 2 更有可能实现
 
 因此，_M_ 在这个问题中也是很重要的，当 _M_ 无限大的时候该怎么办？
 
@@ -881,7 +883,7 @@ VC Dimension 和下面这些都没有关系：
 >
 > 因此有（线性组合）：
 >
-> x<sub>d+2</sub> = a<sub>1</sub>x<sub>1</sub> + a<sub>2</sub>x<sub>2</sub> + ... + a<sub>d+1</sub>x<sub>d+1</sub>
+> x<sub><i>d</i>+2</sub> = a<sub>1</sub>x<sub>1</sub> + a<sub>2</sub>x<sub>2</sub> + ... + a<sub><i>d</i>+1</sub>x<sub><i>d</i>+1</sub>
 >
 > 且 a 不全为 0；
 >
@@ -889,7 +891,7 @@ VC Dimension 和下面这些都没有关系：
 >
 > 假如 <b>w<sup>T</sup>x</b> 和a的符号相同，右边必定大于 0，
 >
-> 所以无法产生 <b>w<sup>T</sup>x<sub>d+2</sub></b> < 0 的情形；
+> 所以无法产生 <b>w<sup>T</sup>x<sub><i>d</i>+2</sub></b> < 0 的情形；
 >
 > 所以不能 shatter。
 
@@ -922,7 +924,7 @@ VC Dimension 和下面这些都没有关系：
 
 <img src="http://latex.codecogs.com/svg.latex?{\mathbb{P}_{\mathcal{D}}[|E_{\textrm{in}}(g)-E_{\textrm{out}}(g)|>\epsilon]\,\leq\,4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)}"/>
 
-不等式左边是“坏事情”发生的概率，如果我们把不等式右边作为 &delta; ，那么“好事情”发生的概率就是 1-&delta;，因此有：
+不等式左边是“坏事情”发生的概率，如果我们把不等式右边作为 <i>&delta;</i> ，那么“好事情”发生的概率就是 1-<i>&delta;</i>，因此有：
 
 <img src="http://latex.codecogs.com/svg.latex?{\begin{align*}4\,(2N)^{d_\textrm{VC}}\,\exp\,(-\frac{1}{8}\epsilon^2N)&=\delta\\\epsilon&=\sqrt{\frac{8}{N}\,\ln\left(\frac{4(2N)^{d_\textrm{VC}}}{x}\right)}&\end{align*}}"/>
 
@@ -1900,7 +1902,7 @@ L2 比较好优化，而 L1 则通常会得到很多 **w** 是 0 的结果，在
 - 用最小的 <i>E</i><sub>test</sub> 吧！
   - 找出一组`测试数据`，然后看这些模型在这个测试数据中的表现！
   - 因为有限空间中的 Hoeffding（在我们讨论 VC 的时候讲过类似的），有:
-  <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}\,\leq\,E_{\textrm{test}}+O\bigg(\sqrt\frac{\log{M}}{N_{text}}\bigg)}"/>
+  <img src="http://latex.codecogs.com/svg.latex?{E_{\textrm{out}}\,\leq\,E_{\textrm{test}}+O\bigg(\sqrt\frac{\log{M}}{N_\textrm{test}}\bigg)}"/>
 
 看起来很好！那么如何找到这个测试数据呢？
 
