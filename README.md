@@ -1119,7 +1119,7 @@ VC Bound 的推导中最核心的部分就是“从罐子里拿小球”的“�
 
 我们先来看看 <i>E</i><sub>in</sub> 的均值：
 
-<img src="https://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}\|\mathrm{y}-\mathrm{\hat{y}}\|^2&\,=\frac{1}{N}\|& \mathrm{y} &\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}\|^2\\&\,=\frac{1}{N}\|&(\underbrace{\mathbf{I}}_{\textrm{Identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}\|^2\end{align*}}"/>
+<img src="https://latex.codecogs.com/svg.latex?{\begin{align*}E_{\textrm{in}}(\mathbf{w}_\mathrm{LIN})=\frac{1}{N}\|\mathrm{y}-\mathrm{\hat{y}}\|^2&\,=\frac{1}{N}\|&\,\mathrm{y}\,&\,-\,\mathbf{X}\underbrace{\mathbf{X}^\dagger\mathrm{y}}_{\mathbf{w}_\mathrm{LIN}}\|^2\\&\,=\frac{1}{N}\|&(\underbrace{\mathbf{I}}_{\textrm{Identity}}&\,-\,\mathbf{X}\mathbf{X}^\dagger)\mathrm{y}\|^2\end{align*}}"/>
 
 这个 <img src="https://latex.codecogs.com/svg.latex?{\mathbf{X}\mathbf{X}^\dagger}"/> 被称为 hat 矩阵 **H**，因为 y 乘以这个矩阵就变成了带 ^ 的 y 。
 
