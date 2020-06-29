@@ -49,7 +49,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 ### 其他支持
 
 - [<img class="emoji" title=":atom:" alt=":atom:" src="https://github.githubassets.com/images/icons/emoji/atom.png" height="20" width="20" align="absmiddle"> Atom](https://atom.io)
-- [CodeCogs (LaTeX Editor API)](http://latex.codecogs.com)
+- [CodeCogs (LaTeX Editor API, v5.8.0.72)](https://latex.codecogs.com)
 - [Grip -- GitHub Readme Instant Preview](https://github.com/joeyespo/grip)
 - [Markdown Toc](https://github.com/nok/markdown-toc)
 
@@ -288,7 +288,7 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 因此，在数据 **线性可分** 时，PLA的循环 **最终会停下来**，找到一个很好的分割线。
 
 ```
-####### 怎么样！有没有感受到数学的NB之处！！ #######
+####### 怎么样！有没有感受到数学的 NB 之处！！ #######
 ```
 
 ### Non-Separable Data & Pocket Algorithm
@@ -356,14 +356,14 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 
 - **Batch** Leaning：收集一波数据，一波输入机器学习算法（最常用的一种，“填鸭式”）
 - **Online** Learning：实时的输入数据，实时的改进，甚至最优解都可能是实时变化的（强化学习，还有以前我们提到的PLA也可以很简单的实现，“上课式”）
-- Active Learning：类似于Online Learning，通过对于特定输入进行“提问”获得标注（通常在获取标记成本比较高的应用中，“提问式”）
+- Active Learning：类似于 Online Learning，通过对于特定输入进行“提问”获得标注（通常在获取标记成本比较高的应用中，“提问式”）
 
 ### 不同的输入空间
 
 - **Concrete** Feature：输入的每一个维度（特征）都具有一定的 **物理意义**，这些特征带有人类的智慧，相当于是被人类预处理的数据（比如钱币分类中的 **大小**、信用卡用户的工资、图像的对称性等）
 - **Raw** Feature：输入的特征更加的 **抽象**，一个维度（特征）的物理意义对于这个问题而言不是那么的有意义（比如图像识别中的 **像素**、声音识别中的信号）
 - **Abstract** Feature：输入的特征 **没有物理意义**，（比如用户音乐推荐中的音乐和用户ID）
-  - 特征工程（Feature Engineering）是指将Raw feature转换为Concrete feature的过程
+  - 特征工程（Feature Engineering）是指将 Raw feature 转换为 Concrete feature 的过程
   - 对于机器学习来说，越抽象越难
 
 ---
@@ -375,6 +375,8 @@ by [Hsuan-Tien Lin](https://www.csie.ntu.edu.tw/~htlin/)
 —— 哲学思考和数学讨论：**机器学习是否是可能的**
 
 ### 哲学思考：机器学习真的是可能的吗？(Learning is impossible?)
+
+考虑下面的几个例子：
 
 - Two Controversial Answers
 
@@ -450,9 +452,9 @@ Fun Time：嘲讽一下某些“智商测试”
 
 也 **不一定**！因为上述不等式是描述的是`假设函数`和`目标函数`差距很小的概率。即使概率很小，也 **有可能** 发生（两个函数差距很大的、小概率“不好的”的事件发生）。尤其是在有很多次事件（`函数集合`很大），且这种不好的事件可能会被 **选择** 的时候！
 
-想象一下，如果有150人（`函数集合`）每人投5次硬币（`数据`），五次都是正面的那个人（`假设函数`），再以后的投硬币（`输出空间`）中就一定能一直正面吗？
+想象一下，如果有 150 人（`函数集合`）每人投 5 次硬币（`数据`），五次都是正面的那个人（`假设函数`），再以后的投硬币（`输出空间`）中就一定能一直正面吗？
 
-这种“不好的”的事件，比如投币五次都是正面，**相当于** 某个`数据集`评价某种`假设函数`“看似”很好，但实际其在输入空间中的表现不好。
+这种“不好的”的事件（比如投币五次都是正面），**相当于** 某个`数据集`评价某种`假设函数`“看似”很好，但实际其在输入空间中的表现不好。
 
 ---
 
@@ -838,7 +840,7 @@ Dichotomy 的大小取决于`输入空间`，因此在某个输入空间中，�
 
 ---
 
-我们给最大的、非 Break Point 的 输入叫做 **VC Dimension**，，标注为 <i>d</i><sub>VC</sub> = _k_-1，它是一个`函数集合`的性质。
+我们给最大的、非 Break Point 的 输入叫做 **VC Dimension**，标注为 <i>d</i><sub>VC</sub> = _k_-1，它是一个`函数集合`的性质。
 
 如果 _N_(_k_) >  <i>d</i><sub>VC</sub> ，则 _N_(_k_) 就是 Break Point。
 
@@ -916,7 +918,7 @@ VC Dimension 和下面这些都没有关系：
 类似的，VC Dimension 就表示了这个`函数集合`的**自由度**，衡量这个`函数集合`能够产生多少 Dichotomies 。
 
 - 如果 <i>d</i><sub>VC</sub> 很小，那么“坏事情”发生的概率很小，但是函数集合可能只有很少的选择；
-- 如果 <i>d</i><sub>VC</sub> 很小，“坏事情”发生的概率会变大，但是函数集合中有很多的选择；
+- 如果 <i>d</i><sub>VC</sub> 很大，“坏事情”发生的概率会变大，但是函数集合中有很多的选择；
 
 ### <i>d</i><sub>VC</sub> 对于`机器学习`的意义
 
@@ -992,11 +994,9 @@ VC Bound 的推导中最核心的部分就是“从罐子里拿小球”的“�
 > 来自于我们没有看过的数据
 
 - Pointwise
-> 针对每一个 x 都可以衡量
+> 针对每一个 x 都可以衡量 (Pointwise error measure)，我们主要使用这种方式来衡量；
 >
-> Pointwise error measure，我们主要使用这种方式来衡量；
->
-> 还有一些其他的衡量方式，本课程不涉及
+> （还有一些其他的衡量方式，本课程不涉及）
 
 - Classification
 > 只考虑对/错，0/1
@@ -1389,11 +1389,11 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 - 当梯度很大的时候，选择很大的 <i>&eta;</i>，来快速的优化；
 - 当梯度很小的时候，选择较小的 <i>&eta;</i>，达到准确的优化；
 
-因此有：<img src="http://latex.codecogs.com/svg.latex?{\eta\propto\|\nabla\,E_{\textrm{in}}(\mathbf{w}_t)\|}}"/>
+因此有：<img src="http://latex.codecogs.com/svg.latex?{\eta\propto\|\nabla\,E_{\textrm{in}}(\mathbf{w}_t)\|}"/>
 
 所以将这个 <i>&eta;</i> 带入原先的公式，可以与分母的部分抵消，我们用一个新的 <i>&eta;</i> 来表示剩下的部分：
 
-<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}}"/>
+<img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}"/>
 
 总结一下 **梯度下降**：
 
@@ -1404,7 +1404,7 @@ trace( **I** - **H** ) = _N_ - ( _d_ + 1 )
 >> <img src="http://latex.codecogs.com/svg.latex?{\nabla\,E_{\textrm{in}}(\mathbf{w})=\frac{1}{N}\sum_{n=1}^{N}\theta(-\mathrm{y}_n\mathbf{w}_t^T\mathbf{x}_{n})(-\mathrm{y}_n\mathbf{x}_{n})=0}"/>
 >
 > - 更新 **w**：
->> <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}}"/>
+>> <img src="http://latex.codecogs.com/svg.latex?{\mathbf{w}_{t+1}\gets\mathbf{w}_{t}-\eta\cdot\nabla\,E_{\textrm{in}}(\mathbf{w}_t)}"/>
 >
 > - 直到梯度为 0 或近似为 0，或者已经经过了足够多的循环，退出循环
 >
