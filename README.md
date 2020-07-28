@@ -1085,15 +1085,15 @@ VC Bound 的推导中最核心的部分就是“从罐子里拿小球”的“�
 
 <img src="https://latex.codecogs.com/svg.latex?{\mathbf{w}_\mathrm{LIN}=\underbrace{(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T}_{\mathrm{pseudo-inverse}\,{\tiny\mathbf{X}^\dagger}}\,\mathrm{y}}"/>
 
-通常情况下逆矩阵都是存在的，因为 <i>d</i><sub>VC</sub> &geq; <i>d</i>+1 。
+通常情况下逆矩阵都是存在的，因为 **X** 是一个 _N_ x _d_+1 的矩阵，<img src="https://latex.codecogs.com/svg.latex?{\mathbf{X}^T\mathbf{X}}"/> 是 _d_+1 x _d_+1 的矩阵，而 _N_ &gt;&gt; <i>d</i>+1 。
 
 如果逆矩阵不存在，则可能存在多个解，但是也能够找到这个 <img src="https://latex.codecogs.com/svg.latex?{\mathbf{w}_\mathrm{LIN}=\mathbf{X}^\dagger\mathrm{y}}"/>。
 
 ---
 
-为什么说因为 <i>d</i><sub>VC</sub> &geq; <i>d</i>+1 ，所以逆矩阵通常都是存在的？
+思考：为什么说因为 <i>N</i> &gt;&gt; <i>d</i>+1，所以逆矩阵通常都是存在的？
 
-请在 [Issues #3](https://github.com/chAwater/MachineLearningFoundations/issues/3) 中回答。
+参见：[Issues #3](https://github.com/chAwater/MachineLearningFoundations/issues/3)
 
 ---
 
